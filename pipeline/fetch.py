@@ -131,6 +131,7 @@ def src_prices():
     for t in TICKERS:
         url = f"https://query1.finance.yahoo.com/v8/finance/chart/{t}?range=max&interval=1mo&events=div%2Csplit"
         dest = RAW / "prices" / f"{t}.json"
+        dest.parent.mkdir(parents=True, exist_ok=True)
         subprocess.run(["curl", "-sSL", "--fail", "-A", "Mozilla/5.0", "-o", str(dest), url], check=False)
         time.sleep(1)
 
