@@ -12,8 +12,9 @@ from pathlib import Path
 
 import pandas as pd
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from common import AS_OF, INTERIM, RAW, records, write_clean_csv, write_site_json  # noqa: E402
+from _common import AS_OF, INTERIM, RAW, records, write_clean_csv, write_site_json  # noqa: E402
 
 
 def ransomware():

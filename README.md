@@ -25,10 +25,11 @@ A data story about cybersecurity in the AI era, built from 412,863 CVE records a
 ## Repository layout
 
 ```
-pipeline/            Python pipeline (fetch.py downloads, build.py processes)
-  steps/             one script per topic
-  ai_patterns.py     rules that tag AI-found CVEs and CVEs in AI software
-data/manual/         hand-transcribed report figures and the timeline, with source URLs
+pipeline/fetch.py    raw downloads (data/raw, gitignored)
+pipeline/build.py    source processors -> data/clean tables + site/public/data/story.json
+pipeline/steps/      data-story steps -> site/public/data/{vulns,threats,...}.json (what the site renders)
+pipeline/ai_patterns.py  rules that tag AI-found CVEs and CVEs in AI software
+data/manual/         hand-transcribed report tables (data/manual/story/ is used by the site)
 data/clean/          tidy CSV outputs, free to reuse
 site/                Vite + TypeScript + D3 data story
 ```
@@ -36,12 +37,15 @@ site/                Vite + TypeScript + D3 data story
 ## Run it
 
 ```sh
-uv venv && uv pip install -r pyproject.toml
-.venv/bin/python pipeline/fetch.py      # about 2 GB into data/raw (gitignored)
-.venv/bin/python pipeline/build.py      # writes data/clean and site/public/data
+uv venv && uv pip install -e ".[story,dev]"
+.venv/bin/python pipeline/fetch.py               # about 2 GB into data/raw (gitignored)
+.venv/bin/python pipeline/steps/fetch_extra.py   # prices, MSRC, ransomware.live, AI trackers
+.venv/bin/python pipeline/steps/run_all.py       # site JSON + clean CSVs used by the website
+.venv/bin/python pipeline/build.py               # source processors + story.json (optional)
+.venv/bin/python -m pytest -q
 cd site && npm install && npm run dev
 ```
 
 ## Sources
 
-CVE Program (cvelistV5), CISA KEV and Vulnrichment, FIRST EPSS, Berkeley Agentic Vulnerability Coverage Map, Anthropic CVD dashboard, Anthropic-Credited-CVEs tracker, Google Project Zero, MSRC, Exploit-DB, Metasploit, Nuclei, ransomware.live, OSV.dev, Have I Been Pwned, Yahoo Finance, plus published reports from FBI IC3, Gartner, Chainalysis, IBM, ISC2, Verizon, Crunchbase, GitGuardian, Google GTIG, VulnCheck, HackerOne and CyberSN. Every manual figure links to its source in `data/manual/series.csv`.
+CVE Program (cvelistV5), CISA KEV and Vulnrichment, FIRST EPSS, Berkeley Agentic Vulnerability Coverage Map, Anthropic CVD dashboard, Anthropic-Credited-CVEs tracker, Google Project Zero, MSRC, Exploit-DB, Metasploit, Nuclei, ransomware.live, OSV.dev, Have I Been Pwned, Yahoo Finance, plus published reports from FBI IC3, Gartner, Chainalysis, IBM, ISC2, Verizon, Crunchbase, GitGuardian, Google GTIG, VulnCheck, HackerOne and CyberSN. Every manual figure links to its source in `data/manual/story/series.csv`.

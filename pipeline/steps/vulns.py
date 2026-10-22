@@ -16,9 +16,10 @@ import numpy as np
 import pandas as pd
 import yaml
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from ai_patterns import AI_SOFTWARE, ai_finder  # noqa: E402
-from common import AS_OF, INTERIM, RAW, records, write_clean_csv, write_site_json  # noqa: E402
+from _common import AS_OF, INTERIM, RAW, records, write_clean_csv, write_site_json  # noqa: E402
 
 BIG_VENDORS = {
     "microsoft", "oracle", "Chrome", "apple", "adobe", "cisco", "ibm", "redhat", "mozilla", "google_android",
