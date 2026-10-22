@@ -19,9 +19,10 @@ export interface Data {
   markets: any;
   context: any;
   glasswing: any;
+  nvd: any;
 }
 
-const FILES = ["vulns", "threats", "supplychain", "breaches", "markets", "context", "glasswing"] as const;
+const FILES = ["vulns", "threats", "supplychain", "breaches", "markets", "context", "glasswing", "nvd"] as const;
 
 async function load(): Promise<Data> {
   const out: any = {};

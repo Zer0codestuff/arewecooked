@@ -10,7 +10,7 @@ import runpy
 import sys
 from pathlib import Path
 
-STEPS = ["cve_extract", "vulns", "threats", "ecosystem", "context"]
+STEPS = ["cve_extract", "vulns", "threats", "ecosystem", "context", "nvd_status"]
 
 if __name__ == "__main__":
     here = Path(__file__).resolve().parent

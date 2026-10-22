@@ -1,7 +1,7 @@
 import type { Data } from "../main";
 import { columns } from "../lib/charts";
 import { figure } from "../lib/figure";
-import { fmtInt, pct } from "../lib/format";
+import { fmtInt, monthLabel, pct, shortMonth } from "../lib/format";
 import { C, callout, chapter, grid2, link, prose } from "../lib/page";
 
 export function renderNoise(main: HTMLElement, d: Data) {
@@ -93,6 +93,37 @@ export function renderNoise(main: HTMLElement, d: Data) {
     labelBars: () => true,
     height: 260,
     partial: (r) => r.year === 2026,
+  });
+
+  // NVD backlog
+  const nv = d.nvd;
+  const nt = nv.totals;
+  const order: string[] = nv.order;
+  const NV_COLORS = [C.s1, C.s5, C.other];
+  prose(
+    sec,
+    `<h3>The referee is overwhelmed</h3>
+     <p>For twenty years the US National Vulnerability Database (NVD), run by NIST, has "enriched" every CVE: it adds a standard severity score and a precise list of affected products, which is what most corporate vulnerability scanners rely on. Until 2023 it analyzed essentially every CVE. In 2026 it has analyzed <strong>${pct(nt.analyzed_share_cur)}</strong> of them. ${fmtInt(nt.deferred_cur)} of this year's CVEs are marked "not scheduled" and ${fmtInt(nt.waiting_cur)} are still waiting.</p>
+     <p>This is a policy, not an accident. In ${link("https://www.nist.gov/news-events/news/2026/04/nist-updates-nvd-operations-address-record-cve-growth", "April 2026")} NIST announced it would only prioritize exploited vulnerabilities, software used by the federal government and critical software, and ${link("https://www.infosecurity-magazine.com/news/nvd-enrichment-premarch-2026/", "moved about 29,000 backlogged CVEs")} to the lowest priority. The public database most of the industry leans on has, in effect, started triaging too.</p>`,
+  );
+  const nm = nv.monthly as any[];
+  const f4 = figure(sec, {
+    title: "What the NVD did with each month's new CVEs",
+    sub: "CVEs by publication month and current NVD status (Oct 2026). October covers 1 to 22 Oct.",
+    source: `NIST NVD via the ${link("https://github.com/fkie-cad/nvd-json-data-feeds", "fkie-cad NVD JSON mirror")} (release ${nv.mirror_release})`,
+    legend: order.map((o, i) => ({ label: o, color: NV_COLORS[i] })),
+    table: { columns: [{ key: "month", label: "Month", fmt: (x: string) => monthLabel(x) }, ...order.map((o) => ({ key: o, label: o, fmt: fmtInt }))], rows: nm },
+  });
+  columns(f4, {
+    data: nm,
+    x: "month",
+    xLabel: shortMonth,
+    xTickEvery: (m: string) => new Date(m).getUTCMonth() % 6 === 0,
+    series: order.map((o, i) => ({ key: o, label: o, color: NV_COLORS[i] })),
+    stacked: true,
+    height: 300,
+    tipHead: (r) => monthLabel(r.month),
+    annotations: [{ x: "2026-04-01T00:00:00.000", text: "NIST triage policy", dy: 0, align: "end" }],
   });
 
   callout(
