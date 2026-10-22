@@ -1,0 +1,91 @@
+dataset,year,value,unit,note,source_name,source_url
+ic3_losses,2015,1.07,USD billion,,FBI IC3 2019 Internet Crime Report (5-year table),https://www.ic3.gov/AnnualReport/Reports/2019_IC3Report.pdf
+ic3_losses,2016,1.45,USD billion,,FBI IC3 2019 Internet Crime Report (5-year table),https://www.ic3.gov/AnnualReport/Reports/2019_IC3Report.pdf
+ic3_losses,2017,1.42,USD billion,,FBI IC3 2019 Internet Crime Report (5-year table),https://www.ic3.gov/AnnualReport/Reports/2019_IC3Report.pdf
+ic3_losses,2018,2.7,USD billion,,FBI IC3 2019 Internet Crime Report (5-year table),https://www.ic3.gov/AnnualReport/Reports/2019_IC3Report.pdf
+ic3_losses,2019,3.5,USD billion,,FBI IC3 2019 Internet Crime Report (5-year table),https://www.ic3.gov/AnnualReport/Reports/2019_IC3Report.pdf
+ic3_losses,2020,4.2,USD billion,,FBI IC3 2025 Internet Crime Report (losses by year),https://www.ic3.gov/AnnualReport/Reports/2025_IC3Report.pdf
+ic3_losses,2021,6.9,USD billion,,FBI IC3 2025 Internet Crime Report (losses by year),https://www.ic3.gov/AnnualReport/Reports/2025_IC3Report.pdf
+ic3_losses,2022,10.3,USD billion,,FBI IC3 2025 Internet Crime Report (losses by year),https://www.ic3.gov/AnnualReport/Reports/2025_IC3Report.pdf
+ic3_losses,2023,12.5,USD billion,,FBI IC3 2025 Internet Crime Report (losses by year),https://www.ic3.gov/AnnualReport/Reports/2025_IC3Report.pdf
+ic3_losses,2024,16.6,USD billion,,FBI IC3 2025 Internet Crime Report (losses by year),https://www.ic3.gov/AnnualReport/Reports/2025_IC3Report.pdf
+ic3_losses,2025,20.877,USD billion,,FBI IC3 2025 Internet Crime Report,https://www.ic3.gov/AnnualReport/Reports/2025_IC3Report.pdf
+ic3_complaints,2015,288012,complaints,,FBI IC3 2019 Internet Crime Report (5-year table),https://www.ic3.gov/AnnualReport/Reports/2019_IC3Report.pdf
+ic3_complaints,2016,298728,complaints,,FBI IC3 2019 Internet Crime Report (5-year table),https://www.ic3.gov/AnnualReport/Reports/2019_IC3Report.pdf
+ic3_complaints,2017,301580,complaints,,FBI IC3 2019 Internet Crime Report (5-year table),https://www.ic3.gov/AnnualReport/Reports/2019_IC3Report.pdf
+ic3_complaints,2018,351937,complaints,,FBI IC3 2019 Internet Crime Report (5-year table),https://www.ic3.gov/AnnualReport/Reports/2019_IC3Report.pdf
+ic3_complaints,2019,467361,complaints,,FBI IC3 2019 Internet Crime Report (5-year table),https://www.ic3.gov/AnnualReport/Reports/2019_IC3Report.pdf
+ic3_complaints,2020,791790,complaints,,FBI IC3 2023 Internet Crime Report (5-year table),https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf
+ic3_complaints,2021,847376,complaints,,FBI IC3 2023 Internet Crime Report (5-year table),https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf
+ic3_complaints,2022,800944,complaints,,FBI IC3 2023 Internet Crime Report (5-year table),https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf
+ic3_complaints,2023,880418,complaints,,FBI IC3 2023 Internet Crime Report,https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf
+ic3_complaints,2024,859532,complaints,,FBI IC3 2024 Internet Crime Report,https://www.ic3.gov/AnnualReport/Reports/2024_IC3Report.pdf
+ic3_complaints,2025,1008597,complaints,,FBI IC3 2025 Internet Crime Report,https://www.ic3.gov/AnnualReport/Reports/2025_IC3Report.pdf
+gartner_spend_srm,2021,150.4,USD billion,"Security and risk management scope, estimate published May 2021",Gartner press release 2021-05-17,https://www.gartner.com/en/newsroom/press-releases/2021-05-17-gartner-forecasts-worldwide-security-and-risk-managem
+gartner_spend_srm,2022,169.2,USD billion,"Implied by the 2023 forecast of $188.3B at +11.3%",Gartner press release 2022-10-13,https://gartner.com/en/newsroom/press-releases/2022-10-13-gartner-identifies-three-factors-influencing-growth-i
+gartner_spend_srm,2023,188.1,USD billion,"Security and risk management scope, estimate published Sep 2023",Gartner press release 2023-09-28,https://www.gartner.com/en/newsroom/press-releases/2023-09-28-gartner-forecasts-global-security-and-risk-management-spending-to-grow-14-percent-in-2024
+gartner_spend_infosec,2024,192.9,USD billion,"Information security end-user spending, 3Q26 forecast vintage",Gartner Forecast: Information Security Worldwide 2024-2030 3Q26 (via Software Strategies Blog),https://softwarestrategiesblog.com/2026/10/05/gartner-3q26-information-security-forecast-post-quantum-firewalls-2030/
+gartner_spend_infosec,2025,217.7,USD billion,"Information security end-user spending, 3Q26 forecast vintage",Gartner Forecast: Information Security Worldwide 2024-2030 3Q26 (via Software Strategies Blog),https://softwarestrategiesblog.com/2026/10/05/gartner-3q26-information-security-forecast-post-quantum-firewalls-2030/
+gartner_spend_infosec,2026,247.5,USD billion,"Forecast, 3Q26 vintage (+13.6% current USD)",Gartner Forecast: Information Security Worldwide 2024-2030 3Q26 (via Software Strategies Blog),https://softwarestrategiesblog.com/2026/10/05/gartner-3q26-information-security-forecast-post-quantum-firewalls-2030/
+gartner_spend_infosec,2030,372.8,USD billion,"Forecast, 3Q26 vintage",Gartner Forecast: Information Security Worldwide 2024-2030 3Q26 (via Software Strategies Blog),https://softwarestrategiesblog.com/2026/10/05/gartner-3q26-information-security-forecast-post-quantum-firewalls-2030/
+gartner_securing_ai,2026,3.0,USD billion,Securing AI market,Gartner (via Software Strategies Blog),https://softwarestrategiesblog.com/2026/10/05/gartner-3q26-information-security-forecast-post-quantum-firewalls-2030/
+gartner_securing_ai,2030,16.0,USD billion,Securing AI market forecast,Gartner (via Software Strategies Blog),https://softwarestrategiesblog.com/2026/10/05/gartner-3q26-information-security-forecast-post-quantum-firewalls-2030/
+ransom_payments,2019,0.174,USD billion,On-chain payments to ransomware addresses (lower bound; revised over time),Chainalysis Crypto Crime Report (via TechTarget),https://www.techtarget.com/cybersecurity/news/252529391/Chainalysis-Ransomware-payments-down-fewer-victims-paying
+ransom_payments,2020,0.765,USD billion,On-chain payments to ransomware addresses (lower bound; revised over time),Chainalysis Crypto Crime Report (via TechTarget),https://www.techtarget.com/cybersecurity/news/252529391/Chainalysis-Ransomware-payments-down-fewer-victims-paying
+ransom_payments,2021,0.766,USD billion,On-chain payments to ransomware addresses (lower bound; revised over time),Chainalysis Crypto Crime Report (via TechTarget),https://www.techtarget.com/cybersecurity/news/252529391/Chainalysis-Ransomware-payments-down-fewer-victims-paying
+ransom_payments,2022,0.457,USD billion,On-chain payments to ransomware addresses (lower bound; revised over time),Chainalysis Crypto Crime Report (via TechTarget),https://www.techtarget.com/cybersecurity/news/252529391/Chainalysis-Ransomware-payments-down-fewer-victims-paying
+ransom_payments,2023,1.25,USD billion,On-chain payments to ransomware addresses (lower bound; revised over time),Chainalysis 2025 Crypto Crime Report (via ForkLog),https://forklog.com/en/bitcoin-ransomware-revenues-plummet-from-1-25-billion-to-813-million/amp
+ransom_payments,2024,0.892,USD billion,Revised figure from the 2026 report (first reported as $813M),Chainalysis 2026 Crypto Crime Report (via BleepingComputer),https://www.bleepingcomputer.com/news/security/ransomware-payment-rate-drops-to-record-low-as-attacks-surge/amp/
+ransom_payments,2025,0.82,USD billion,Lower bound; Chainalysis expects it to approach $900M,Chainalysis 2026 Crypto Crime Report (via BleepingComputer),https://www.bleepingcomputer.com/news/security/ransomware-payment-rate-drops-to-record-low-as-attacks-surge/amp/
+ransom_pay_rate,2024,62.8,percent of victims,Share of victims who paid,Chainalysis 2026 Crypto Crime Report (via BleepingComputer),https://www.bleepingcomputer.com/news/security/ransomware-payment-rate-drops-to-record-low-as-attacks-surge/amp/
+ransom_pay_rate,2025,28,percent of victims,Share of victims who paid (record low),Chainalysis 2026 Crypto Crime Report (via BleepingComputer),https://www.bleepingcomputer.com/news/security/ransomware-payment-rate-drops-to-record-low-as-attacks-surge/amp/
+ibm_breach_cost,2015,3.79,USD million,Global average cost of a data breach,IBM / Ponemon Cost of a Data Breach Report,https://www.ibm.com/reports/data-breach
+ibm_breach_cost,2016,4.00,USD million,Global average cost of a data breach,IBM / Ponemon Cost of a Data Breach Report,https://www.ibm.com/reports/data-breach
+ibm_breach_cost,2017,3.62,USD million,Global average cost of a data breach,IBM / Ponemon Cost of a Data Breach Report,https://www.ibm.com/reports/data-breach
+ibm_breach_cost,2018,3.86,USD million,Global average cost of a data breach,IBM / Ponemon Cost of a Data Breach Report,https://www.ibm.com/reports/data-breach
+ibm_breach_cost,2019,3.92,USD million,Global average cost of a data breach,IBM Cost of a Data Breach 2020 (via Dark Reading),https://www.darkreading.com/cyberattacks-data-breaches/average-cost-of-a-data-breach-3-86-million
+ibm_breach_cost,2020,3.86,USD million,Global average cost of a data breach,IBM Cost of a Data Breach 2020 (via Dark Reading),https://www.darkreading.com/cyberattacks-data-breaches/average-cost-of-a-data-breach-3-86-million
+ibm_breach_cost,2021,4.24,USD million,Global average cost of a data breach,IBM Cost of a Data Breach 2021,https://www.ibm.com/reports/data-breach
+ibm_breach_cost,2022,4.35,USD million,Global average cost of a data breach,IBM Cost of a Data Breach 2022 (via CaseGuard),https://caseguard.com/articles/ibms-2022-data-breach-report-new-global-findings/
+ibm_breach_cost,2023,4.45,USD million,Global average cost of a data breach,IBM Cost of a Data Breach 2023 (via KnowBe4),https://blog.knowbe4.com/new-ibm-report-reveals-the-cost-of-a-data-breach-now-tops-4.45-million
+ibm_breach_cost,2024,4.88,USD million,Global average cost of a data breach,IBM Cost of a Data Breach 2025 (via CyberScoop),https://cyberscoop.com/ibm-cost-data-breach-2025/
+ibm_breach_cost,2025,4.44,USD million,Global average cost of a data breach,IBM Cost of a Data Breach 2025 (via CyberScoop),https://cyberscoop.com/ibm-cost-data-breach-2025/
+ibm_breach_cost,2026,4.99,USD million,Global average cost of a data breach (record high),IBM Cost of a Data Breach 2026 (via Varonis),https://www.varonis.com/blog/ibm-cost-of-a-data-breach-report-2026
+isc2_workforce,2019,2.8,million people,Estimated active cybersecurity workforce,ISC2 Cybersecurity Workforce Study 2019,https://www.isc2.org/research
+isc2_workforce,2020,3.5,million people,Estimated active cybersecurity workforce,ISC2 Cybersecurity Workforce Study 2020 (via Bitdefender),https://bitdefender.com/blog/businessinsights/global-cybersecurity-workforce-expands-by25-in-2020-isc-reveals
+isc2_workforce,2021,4.19,million people,Estimated active cybersecurity workforce,ISC2 Cybersecurity Workforce Study 2021,https://www.isc2.org/research
+isc2_workforce,2022,4.7,million people,Estimated active cybersecurity workforce,ISC2 Cybersecurity Workforce Study 2022 (via Nextgov),https://www.nextgov.com/cybersecurity/2022/10/global-cyber-workforce-needs-34-million-professionals-fill-gaps-study-finds/378708
+isc2_workforce,2023,5.45,million people,Estimated active cybersecurity workforce,ISC2 Cybersecurity Workforce Study 2023 (via CSO Online),https://csoonline.com/article/657598/cybersecurity-workforce-shortage-reaches-4-million-despite-significant-recruitment-drive.html
+isc2_workforce,2024,5.5,million people,"Estimated active cybersecurity workforce (+0.1% YoY)",ISC2 Cybersecurity Workforce Study 2024,https://www.isc2.org/insights/2024/10/isc2-2024-cybersecurity-workforce-study
+isc2_gap,2019,4.07,million people,Workforce gap estimate,ISC2 Cybersecurity Workforce Study 2019,https://www.isc2.org/research
+isc2_gap,2020,3.12,million people,Workforce gap estimate,ISC2 Cybersecurity Workforce Study 2020 (via Bitdefender),https://bitdefender.com/blog/businessinsights/global-cybersecurity-workforce-expands-by25-in-2020-isc-reveals
+isc2_gap,2021,2.72,million people,Workforce gap estimate,ISC2 Cybersecurity Workforce Study 2021,https://www.isc2.org/research
+isc2_gap,2022,3.4,million people,Workforce gap estimate,ISC2 Cybersecurity Workforce Study 2022 (via Nextgov),https://www.nextgov.com/cybersecurity/2022/10/global-cyber-workforce-needs-34-million-professionals-fill-gaps-study-finds/378708
+isc2_gap,2023,4.0,million people,Workforce gap estimate,ISC2 Cybersecurity Workforce Study 2023 (via CSO Online),https://csoonline.com/article/657598/cybersecurity-workforce-shortage-reaches-4-million-despite-significant-recruitment-drive.html
+isc2_gap,2024,4.8,million people,Workforce gap estimate (+19% YoY),ISC2 Cybersecurity Workforce Study 2024,https://www.isc2.org/insights/2024/10/isc2-2024-cybersecurity-workforce-study
+isc2_layoffs,2024,25,percent of respondents,Experienced layoffs in their security team,ISC2 Cybersecurity Workforce Study 2025,https://www.isc2.org/Insights/2025/12/2025-ISC2-Cybersecurity-Workforce-Study
+isc2_layoffs,2025,24,percent of respondents,Experienced layoffs in their security team,ISC2 Cybersecurity Workforce Study 2025,https://www.isc2.org/Insights/2025/12/2025-ISC2-Cybersecurity-Workforce-Study
+isc2_budget_cuts,2024,37,percent of respondents,Experienced security budget cuts,ISC2 Cybersecurity Workforce Study 2025,https://www.isc2.org/Insights/2025/12/2025-ISC2-Cybersecurity-Workforce-Study
+isc2_budget_cuts,2025,36,percent of respondents,Experienced security budget cuts,ISC2 Cybersecurity Workforce Study 2025,https://www.isc2.org/Insights/2025/12/2025-ISC2-Cybersecurity-Workforce-Study
+isc2_hiring_freeze,2024,38,percent of respondents,Experienced hiring freezes,ISC2 Cybersecurity Workforce Study 2025,https://www.isc2.org/Insights/2025/12/2025-ISC2-Cybersecurity-Workforce-Study
+isc2_hiring_freeze,2025,39,percent of respondents,Experienced hiring freezes,ISC2 Cybersecurity Workforce Study 2025,https://www.isc2.org/Insights/2025/12/2025-ISC2-Cybersecurity-Workforce-Study
+cyber_vc,2024,14.3,USD billion,"Implied by 2025 total +26% (Crunchbase security and privacy categories)",Crunchbase News,https://news.crunchbase.com/venture/cybersecurity-startup-investment-up-ye-2025/
+cyber_vc,2025,18.0,USD billion,Seed through growth-stage rounds,Crunchbase News,https://news.crunchbase.com/venture/cybersecurity-startup-investment-up-ye-2025/
+cyber_vc_h1,2025,9.4,USD billion,First half of the year,Crunchbase News,https://news.crunchbase.com/cybersecurity/solid-startup-venture-funding-growth-h1-2026/
+cyber_vc_h1,2026,10.6,USD billion,First half of the year,Crunchbase News,https://news.crunchbase.com/cybersecurity/solid-startup-venture-funding-growth-h1-2026/
+secrets_leaked,2020,2.0,million secrets,Hardcoded secrets in public GitHub commits (report published the following year),GitGuardian State of Secrets Sprawl,https://www.gitguardian.com/state-of-secrets-sprawl-report-2022
+secrets_leaked,2021,6.0,million secrets,Hardcoded secrets in public GitHub commits,GitGuardian State of Secrets Sprawl 2022,https://www.gitguardian.com/state-of-secrets-sprawl-report-2022
+secrets_leaked,2022,10.0,million secrets,Hardcoded secrets in public GitHub commits,GitGuardian State of Secrets Sprawl 2023,https://www.gitguardian.com/state-of-secrets-sprawl-report-2023
+secrets_leaked,2023,12.8,million secrets,Hardcoded secrets in public GitHub commits,GitGuardian State of Secrets Sprawl 2024,https://www.gitguardian.com/state-of-secrets-sprawl-report-2024
+secrets_leaked,2024,23.8,million secrets,Hardcoded secrets in public GitHub commits,GitGuardian State of Secrets Sprawl 2025,https://www.gitguardian.com/state-of-secrets-sprawl-report-2025
+secrets_leaked,2025,28.65,million secrets,"Hardcoded secrets in public GitHub commits; 1.28M tied to AI services (+81%)",GitGuardian State of Secrets Sprawl 2026 (via The Hacker News),https://thehackernews.com/2026/03/the-state-of-secrets-sprawl-2026-9.html
+dbir_exploit_share,2024,14,percent of breaches,Vulnerability exploitation as initial access (DBIR 2024 edition),Verizon 2024 DBIR,https://www.verizon.com/business/resources/reports/dbir/
+dbir_exploit_share,2025,20,percent of breaches,Vulnerability exploitation as initial access (DBIR 2025 edition),Verizon 2025 DBIR (via Infosecurity Magazine),https://www.infosecurity-magazine.com/news/verizon-dbir-jump-vulnerability/
+dbir_exploit_share,2026,31,percent of breaches,"Vulnerability exploitation as initial access, first time it leads (DBIR 2026 edition)",Verizon 2026 DBIR (via TechRepublic),https://www.techrepublic.com/article/news-verizon-dbir-vulnerability-exploitation-2026/
+dbir_cred_share,2025,22,percent of breaches,Credential abuse as initial access,Verizon 2025 DBIR (via Infosecurity Magazine),https://www.infosecurity-magazine.com/news/verizon-dbir-jump-vulnerability/
+dbir_cred_share,2026,13,percent of breaches,Credential abuse as initial access,Verizon 2026 DBIR (via TechRepublic),https://www.techrepublic.com/article/news-verizon-dbir-vulnerability-exploitation-2026/
+dbir_third_party,2024,15,percent of breaches,Third-party involvement,Verizon 2024 DBIR,https://www.verizon.com/business/resources/reports/dbir/
+dbir_third_party,2025,30,percent of breaches,Third-party involvement (doubled),Verizon 2025 DBIR (via Infosecurity Magazine),https://www.infosecurity-magazine.com/news/verizon-dbir-jump-vulnerability/
+dbir_third_party,2026,48,percent of breaches,Third-party involvement,Verizon 2026 DBIR (via eSecurity Planet),https://www.esecurityplanet.com/threats/2026-verizon-dbir-the-new-era-of-cyber-threats/
+google_vrp,2025,17.1,USD million,Total Google VRP rewards (record),Google VRP 2025 Year in Review,https://blog.google/security/vrp-2025-year-in-review/
+cybersn_postings,2026,235786,US job postings Jan-Sep,"-26.4% vs Jan-Sep 2025",CyberSN Cybersecurity Jobs Report (via eSecurity Planet),https://www.esecurityplanet.com/cybersecurity/news-us-cybersecurity-job-postings-decline-ai-roles/
