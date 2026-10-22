@@ -1,0 +1,8 @@
+[nvd]
+  skip data/raw/nvd/nvdcve-2.0-2002.json.gz (exists)
+  skip data/raw/nvd/nvdcve-2.0-2003.json.gz (exists)
+  skip data/raw/nvd/nvdcve-2.0-2004.json.gz (exists)
+  skip data/raw/nvd/nvdcve-2.0-2005.json.gz (exists)
+  get  https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2006.json.gz
+curl: (18) transfer closed with 212323 bytes remaining to read
+  ! nvd failed: Command '['curl', '--http1.1', '-sSL', '--fail', '--retry', '5', '--retry-delay', '3', '-A', 'arewecooked-data-pipeline/0.1 (research project)', '-o', '/Users/gabrielemonni/.t3/projects/arewecooked/data/raw/nvd/nvdcve-2.0-2006.json.gz', 'https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2006.json.gz']' returned non-zero exit status 18.
