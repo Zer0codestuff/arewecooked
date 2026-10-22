@@ -19,10 +19,9 @@ export function renderMoney(main: HTMLElement, d: Data) {
     ...inf.map((p: any) => ({ year: p.year === 2030 ? "2030 (f)" : p.year === 2026 ? "2026 (f)" : String(p.year), srm: null, infosec: p.value, note: p.note })),
   ];
   const v26 = inf.find((p: any) => p.year === 2026).value;
-  const v25 = inf.find((p: any) => p.year === 2025).value;
   prose(
     sec,
-    `<p>If AI were replacing security spending, it would show up here first. It does not. Gartner estimates worldwide end-user spending on information security at <strong>$${v26} billion in 2026</strong>, up ${pct((v26 - v25) / v25, 1)} on 2025, and forecasts about $373 billion by 2030. The fastest-growing slice is "securing AI" itself: around $3 billion in 2026, projected to reach $16 billion by 2030.</p>`,
+    `<p>If AI were replacing security spending, it would show up here first. It does not. Gartner estimates worldwide end-user spending on information security at <strong>$${v26} billion in 2026</strong>, up 13.6% on 2025 in current dollars, and forecasts about $373 billion by 2030. The fastest-growing slice is "securing AI" itself: around $3 billion in 2026, projected to reach $16 billion by 2030.</p>`,
   );
   const f1 = figure(sec, {
     title: "Worldwide security spending",

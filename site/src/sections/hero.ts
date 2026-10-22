@@ -58,6 +58,8 @@ export function renderHero(main: HTMLElement, d: Data) {
   tile("2026 CVEs credited to AI finders", fmtInt(v.ai_attributed_cur), `at least · ${((v.ai_attributed_cur / v.cur_year) * 100).toFixed(1)}% of all · see ch. 03`);
   tile("median days, CVE to confirmed attack", String(t26.median_days), `<span class="up">▼</span> ${t22.median_days} days for 2022 CVEs (CISA KEV)`);
   tile("ransomware victims named in 2026", fmtInt(rwCur), `${fmtInt(rwPrev)} in all of 2025 (leak sites)`);
-  tile("global security spending, 2026", `$${s26}B`, `<span class="good">▲ ${(((s26 - s25) / s25) * 100).toFixed(1)}%</span> vs 2025 (Gartner)`);
+  const stated = /([+-]?\d+(\.\d+)?)%/.exec(spend.find((p) => p.year === 2026).note ?? "");
+  const growth = stated ? stated[1].replace("+", "") : (((s26 - s25) / s25) * 100).toFixed(1);
+  tile("global security spending, 2026", `$${s26}B`, `<span class="good">▲ ${growth}%</span> vs 2025 (Gartner)`);
   main.appendChild(kpis);
 }
