@@ -1,0 +1,7 @@
+metric,year,value,unit,kind,source,source_url,note
+chainalysis_ransom_paid,2022,567,USD m,on-chain estimate,"Chainalysis, Ransomware Hit $1 Billion in 2023",https://www.chainalysis.com/blog/ransomware-2024/,Lower bound; Chainalysis revises past years upward as it labels more addresses.
+chainalysis_ransom_paid,2023,1250,USD m,on-chain estimate,Chainalysis 2025 Crypto Crime Report,https://www.chainalysis.com/blog/crypto-crime-ransomware-victim-extortion-2025/,Revised up from the $1.1 bn first published in 2024.
+chainalysis_ransom_paid,2024,813.55,USD m,on-chain estimate,Chainalysis 2025 Crypto Crime Report,https://www.chainalysis.com/blog/crypto-crime-ransomware-victim-extortion-2025/,35% drop year over year.
+chainalysis_ransom_paid,2025,820,USD m,on-chain estimate,Chainalysis 2026 Crypto Crime Report,https://www.chainalysis.com/blog/crypto-ransomware-2026/,About 8% lower than 2024 while claimed attacks rose about 50%; only 28% of victims paid.
+chainalysis_median_payment,2024,12738,USD,on-chain estimate,Chainalysis 2026 Crypto Crime Report,https://www.chainalysis.com/blog/crypto-ransomware-2026/,Median ransom payment.
+chainalysis_median_payment,2025,59556,USD,on-chain estimate,Chainalysis 2026 Crypto Crime Report,https://www.chainalysis.com/blog/crypto-ransomware-2026/,"Median ransom payment, up 368%."

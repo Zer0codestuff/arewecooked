@@ -1,0 +1,9 @@
+id,label,group,source,baseline_label,baseline_value,latest_year,latest_value,multiple
+cves,CVEs published,pressure,NVD,2017-2019,16152.3333,2025,48151.0,2.9811
+severe_cves,Critical and high severity CVEs,pressure,NVD,2017-2019,9563.0,2025,23504.0,2.4578
+zero_days,Zero-days exploited in the wild,pressure,Project Zero,2017-2019,18.0,2025,43.0,2.3889
+ransomware,Ransomware leak-site victims,pressure,ransomware.live,2022,2833.0,2025,8145.0,2.875
+ic3_losses,Cybercrime losses reported to the FBI,pressure,FBI IC3,2017-2019,2.5433,2025,20.877,8.2085
+breach_cost,Average cost of a data breach,pressure,IBM,2017-2019,3.8,2026,4.99,1.3132
+spending,Security spending,response,Gartner,2018,114.2,2025,213.0,1.8651
+workforce,Security workforce,response,ISC2,2019,2.8,2024,5.5,1.9643

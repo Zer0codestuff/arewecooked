@@ -1,0 +1,4186 @@
+{
+ "meta": {
+  "title": "AreWeCooked?",
+  "as_of": "2026-10-22",
+  "generated_at": "2026-10-22T18:41:42+00:00",
+  "start_year": 2015,
+  "partial_year": 2026,
+  "baseline_years": [
+   2017,
+   2018,
+   2019
+  ],
+  "sources_built": {
+   "cvelist": {
+    "built_as_of": "2026-10-22",
+    "tables": [
+     "ai_credits_month",
+     "ai_credits_tool",
+     "ai_credits_recent"
+    ]
+   },
+   "epss": {
+    "built_as_of": "2026-10-22",
+    "tables": [
+     "epss_buckets",
+     "epss_summary"
+    ]
+   },
+   "exploits": {
+    "built_as_of": "2026-10-22",
+    "tables": [
+     "exploits_by_year"
+    ]
+   },
+   "hibp": {
+    "built_as_of": "2026-10-22",
+    "tables": [
+     "breaches_by_year",
+     "breaches_largest"
+    ]
+   },
+   "kev": {
+    "built_as_of": "2026-10-22",
+    "tables": [
+     "kev_by_year",
+     "kev_lag_year",
+     "kev_vendors"
+    ]
+   },
+   "nvd": {
+    "built_as_of": "2026-10-22",
+    "tables": [
+     "cve_by_year",
+     "cve_by_month",
+     "cve_severity_year",
+     "nvd_status_year"
+    ]
+   },
+   "p0": {
+    "built_as_of": "2026-10-22",
+    "tables": [
+     "zeroday_by_year",
+     "zeroday_vendors"
+    ]
+   },
+   "ransomware": {
+    "built_as_of": "2026-10-22",
+    "tables": [
+     "ransomware_by_month",
+     "ransomware_by_year",
+     "ransomware_groups"
+    ]
+   }
+  }
+ },
+ "sources": {
+  "automated": [
+   {
+    "id": "nvd",
+    "name": "NIST National Vulnerability Database (via fkie-cad/nvd-json-data-feeds)",
+    "url": "https://github.com/fkie-cad/nvd-json-data-feeds",
+    "used_for": "CVEs published per year and month, CVSS severity, NVD analysis status"
+   },
+   {
+    "id": "cvelist",
+    "name": "CVE Program, cvelistV5 (CVE JSON 5 records)",
+    "url": "https://github.com/CVEProject/cvelistV5",
+    "used_for": "Credits naming AI systems and AI security teams"
+   },
+   {
+    "id": "kev",
+    "name": "CISA Known Exploited Vulnerabilities catalog",
+    "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+    "used_for": "Exploited vulnerabilities per year, publication-to-listing lag, ransomware use"
+   },
+   {
+    "id": "epss",
+    "name": "FIRST Exploit Prediction Scoring System (EPSS)",
+    "url": "https://www.first.org/epss/",
+    "used_for": "Distribution of predicted exploitation probability"
+   },
+   {
+    "id": "exploitdb",
+    "name": "Exploit-DB (OffSec)",
+    "url": "https://gitlab.com/exploit-database/exploitdb",
+    "used_for": "Public exploits published per year"
+   },
+   {
+    "id": "metasploit",
+    "name": "Metasploit Framework module metadata (Rapid7)",
+    "url": "https://github.com/rapid7/metasploit-framework",
+    "used_for": "Exploit modules by disclosure year"
+   },
+   {
+    "id": "nuclei",
+    "name": "ProjectDiscovery nuclei-templates",
+    "url": "https://github.com/projectdiscovery/nuclei-templates",
+    "used_for": "CVE detection templates by CVE year"
+   },
+   {
+    "id": "p0",
+    "name": "Google Project Zero, 0day In the Wild tracking sheet",
+    "url": "https://googleprojectzero.blogspot.com/p/0day.html",
+    "used_for": "Zero-days exploited in the wild per year and vendor"
+   },
+   {
+    "id": "hibp",
+    "name": "Have I Been Pwned breach catalog",
+    "url": "https://haveibeenpwned.com/PwnedWebsites",
+    "used_for": "Breaches and exposed accounts per year"
+   },
+   {
+    "id": "ransomwarelive",
+    "name": "ransomware.live public API",
+    "url": "https://www.ransomware.live/",
+    "used_for": "Ransomware leak-site victim posts per month and active groups"
+   }
+  ],
+  "manual": [
+   {
+    "source": "2025 ISC2 Cybersecurity Workforce Study",
+    "source_url": "https://www.isc2.org/Insights/2025/12/2025-ISC2-Cybersecurity-Workforce-Study"
+   },
+   {
+    "source": "BlackFog (via UVRN Research)",
+    "source_url": "https://www.uvrn.org/research/ransomware-leak-site-victims-2025-record-tracker-count-spread"
+   },
+   {
+    "source": "Breachsense, State of Ransomware 2025",
+    "source_url": "https://www.breachsense.com/ransomware-reports/annual-report-2025/"
+   },
+   {
+    "source": "Chainalysis 2025 Crypto Crime Report",
+    "source_url": "https://www.chainalysis.com/blog/crypto-crime-ransomware-victim-extortion-2025/"
+   },
+   {
+    "source": "Chainalysis 2026 Crypto Crime Report",
+    "source_url": "https://www.chainalysis.com/blog/crypto-ransomware-2026/"
+   },
+   {
+    "source": "Chainalysis, Ransomware Hit $1 Billion in 2023",
+    "source_url": "https://www.chainalysis.com/blog/ransomware-2024/"
+   },
+   {
+    "source": "Comparitech (via UVRN Research)",
+    "source_url": "https://www.uvrn.org/research/ransomware-leak-site-victims-2025-record-tracker-count-spread"
+   },
+   {
+    "source": "FBI IC3 Internet Crime Report 2015",
+    "source_url": "https://www.ic3.gov/annualreport/reports"
+   },
+   {
+    "source": "FBI IC3 Internet Crime Report 2016",
+    "source_url": "https://www.ic3.gov/annualreport/reports"
+   },
+   {
+    "source": "FBI IC3 Internet Crime Report 2017",
+    "source_url": "https://www.ic3.gov/annualreport/reports"
+   },
+   {
+    "source": "FBI IC3 Internet Crime Report 2018",
+    "source_url": "https://www.ic3.gov/annualreport/reports"
+   },
+   {
+    "source": "FBI IC3 Internet Crime Report 2019",
+    "source_url": "https://www.ic3.gov/annualreport/reports"
+   },
+   {
+    "source": "FBI IC3 Internet Crime Report 2020",
+    "source_url": "https://www.ic3.gov/annualreport/reports"
+   },
+   {
+    "source": "FBI IC3 Internet Crime Report 2021",
+    "source_url": "https://www.ic3.gov/annualreport/reports"
+   },
+   {
+    "source": "FBI IC3 Internet Crime Report 2022",
+    "source_url": "https://www.ic3.gov/annualreport/reports"
+   },
+   {
+    "source": "FBI IC3 Internet Crime Report 2023",
+    "source_url": "https://www.ic3.gov/annualreport/reports"
+   },
+   {
+    "source": "FBI IC3 Internet Crime Report 2024",
+    "source_url": "https://www.ic3.gov/annualreport/reports"
+   },
+   {
+    "source": "FBI IC3 Internet Crime Report 2025",
+    "source_url": "https://www.ic3.gov/AnnualReport/Reports/2025_IC3Report.pdf"
+   },
+   {
+    "source": "Gartner press release, 2017-08-16",
+    "source_url": "https://www.gartner.com/en/newsroom/press-releases/2017-08-16-gartner-says-worldwide-information-security-spending-will-grow-7-percent-to-reach-86-billion-in-2017"
+   },
+   {
+    "source": "Gartner press release, 2018-08-15",
+    "source_url": "https://www.gartner.com/en/newsroom/press-releases/2018-08-15-gartner-forecasts-worldwide-information-security-spending-to-exceed-124-billion-in-2019"
+   },
+   {
+    "source": "Gartner press release, 2021-05-17",
+    "source_url": "https://www.gartner.com/en/newsroom/press-releases/2021-05-17-gartner-forecasts-worldwide-security-and-risk-managem"
+   },
+   {
+    "source": "Gartner press release, 2022-10-13",
+    "source_url": "https://www.gartner.com/en/newsroom/press-releases/2022-10-13-gartner-identifies-three-factors-influencing-growth-i"
+   },
+   {
+    "source": "Gartner press release, 2023-09-28",
+    "source_url": "https://www.gartner.com/en/newsroom/press-releases/2023-09-28-gartner-forecasts-global-security-and-risk-management-spending-to-grow-14-percent-in-2024"
+   },
+   {
+    "source": "Gartner press release, 2025-07-29",
+    "source_url": "https://www.gartner.com/en/newsroom/press-releases/2025-07-29-gartner-forecasts-worldwide-end-user-spending-on-information-security-to-total-213-billion-us-dollars-in-2025"
+   },
+   {
+    "source": "Gartner, Forecast Analysis: Information Security, Worldwide, 2026",
+    "source_url": "https://www.gartner.com/en/documents/7408930"
+   },
+   {
+    "source": "Google Threat Intelligence Group, 2025 Zero-Days in Review",
+    "source_url": "https://cloud.google.com/blog/topics/threat-intelligence/2025-zero-day-review"
+   },
+   {
+    "source": "IBM / Ponemon Cost of a Data Breach Report 2015",
+    "source_url": "https://www.ibm.com/reports/data-breach"
+   },
+   {
+    "source": "IBM / Ponemon Cost of a Data Breach Report 2016",
+    "source_url": "https://www.ibm.com/reports/data-breach"
+   },
+   {
+    "source": "IBM / Ponemon Cost of a Data Breach Report 2017",
+    "source_url": "https://www.ibm.com/reports/data-breach"
+   },
+   {
+    "source": "IBM / Ponemon Cost of a Data Breach Report 2018",
+    "source_url": "https://www.ibm.com/reports/data-breach"
+   },
+   {
+    "source": "IBM / Ponemon Cost of a Data Breach Report 2019",
+    "source_url": "https://www.ibm.com/reports/data-breach"
+   },
+   {
+    "source": "IBM / Ponemon Cost of a Data Breach Report 2020",
+    "source_url": "https://www.ibm.com/reports/data-breach"
+   },
+   {
+    "source": "IBM / Ponemon Cost of a Data Breach Report 2021",
+    "source_url": "https://www.ibm.com/reports/data-breach"
+   },
+   {
+    "source": "IBM / Ponemon Cost of a Data Breach Report 2022",
+    "source_url": "https://www.ibm.com/reports/data-breach"
+   },
+   {
+    "source": "IBM / Ponemon Cost of a Data Breach Report 2023",
+    "source_url": "https://www.ibm.com/reports/data-breach"
+   },
+   {
+    "source": "IBM / Ponemon Cost of a Data Breach Report 2024",
+    "source_url": "https://www.ibm.com/reports/data-breach"
+   },
+   {
+    "source": "IBM / Ponemon Cost of a Data Breach Report 2025",
+    "source_url": "https://www.ibm.com/reports/data-breach"
+   },
+   {
+    "source": "IBM / Ponemon Cost of a Data Breach Report 2026",
+    "source_url": "https://newsroom.ibm.com/2026-07-29-ibm-study-one-in-four-malicious-breaches-are-ai-enabled,-costing-companies-6-million-on-average"
+   },
+   {
+    "source": "ISC2 Cybersecurity Workforce Study",
+    "source_url": "https://www.isc2.org/Insights/2024/10/Cybersecurity-Workforce-INSIGHTS-October-2024"
+   },
+   {
+    "source": "ISC2 Cybersecurity Workforce Study",
+    "source_url": "https://media.isc2.org/-/media/Project/ISC2/Main/Media/documents/research/ISC2-Cybersecurity-Workforce-Study-2022.pdf"
+   },
+   {
+    "source": "ISC2 Cybersecurity Workforce Study",
+    "source_url": "https://media.isc2.org/-/media/Project/ISC2/Main/Media/documents/research/ISC2_Cybersecurity_Workforce_Study_2023.pdf"
+   },
+   {
+    "source": "Mandiant / GTIG 2024 time-to-exploit analysis (via CIO)",
+    "source_url": "https://www.cio.com/article/4072435/when-time-turns-against-you-what-a-negative-tte-means-for-cyber-resilience.html"
+   },
+   {
+    "source": "Mandiant, How Low Can You Go? 2023 Time-to-Exploit Trends",
+    "source_url": "https://cloud.google.com/blog/topics/threat-intelligence/time-to-exploit-trends-2023"
+   },
+   {
+    "source": "Mandiant, Time-to-Exploit Trends 2021-2022",
+    "source_url": "https://cloud.google.com/blog/topics/threat-intelligence/time-to-exploit-trends-2021-2022/"
+   },
+   {
+    "source": "NCC Group (via UVRN Research)",
+    "source_url": "https://www.uvrn.org/research/ransomware-leak-site-victims-2025-record-tracker-count-spread"
+   },
+   {
+    "source": "Picus Security (via UVRN Research)",
+    "source_url": "https://www.uvrn.org/research/ransomware-leak-site-victims-2025-record-tracker-count-spread"
+   },
+   {
+    "source": "Ransomnews Ransomtracker 2025",
+    "source_url": "https://ransomnews.com/ransomtracker/2025/"
+   },
+   {
+    "source": "Searchlight Cyber (via SecurityBrief)",
+    "source_url": "https://securitybrief.co.uk/story/record-ransomware-surge-as-7-458-victims-named-in-2025"
+   },
+   {
+    "source": "Verizon 2024 Data Breach Investigations Report",
+    "source_url": "https://www.verizon.com/business/resources/reports/dbir/"
+   },
+   {
+    "source": "Verizon 2026 DBIR (prior-year comparison)",
+    "source_url": "https://www.verizon.com/business/resources/T343/reports/2026-dbir-data-breach-investigations-report.pdf"
+   },
+   {
+    "source": "Verizon 2026 Data Breach Investigations Report",
+    "source_url": "https://www.verizon.com/business/resources/T343/reports/2026-dbir-data-breach-investigations-report.pdf"
+   }
+  ],
+  "milestones": [
+   {
+    "source": "OpenAI",
+    "source_url": "https://openai.com/index/chatgpt/"
+   },
+   {
+    "source": "XBOW",
+    "source_url": "https://xbow.com/blog/top-1-how-xbow-did-it"
+   },
+   {
+    "source": "Google",
+    "source_url": "https://blog.google/innovation-and-ai/technology/safety-security/cybersecurity-updates-summer-2025/"
+   },
+   {
+    "source": "TechCrunch",
+    "source_url": "https://techcrunch.com/2025/08/04/google-says-its-ai-based-bug-hunter-found-20-security-vulnerabilities/"
+   },
+   {
+    "source": "DARPA",
+    "source_url": "https://www.darpa.mil/news/2025/aixcc-results"
+   },
+   {
+    "source": "Anthropic",
+    "source_url": "https://www.anthropic.com/news/disrupting-AI-espionage"
+   },
+   {
+    "source": "Google Threat Intelligence Group",
+    "source_url": "https://cloud.google.com/blog/topics/threat-intelligence/2025-zero-day-review"
+   },
+   {
+    "source": "FBI",
+    "source_url": "https://www.fbi.gov/news/press-releases/cryptocurrency-and-ai-scams-bilk-americans-of-billions"
+   },
+   {
+    "source": "Verizon",
+    "source_url": "https://www.verizon.com/business/resources/T343/reports/2026-dbir-data-breach-investigations-report.pdf"
+   },
+   {
+    "source": "Anthropic",
+    "source_url": "https://www.anthropic.com/research/glasswing-initial-update"
+   },
+   {
+    "source": "IBM",
+    "source_url": "https://newsroom.ibm.com/2026-07-29-ibm-study-one-in-four-malicious-breaches-are-ai-enabled,-costing-companies-6-million-on-average"
+   }
+  ]
+ },
+ "datasets": {
+  "ai_credits_month": [
+   {
+    "month": "2015-01",
+    "published": 713,
+    "with_credits": 7,
+    "ai_credited": 0
+   },
+   {
+    "month": "2015-02",
+    "published": 486,
+    "with_credits": 1,
+    "ai_credited": 0
+   },
+   {
+    "month": "2015-03",
+    "published": 453,
+    "with_credits": 1,
+    "ai_credited": 0
+   },
+   {
+    "month": "2015-04",
+    "published": 538,
+    "with_credits": 3,
+    "ai_credited": 0
+   },
+   {
+    "month": "2015-05",
+    "published": 410,
+    "with_credits": 0,
+    "ai_credited": 0
+   },
+   {
+    "month": "2015-06",
+    "published": 495,
+    "with_credits": 0,
+    "ai_credited": 0
+   },
+   {
+    "month": "2015-07",
+    "published": 635,
+    "with_credits": 2,
+    "ai_credited": 0
+   },
+   {
+    "month": "2015-08",
+    "published": 619,
+    "with_credits": 0,
+    "ai_credited": 0
+   },
+   {
+    "month": "2015-09",
+    "published": 493,
+    "with_credits": 0,
+    "ai_credited": 0
+   },
+   {
+    "month": "2015-10",
+    "published": 726,
+    "with_credits": 0,
+    "ai_credited": 0
+   },
+   {
+    "month": "2015-11",
+    "published": 361,
+    "with_credits": 0,
+    "ai_credited": 0
+   },
+   {
+    "month": "2015-12",
+    "published": 565,
+    "with_credits": 0,
+    "ai_credited": 0
+   },
+   {
+    "month": "2016-01",
+    "published": 669,
+    "with_credits": 0,
+    "ai_credited": 0
+   },
+   {
+    "month": "2016-02",
+    "published": 380,
+    "with_credits": 0,
+    "ai_credited": 0
+   },
+   {
+    "month": "2016-03",
+    "published": 330,
+    "with_credits": 0,
+    "ai_credited": 0
+   },
+   {
+    "month": "2016-04",
+    "published": 653,
+    "with_credits": 0,
+    "ai_credited": 0
+   },
+   {
+    "month": "2016-05",
+    "published": 612,
+    "with_credits": 0,
+    "ai_credited": 0
+   },
+   {
+    "month": "2016-06",
+    "published": 510,
+    "with_credits": 0,
+    "ai_credited": 0
+   },
+   {
+    "month": "2016-07",
+    "published": 709,
+    "with_credits": 0,
+    "ai_credited": 0
+   },
+   {
+    "month": "2016-08",
+    "published": 409,
+    "with_credits": 0,
+    "ai_credited": 0
+   },
+   {
+    "month": "2016-09",
+    "published": 595,
+    "with_credits": 0,
+    "ai_credited": 0
+   },
+   {
+    "month": "2016-10",
+    "published": 687,
+    "with_credits": 2,
+    "ai_credited": 0
+   },
+   {
+    "month": "2016-11",
+    "published": 386,
+    "with_credits": 0,
+    "ai_credited": 0
+   },
+   {
+    "month": "2016-12",
+    "published": 517,
+    "with_credits": 0,
+    "ai_credited": 0
+   },
+   {
+    "month": "2017-01",
+    "published": 1083,
+    "with_credits": 0,
+    "ai_credited": 0
+   },
+   {
+    "month": "2017-02",
+    "published": 1041,
+    "with_credits": 0,
+    "ai_credited": 0
+   },
+   {
+    "month": "2017-03",
+    "published": 1302,
+    "with_credits": 0,
+    "ai_credited": 0
+   },
+   {
+    "month": "2017-04",
+    "published": 1568,
+    "with_credits": 0,
+    "ai_credited": 0
+   },
+   {
+    "month": "2017-05",
+    "published": 1010,
+    "with_credits": 6,
+    "ai_credited": 0
+   },
+   {
+    "month": "2017-06",
+    "published": 1033,
+    "with_credits": 2,
+    "ai_credited": 0
+   },
+   {
+    "month": "2017-07",
+    "published": 1268,
+    "with_credits": 6,
+    "ai_credited": 0
+   },
+   {
+    "month": "2017-08",
+    "published": 1540,
+    "with_credits": 1,
+    "ai_credited": 0
+   },
+   {
+    "month": "2017-09",
+    "published": 1228,
+    "with_credits": 0,
+    "ai_credited": 0
+   },
+   {
+    "month": "2017-10",
+    "published": 1398,
+    "with_credits": 6,
+    "ai_credited": 0
+   },
+   {
+    "month": "2017-11",
+    "published": 1066,
+    "with_credits": 3,
+    "ai_credited": 0
+   },
+   {
+    "month": "2017-12",
+    "published": 1105,
+    "with_credits": 3,
+    "ai_credited": 0
+   },
+   {
+    "month": "2018-01",
+    "published": 1273,
+    "with_credits": 2,
+    "ai_credited": 0
+   },
+   {
+    "month": "2018-02",
+    "published": 1325,
+    "with_credits": 6,
+    "ai_credited": 0
+   },
+   {
+    "month": "2018-03",
+    "published": 1337,
+    "with_credits": 20,
+    "ai_credited": 0
+   },
+   {
+    "month": "2018-04",
+    "published": 1667,
+    "with_credits": 5,
+    "ai_credited": 0
+   },
+   {
+    "month": "2018-05",
+    "published": 1162,
+    "with_credits": 8,
+    "ai_credited": 0
+   },
+   {
+    "month": "2018-06",
+    "published": 1783,
+    "with_credits": 17,
+    "ai_credited": 0
+   },
+   {
+    "month": "2018-07",
+    "published": 2167,
+    "with_credits": 41,
+    "ai_credited": 0
+   },
+   {
+    "month": "2018-08",
+    "published": 1013,
+    "with_credits": 15,
+    "ai_credited": 0
+   },
+   {
+    "month": "2018-09",
+    "published": 1169,
+    "with_credits": 13,
+    "ai_credited": 0
+   },
+   {
+    "month": "2018-10",
+    "published": 1468,
+    "with_credits": 27,
+    "ai_credited": 0
+   },
+   {
+    "month": "2018-11",
+    "published": 983,
+    "with_credits": 4,
+    "ai_credited": 0
+   },
+   {
+    "month": "2018-12",
+    "published": 1163,
+    "with_credits": 16,
+    "ai_credited": 0
+   },
+   {
+    "month": "2019-01",
+    "published": 1212,
+    "with_credits": 16,
+    "ai_credited": 0
+   },
+   {
+    "month": "2019-02",
+    "published": 838,
+    "with_credits": 7,
+    "ai_credited": 0
+   },
+   {
+    "month": "2019-03",
+    "published": 1194,
+    "with_credits": 21,
+    "ai_credited": 0
+   },
+   {
+    "month": "2019-04",
+    "published": 1531,
+    "with_credits": 35,
+    "ai_credited": 0
+   },
+   {
+    "month": "2019-05",
+    "published": 1316,
+    "with_credits": 17,
+    "ai_credited": 0
+   },
+   {
+    "month": "2019-06",
+    "published": 1244,
+    "with_credits": 58,
+    "ai_credited": 0
+   },
+   {
+    "month": "2019-07",
+    "published": 1618,
+    "with_credits": 14,
+    "ai_credited": 0
+   },
+   {
+    "month": "2019-08",
+    "published": 2001,
+    "with_credits": 51,
+    "ai_credited": 0
+   },
+   {
+    "month": "2019-09",
+    "published": 1531,
+    "with_credits": 19,
+    "ai_credited": 0
+   },
+   {
+    "month": "2019-10",
+    "published": 1566,
+    "with_credits": 53,
+    "ai_credited": 0
+   },
+   {
+    "month": "2019-11",
+    "published": 1679,
+    "with_credits": 20,
+    "ai_credited": 0
+   },
+   {
+    "month": "2019-12",
+    "published": 1578,
+    "with_credits": 19,
+    "ai_credited": 0
+   },
+   {
+    "month": "2020-01",
+    "published": 1655,
+    "with_credits": 41,
+    "ai_credited": 0
+   },
+   {
+    "month": "2020-02",
+    "published": 1397,
+    "with_credits": 45,
+    "ai_credited": 0
+   },
+   {
+    "month": "2020-03",
+    "published": 1754,
+    "with_credits": 56,
+    "ai_credited": 0
+   },
+   {
+    "month": "2020-04",
+    "published": 2186,
+    "with_credits": 91,
+    "ai_credited": 0
+   },
+   {
+    "month": "2020-05",
+    "published": 1017,
+    "with_credits": 79,
+    "ai_credited": 0
+   },
+   {
+    "month": "2020-06",
+    "published": 1807,
+    "with_credits": 86,
+    "ai_credited": 0
+   },
+   {
+    "month": "2020-07",
+    "published": 1417,
+    "with_credits": 128,
+    "ai_credited": 0
+   },
+   {
+    "month": "2020-08",
+    "published": 1160,
+    "with_credits": 103,
+    "ai_credited": 0
+   },
+   {
+    "month": "2020-09",
+    "published": 1592,
+    "with_credits": 119,
+    "ai_credited": 0
+   },
+   {
+    "month": "2020-10",
+    "published": 1594,
+    "with_credits": 94,
+    "ai_credited": 0
+   },
+   {
+    "month": "2020-11",
+    "published": 1246,
+    "with_credits": 74,
+    "ai_credited": 0
+   },
+   {
+    "month": "2020-12",
+    "published": 1538,
+    "with_credits": 126,
+    "ai_credited": 0
+   },
+   {
+    "month": "2021-01",
+    "published": 1514,
+    "with_credits": 63,
+    "ai_credited": 0
+   },
+   {
+    "month": "2021-02",
+    "published": 1455,
+    "with_credits": 113,
+    "ai_credited": 0
+   },
+   {
+    "month": "2021-03",
+    "published": 1447,
+    "with_credits": 148,
+    "ai_credited": 0
+   },
+   {
+    "month": "2021-04",
+    "published": 1817,
+    "with_credits": 216,
+    "ai_credited": 0
+   },
+   {
+    "month": "2021-05",
+    "published": 1494,
+    "with_credits": 168,
+    "ai_credited": 0
+   },
+   {
+    "month": "2021-06",
+    "published": 1691,
+    "with_credits": 210,
+    "ai_credited": 0
+   },
+   {
+    "month": "2021-07",
+    "published": 1581,
+    "with_credits": 127,
+    "ai_credited": 0
+   },
+   {
+    "month": "2021-08",
+    "published": 2087,
+    "with_credits": 278,
+    "ai_credited": 0
+   },
+   {
+    "month": "2021-09",
+    "published": 1899,
+    "with_credits": 247,
+    "ai_credited": 0
+   },
+   {
+    "month": "2021-10",
+    "published": 1706,
+    "with_credits": 280,
+    "ai_credited": 0
+   },
+   {
+    "month": "2021-11",
+    "published": 1508,
+    "with_credits": 327,
+    "ai_credited": 0
+   },
+   {
+    "month": "2021-12",
+    "published": 1978,
+    "with_credits": 214,
+    "ai_credited": 0
+   },
+   {
+    "month": "2022-01",
+    "published": 1988,
+    "with_credits": 341,
+    "ai_credited": 0
+   },
+   {
+    "month": "2022-02",
+    "published": 1942,
+    "with_credits": 401,
+    "ai_credited": 0
+   },
+   {
+    "month": "2022-03",
+    "published": 2065,
+    "with_credits": 338,
+    "ai_credited": 0
+   },
+   {
+    "month": "2022-04",
+    "published": 2039,
+    "with_credits": 347,
+    "ai_credited": 0
+   },
+   {
+    "month": "2022-05",
+    "published": 2161,
+    "with_credits": 388,
+    "ai_credited": 0
+   },
+   {
+    "month": "2022-06",
+    "published": 2148,
+    "with_credits": 478,
+    "ai_credited": 0
+   },
+   {
+    "month": "2022-07",
+    "published": 1977,
+    "with_credits": 309,
+    "ai_credited": 0
+   },
+   {
+    "month": "2022-08",
+    "published": 2306,
+    "with_credits": 306,
+    "ai_credited": 0
+   },
+   {
+    "month": "2022-09",
+    "published": 2148,
+    "with_credits": 333,
+    "ai_credited": 0
+   },
+   {
+    "month": "2022-10",
+    "published": 1849,
+    "with_credits": 282,
+    "ai_credited": 0
+   },
+   {
+    "month": "2022-11",
+    "published": 2020,
+    "with_credits": 333,
+    "ai_credited": 0
+   },
+   {
+    "month": "2022-12",
+    "published": 2356,
+    "with_credits": 298,
+    "ai_credited": 0
+   },
+   {
+    "month": "2023-01",
+    "published": 2351,
+    "with_credits": 783,
+    "ai_credited": 0
+   },
+   {
+    "month": "2023-02",
+    "published": 2164,
+    "with_credits": 611,
+    "ai_credited": 0
+   },
+   {
+    "month": "2023-03",
+    "published": 2488,
+    "with_credits": 839,
+    "ai_credited": 0
+   },
+   {
+    "month": "2023-04",
+    "published": 2302,
+    "with_credits": 605,
+    "ai_credited": 0
+   },
+   {
+    "month": "2023-05",
+    "published": 2420,
+    "with_credits": 759,
+    "ai_credited": 0
+   },
+   {
+    "month": "2023-06",
+    "published": 2395,
+    "with_credits": 759,
+    "ai_credited": 0
+   },
+   {
+    "month": "2023-07",
+    "published": 2294,
+    "with_credits": 752,
+    "ai_credited": 0
+   },
+   {
+    "month": "2023-08",
+    "published": 2479,
+    "with_credits": 697,
+    "ai_credited": 0
+   },
+   {
+    "month": "2023-09",
+    "published": 2148,
+    "with_credits": 640,
+    "ai_credited": 0
+   },
+   {
+    "month": "2023-10",
+    "published": 2690,
+    "with_credits": 939,
+    "ai_credited": 0
+   },
+   {
+    "month": "2023-11",
+    "published": 2443,
+    "with_credits": 997,
+    "ai_credited": 0
+   },
+   {
+    "month": "2023-12",
+    "published": 2673,
+    "with_credits": 878,
+    "ai_credited": 0
+   },
+   {
+    "month": "2024-01",
+    "published": 2591,
+    "with_credits": 1170,
+    "ai_credited": 0
+   },
+   {
+    "month": "2024-02",
+    "published": 2784,
+    "with_credits": 924,
+    "ai_credited": 0
+   },
+   {
+    "month": "2024-03",
+    "published": 3299,
+    "with_credits": 1543,
+    "ai_credited": 0
+   },
+   {
+    "month": "2024-04",
+    "published": 3604,
+    "with_credits": 1433,
+    "ai_credited": 0
+   },
+   {
+    "month": "2024-05",
+    "published": 4991,
+    "with_credits": 1539,
+    "ai_credited": 0
+   },
+   {
+    "month": "2024-06",
+    "published": 3080,
+    "with_credits": 1308,
+    "ai_credited": 0
+   },
+   {
+    "month": "2024-07",
+    "published": 3113,
+    "with_credits": 1161,
+    "ai_credited": 0
+   },
+   {
+    "month": "2024-08",
+    "published": 2895,
+    "with_credits": 1157,
+    "ai_credited": 0
+   },
+   {
+    "month": "2024-09",
+    "published": 2514,
+    "with_credits": 875,
+    "ai_credited": 0
+   },
+   {
+    "month": "2024-10",
+    "published": 3566,
+    "with_credits": 1452,
+    "ai_credited": 0
+   },
+   {
+    "month": "2024-11",
+    "published": 4054,
+    "with_credits": 1635,
+    "ai_credited": 0
+   },
+   {
+    "month": "2024-12",
+    "published": 3433,
+    "with_credits": 1733,
+    "ai_credited": 0
+   },
+   {
+    "month": "2025-01",
+    "published": 4273,
+    "with_credits": 2213,
+    "ai_credited": 0
+   },
+   {
+    "month": "2025-02",
+    "published": 3673,
+    "with_credits": 1319,
+    "ai_credited": 0
+   },
+   {
+    "month": "2025-03",
+    "published": 4001,
+    "with_credits": 1952,
+    "ai_credited": 1
+   },
+   {
+    "month": "2025-04",
+    "published": 4033,
+    "with_credits": 2169,
+    "ai_credited": 0
+   },
+   {
+    "month": "2025-05",
+    "published": 3980,
+    "with_credits": 1903,
+    "ai_credited": 1
+   },
+   {
+    "month": "2025-06",
+    "published": 3682,
+    "with_credits": 1874,
+    "ai_credited": 0
+   },
+   {
+    "month": "2025-07",
+    "published": 3774,
+    "with_credits": 1513,
+    "ai_credited": 4
+   },
+   {
+    "month": "2025-08",
+    "published": 3629,
+    "with_credits": 1792,
+    "ai_credited": 0
+   },
+   {
+    "month": "2025-09",
+    "published": 4319,
+    "with_credits": 2004,
+    "ai_credited": 9
+   },
+   {
+    "month": "2025-10",
+    "published": 4274,
+    "with_credits": 1919,
+    "ai_credited": 15
+   },
+   {
+    "month": "2025-11",
+    "published": 3020,
+    "with_credits": 1404,
+    "ai_credited": 0
+   },
+   {
+    "month": "2025-12",
+    "published": 5493,
+    "with_credits": 2650,
+    "ai_credited": 0
+   },
+   {
+    "month": "2026-01",
+    "published": 4302,
+    "with_credits": 2328,
+    "ai_credited": 1
+   },
+   {
+    "month": "2026-02",
+    "published": 4616,
+    "with_credits": 2405,
+    "ai_credited": 23
+   },
+   {
+    "month": "2026-03",
+    "published": 6236,
+    "with_credits": 2950,
+    "ai_credited": 13
+   },
+   {
+    "month": "2026-04",
+    "published": 5813,
+    "with_credits": 2578,
+    "ai_credited": 25
+   },
+   {
+    "month": "2026-05",
+    "published": 6933,
+    "with_credits": 2661,
+    "ai_credited": 32
+   },
+   {
+    "month": "2026-06",
+    "published": 7949,
+    "with_credits": 3331,
+    "ai_credited": 43
+   },
+   {
+    "month": "2026-07",
+    "published": 9759,
+    "with_credits": 3681,
+    "ai_credited": 52
+   },
+   {
+    "month": "2026-08",
+    "published": 12260,
+    "with_credits": 5009,
+    "ai_credited": 124
+   },
+   {
+    "month": "2026-09",
+    "published": 14934,
+    "with_credits": 5976,
+    "ai_credited": 150
+   },
+   {
+    "month": "2026-10",
+    "published": 12554,
+    "with_credits": 5658,
+    "ai_credited": 131
+   }
+  ],
+  "ai_credits_recent": [
+   {
+    "cve": "CVE-2026-94300",
+    "published": "2026-10-21",
+    "system": "OpenAI",
+    "credit": "While this flaw was discovered in internal testing, ISC would like to thank Dave Aitel from OpenAI who independently discovered and responsibly reported the iss"
+   },
+   {
+    "cve": "CVE-2026-92824",
+    "published": "2026-10-21",
+    "system": "AISLE",
+    "credit": "Red Hat would like to thank AISLE Research for reporting this issue."
+   },
+   {
+    "cve": "CVE-2026-92823",
+    "published": "2026-10-21",
+    "system": "AISLE",
+    "credit": "Red Hat would like to thank AISLE Research for reporting this issue."
+   },
+   {
+    "cve": "CVE-2026-92822",
+    "published": "2026-10-21",
+    "system": "AISLE",
+    "credit": "Red Hat would like to thank AISLE Research for reporting this issue."
+   },
+   {
+    "cve": "CVE-2026-114038",
+    "published": "2026-10-21",
+    "system": "AISLE",
+    "credit": "This issue was discovered by Found by AISLE in partnership with Red Hat."
+   },
+   {
+    "cve": "CVE-2026-111815",
+    "published": "2026-10-21",
+    "system": "Theori Xint",
+    "credit": "Yonghwa Lee, Xint by Theori"
+   },
+   {
+    "cve": "CVE-2026-109619",
+    "published": "2026-10-21",
+    "system": "OpenAI",
+    "credit": "OpenAI"
+   },
+   {
+    "cve": "CVE-2026-109618",
+    "published": "2026-10-21",
+    "system": "OpenAI",
+    "credit": "OpenAI"
+   },
+   {
+    "cve": "CVE-2026-107928",
+    "published": "2026-10-20",
+    "system": "Anthropic Claude",
+    "credit": "Anthropic"
+   },
+   {
+    "cve": "CVE-2026-112991",
+    "published": "2026-10-19",
+    "system": "Anthropic Claude",
+    "credit": "Claude Opus 5 (1M context)"
+   },
+   {
+    "cve": "CVE-2026-112192",
+    "published": "2026-10-19",
+    "system": "Anthropic Claude",
+    "credit": "Claude Opus 5"
+   },
+   {
+    "cve": "CVE-2026-112188",
+    "published": "2026-10-19",
+    "system": "Anthropic Claude",
+    "credit": "Claude Opus 5"
+   },
+   {
+    "cve": "CVE-2026-112184",
+    "published": "2026-10-19",
+    "system": "Anthropic Claude",
+    "credit": "Claude Opus 5.5 (1M context)"
+   },
+   {
+    "cve": "CVE-2026-112183",
+    "published": "2026-10-19",
+    "system": "Anthropic Claude",
+    "credit": "Claude Opus 5.5 (1M context)"
+   },
+   {
+    "cve": "CVE-2026-112180",
+    "published": "2026-10-19",
+    "system": "Anthropic Claude",
+    "credit": "Claude Opus 5.5 (1M context)"
+   },
+   {
+    "cve": "CVE-2026-112179",
+    "published": "2026-10-19",
+    "system": "Anthropic Claude",
+    "credit": "Claude Opus 5.5 (1M context)"
+   },
+   {
+    "cve": "CVE-2026-112178",
+    "published": "2026-10-19",
+    "system": "Anthropic Claude",
+    "credit": "Claude Opus 5.5 (1M context)"
+   },
+   {
+    "cve": "CVE-2026-89088",
+    "published": "2026-10-16",
+    "system": "AISLE",
+    "credit": "This issue was discovered by Found by AISLE in partnership with Red Hat."
+   },
+   {
+    "cve": "CVE-2026-89085",
+    "published": "2026-10-16",
+    "system": "AISLE",
+    "credit": "Red Hat would like to thank AISLE Research for reporting this issue."
+   },
+   {
+    "cve": "CVE-2026-85977",
+    "published": "2026-10-16",
+    "system": "AISLE",
+    "credit": "This issue was discovered by Found by AISLE in partnership with Red Hat."
+   },
+   {
+    "cve": "CVE-2026-109588",
+    "published": "2026-10-16",
+    "system": "Anthropic Claude",
+    "credit": "Anthropic"
+   },
+   {
+    "cve": "CVE-2026-109587",
+    "published": "2026-10-16",
+    "system": "Anthropic Claude",
+    "credit": "Anthropic"
+   },
+   {
+    "cve": "CVE-2026-101311",
+    "published": "2026-10-15",
+    "system": "Anthropic Claude",
+    "credit": "Brian Delgado from Intel using Anthropic Opus 4.8"
+   },
+   {
+    "cve": "CVE-2026-101310",
+    "published": "2026-10-15",
+    "system": "Anthropic Claude",
+    "credit": "Brian Delgado from Intel using Anthropic Opus 4.8"
+   },
+   {
+    "cve": "CVE-2026-101309",
+    "published": "2026-10-15",
+    "system": "Anthropic Claude",
+    "credit": "Brian Delgado from Intel using Anthropic Opus 4.8"
+   },
+   {
+    "cve": "CVE-2026-92392",
+    "published": "2026-10-14",
+    "system": "Anthropic Claude",
+    "credit": "Anthropic"
+   },
+   {
+    "cve": "CVE-2026-86856",
+    "published": "2026-10-14",
+    "system": "Anthropic Claude",
+    "credit": "Red Hat would like to thank Anthropic Research for reporting this issue."
+   },
+   {
+    "cve": "CVE-2026-86847",
+    "published": "2026-10-14",
+    "system": "Anthropic Claude",
+    "credit": "Red Hat would like to thank Anthropic Research for reporting this issue."
+   },
+   {
+    "cve": "CVE-2026-86846",
+    "published": "2026-10-14",
+    "system": "Anthropic Claude",
+    "credit": "Red Hat would like to thank Anthropic Research for reporting this issue."
+   },
+   {
+    "cve": "CVE-2026-86845",
+    "published": "2026-10-14",
+    "system": "Anthropic Claude",
+    "credit": "Red Hat would like to thank Anthropic Research for reporting this issue."
+   },
+   {
+    "cve": "CVE-2026-86566",
+    "published": "2026-10-14",
+    "system": "Anthropic Claude",
+    "credit": "Red Hat would like to thank Anthropic Research and Arthur Chan (Ada Logics) for reporting this issue."
+   },
+   {
+    "cve": "CVE-2026-59774",
+    "published": "2026-10-14",
+    "system": "XBOW",
+    "credit": "https://github.com/fedek-xbow"
+   },
+   {
+    "cve": "CVE-2026-107350",
+    "published": "2026-10-14",
+    "system": "OpenAI",
+    "credit": "Thanks to Dave Aitel (@daveaitel-openai, OpenAI) for finding and reporting this issue."
+   },
+   {
+    "cve": "CVE-2026-105236",
+    "published": "2026-10-14",
+    "system": "Theori Xint",
+    "credit": "Yonghwa Lee / Xint by Theori"
+   },
+   {
+    "cve": "CVE-2026-79611",
+    "published": "2026-10-13",
+    "system": "Anthropic Claude",
+    "credit": "This issue was discovered by Claude Opus and diagnosed as a security issue\nby Teddy Astie of Vates."
+   },
+   {
+    "cve": "CVE-2026-79610",
+    "published": "2026-10-13",
+    "system": "Anthropic Claude",
+    "credit": "This issue was discovered by Claude Opus and diagnosed as a security issue\nby Teddy Astie of Vates."
+   },
+   {
+    "cve": "CVE-2026-77207",
+    "published": "2026-10-13",
+    "system": "Anthropic Claude",
+    "credit": "Claude (Anthropic)"
+   },
+   {
+    "cve": "CVE-2026-77206",
+    "published": "2026-10-13",
+    "system": "Anthropic Claude",
+    "credit": "Claude (Anthropic)"
+   },
+   {
+    "cve": "CVE-2026-110036",
+    "published": "2026-10-13",
+    "system": "AISLE",
+    "credit": "This issue was discovered by Found by AISLE in partnership with Red Hat."
+   },
+   {
+    "cve": "CVE-2026-109733",
+    "published": "2026-10-13",
+    "system": "OpenAI",
+    "credit": "Amy Burnett of OpenAI"
+   }
+  ],
+  "ai_credits_tool": [
+   {
+    "system": "Anthropic Claude",
+    "cves": 290,
+    "first_month": "2026-02",
+    "last_month": "2026-10"
+   },
+   {
+    "system": "AISLE",
+    "cves": 155,
+    "first_month": "2026-01",
+    "last_month": "2026-10"
+   },
+   {
+    "system": "OpenAI",
+    "cves": 118,
+    "first_month": "2025-09",
+    "last_month": "2026-10"
+   },
+   {
+    "system": "Google Big Sleep",
+    "cves": 18,
+    "first_month": "2025-07",
+    "last_month": "2026-08"
+   },
+   {
+    "system": "depthfirst",
+    "cves": 14,
+    "first_month": "2026-05",
+    "last_month": "2026-10"
+   },
+   {
+    "system": "Theori Xint",
+    "cves": 12,
+    "first_month": "2026-02",
+    "last_month": "2026-10"
+   },
+   {
+    "system": "XBOW",
+    "cves": 8,
+    "first_month": "2025-03",
+    "last_month": "2026-10"
+   },
+   {
+    "system": "Other AI mention",
+    "cves": 5,
+    "first_month": "2026-04",
+    "last_month": "2026-09"
+   },
+   {
+    "system": "ZeroPath",
+    "cves": 3,
+    "first_month": "2026-05",
+    "last_month": "2026-05"
+   },
+   {
+    "system": "AIxCC systems",
+    "cves": 1,
+    "first_month": "2026-07",
+    "last_month": "2026-07"
+   }
+  ],
+  "breaches_by_year": [
+   {
+    "year": 2015,
+    "breaches": 71,
+    "accounts": 182609301
+   },
+   {
+    "year": 2016,
+    "breaches": 92,
+    "accounts": 599231112
+   },
+   {
+    "year": 2017,
+    "breaches": 49,
+    "accounts": 339482548
+   },
+   {
+    "year": 2018,
+    "breaches": 73,
+    "accounts": 1151380289
+   },
+   {
+    "year": 2019,
+    "breaches": 79,
+    "accounts": 2758738007
+   },
+   {
+    "year": 2020,
+    "breaches": 94,
+    "accounts": 995513911
+   },
+   {
+    "year": 2021,
+    "breaches": 75,
+    "accounts": 710740102
+   },
+   {
+    "year": 2022,
+    "breaches": 58,
+    "accounts": 169818021
+   },
+   {
+    "year": 2023,
+    "breaches": 45,
+    "accounts": 139315055
+   },
+   {
+    "year": 2024,
+    "breaches": 85,
+    "accounts": 1355818325
+   },
+   {
+    "year": 2025,
+    "breaches": 62,
+    "accounts": 2899897583
+   },
+   {
+    "year": 2026,
+    "breaches": 90,
+    "accounts": 296610262
+   }
+  ],
+  "breaches_largest": [
+   {
+    "name": "Synthient Credential Stuffing Threat Data",
+    "breach_date": "2025-04-11",
+    "accounts": 1957476021
+   },
+   {
+    "name": "Verifications.io",
+    "breach_date": "2019-02-25",
+    "accounts": 763117241
+   },
+   {
+    "name": "Data Enrichment Exposure From PDL Customer",
+    "breach_date": "2019-10-16",
+    "accounts": 622161052
+   },
+   {
+    "name": "Facebook",
+    "breach_date": "2019-08-01",
+    "accounts": 509458528
+   },
+   {
+    "name": "Combolists Posted to Telegram",
+    "breach_date": "2024-05-28",
+    "accounts": 361468099
+   },
+   {
+    "name": "ALIEN TXTBASE Stealer Logs",
+    "breach_date": "2025-02-15",
+    "accounts": 284132969
+   },
+   {
+    "name": "Not SOCRadar",
+    "breach_date": "2024-08-03",
+    "accounts": 282478425
+   },
+   {
+    "name": "Wattpad",
+    "breach_date": "2020-06-29",
+    "accounts": 268765495
+   },
+   {
+    "name": "Deezer",
+    "breach_date": "2019-04-22",
+    "accounts": 229037936
+   },
+   {
+    "name": "Twitter (200M)",
+    "breach_date": "2021-01-01",
+    "accounts": 211524284
+   },
+   {
+    "name": "Synthient Stealer Log Threat Data",
+    "breach_date": "2025-04-11",
+    "accounts": 182962095
+   },
+   {
+    "name": "Zynga",
+    "breach_date": "2019-09-01",
+    "accounts": 172869660
+   },
+   {
+    "name": "Adult FriendFinder (2016)",
+    "breach_date": "2016-10-16",
+    "accounts": 169746810
+   },
+   {
+    "name": "Dubsmash",
+    "breach_date": "2018-12-01",
+    "accounts": 161749950
+   },
+   {
+    "name": "MyFitnessPal",
+    "breach_date": "2018-02-01",
+    "accounts": 143606147
+   }
+  ],
+  "cve_by_month": [
+   {
+    "month": "2015-01",
+    "cves": 713
+   },
+   {
+    "month": "2015-02",
+    "cves": 486
+   },
+   {
+    "month": "2015-03",
+    "cves": 453
+   },
+   {
+    "month": "2015-04",
+    "cves": 538
+   },
+   {
+    "month": "2015-05",
+    "cves": 410
+   },
+   {
+    "month": "2015-06",
+    "cves": 495
+   },
+   {
+    "month": "2015-07",
+    "cves": 635
+   },
+   {
+    "month": "2015-08",
+    "cves": 619
+   },
+   {
+    "month": "2015-09",
+    "cves": 493
+   },
+   {
+    "month": "2015-10",
+    "cves": 726
+   },
+   {
+    "month": "2015-11",
+    "cves": 361
+   },
+   {
+    "month": "2015-12",
+    "cves": 565
+   },
+   {
+    "month": "2016-01",
+    "cves": 669
+   },
+   {
+    "month": "2016-02",
+    "cves": 380
+   },
+   {
+    "month": "2016-03",
+    "cves": 330
+   },
+   {
+    "month": "2016-04",
+    "cves": 653
+   },
+   {
+    "month": "2016-05",
+    "cves": 612
+   },
+   {
+    "month": "2016-06",
+    "cves": 510
+   },
+   {
+    "month": "2016-07",
+    "cves": 709
+   },
+   {
+    "month": "2016-08",
+    "cves": 409
+   },
+   {
+    "month": "2016-09",
+    "cves": 595
+   },
+   {
+    "month": "2016-10",
+    "cves": 679
+   },
+   {
+    "month": "2016-11",
+    "cves": 386
+   },
+   {
+    "month": "2016-12",
+    "cves": 517
+   },
+   {
+    "month": "2017-01",
+    "cves": 1083
+   },
+   {
+    "month": "2017-02",
+    "cves": 1041
+   },
+   {
+    "month": "2017-03",
+    "cves": 1300
+   },
+   {
+    "month": "2017-04",
+    "cves": 1570
+   },
+   {
+    "month": "2017-05",
+    "cves": 1010
+   },
+   {
+    "month": "2017-06",
+    "cves": 1033
+   },
+   {
+    "month": "2017-07",
+    "cves": 1268
+   },
+   {
+    "month": "2017-08",
+    "cves": 1540
+   },
+   {
+    "month": "2017-09",
+    "cves": 1227
+   },
+   {
+    "month": "2017-10",
+    "cves": 1399
+   },
+   {
+    "month": "2017-11",
+    "cves": 1066
+   },
+   {
+    "month": "2017-12",
+    "cves": 1105
+   },
+   {
+    "month": "2018-01",
+    "cves": 1273
+   },
+   {
+    "month": "2018-02",
+    "cves": 1325
+   },
+   {
+    "month": "2018-03",
+    "cves": 1337
+   },
+   {
+    "month": "2018-04",
+    "cves": 1667
+   },
+   {
+    "month": "2018-05",
+    "cves": 1162
+   },
+   {
+    "month": "2018-06",
+    "cves": 1783
+   },
+   {
+    "month": "2018-07",
+    "cves": 2167
+   },
+   {
+    "month": "2018-08",
+    "cves": 1013
+   },
+   {
+    "month": "2018-09",
+    "cves": 1169
+   },
+   {
+    "month": "2018-10",
+    "cves": 1468
+   },
+   {
+    "month": "2018-11",
+    "cves": 983
+   },
+   {
+    "month": "2018-12",
+    "cves": 1163
+   },
+   {
+    "month": "2019-01",
+    "cves": 1212
+   },
+   {
+    "month": "2019-02",
+    "cves": 838
+   },
+   {
+    "month": "2019-03",
+    "cves": 1182
+   },
+   {
+    "month": "2019-04",
+    "cves": 1533
+   },
+   {
+    "month": "2019-05",
+    "cves": 1316
+   },
+   {
+    "month": "2019-06",
+    "cves": 1254
+   },
+   {
+    "month": "2019-07",
+    "cves": 1618
+   },
+   {
+    "month": "2019-08",
+    "cves": 2001
+   },
+   {
+    "month": "2019-09",
+    "cves": 1531
+   },
+   {
+    "month": "2019-10",
+    "cves": 1566
+   },
+   {
+    "month": "2019-11",
+    "cves": 1677
+   },
+   {
+    "month": "2019-12",
+    "cves": 1577
+   },
+   {
+    "month": "2020-01",
+    "cves": 1656
+   },
+   {
+    "month": "2020-02",
+    "cves": 1394
+   },
+   {
+    "month": "2020-03",
+    "cves": 1754
+   },
+   {
+    "month": "2020-04",
+    "cves": 2187
+   },
+   {
+    "month": "2020-05",
+    "cves": 1017
+   },
+   {
+    "month": "2020-06",
+    "cves": 1786
+   },
+   {
+    "month": "2020-07",
+    "cves": 1417
+   },
+   {
+    "month": "2020-08",
+    "cves": 1155
+   },
+   {
+    "month": "2020-09",
+    "cves": 1593
+   },
+   {
+    "month": "2020-10",
+    "cves": 1563
+   },
+   {
+    "month": "2020-11",
+    "cves": 1271
+   },
+   {
+    "month": "2020-12",
+    "cves": 1529
+   },
+   {
+    "month": "2021-01",
+    "cves": 1524
+   },
+   {
+    "month": "2021-02",
+    "cves": 1456
+   },
+   {
+    "month": "2021-03",
+    "cves": 1446
+   },
+   {
+    "month": "2021-04",
+    "cves": 1818
+   },
+   {
+    "month": "2021-05",
+    "cves": 1473
+   },
+   {
+    "month": "2021-06",
+    "cves": 1712
+   },
+   {
+    "month": "2021-07",
+    "cves": 1582
+   },
+   {
+    "month": "2021-08",
+    "cves": 2085
+   },
+   {
+    "month": "2021-09",
+    "cves": 1902
+   },
+   {
+    "month": "2021-10",
+    "cves": 1701
+   },
+   {
+    "month": "2021-11",
+    "cves": 1508
+   },
+   {
+    "month": "2021-12",
+    "cves": 1942
+   },
+   {
+    "month": "2022-01",
+    "cves": 2016
+   },
+   {
+    "month": "2022-02",
+    "cves": 1942
+   },
+   {
+    "month": "2022-03",
+    "cves": 2058
+   },
+   {
+    "month": "2022-04",
+    "cves": 2046
+   },
+   {
+    "month": "2022-05",
+    "cves": 2021
+   },
+   {
+    "month": "2022-06",
+    "cves": 2279
+   },
+   {
+    "month": "2022-07",
+    "cves": 1969
+   },
+   {
+    "month": "2022-08",
+    "cves": 2317
+   },
+   {
+    "month": "2022-09",
+    "cves": 2197
+   },
+   {
+    "month": "2022-10",
+    "cves": 1849
+   },
+   {
+    "month": "2022-11",
+    "cves": 1958
+   },
+   {
+    "month": "2022-12",
+    "cves": 2421
+   },
+   {
+    "month": "2023-01",
+    "cves": 2337
+   },
+   {
+    "month": "2023-02",
+    "cves": 2122
+   },
+   {
+    "month": "2023-03",
+    "cves": 2516
+   },
+   {
+    "month": "2023-04",
+    "cves": 2330
+   },
+   {
+    "month": "2023-05",
+    "cves": 2418
+   },
+   {
+    "month": "2023-06",
+    "cves": 2384
+   },
+   {
+    "month": "2023-07",
+    "cves": 2305
+   },
+   {
+    "month": "2023-08",
+    "cves": 2477
+   },
+   {
+    "month": "2023-09",
+    "cves": 2148
+   },
+   {
+    "month": "2023-10",
+    "cves": 2680
+   },
+   {
+    "month": "2023-11",
+    "cves": 2449
+   },
+   {
+    "month": "2023-12",
+    "cves": 2650
+   },
+   {
+    "month": "2024-01",
+    "cves": 2594
+   },
+   {
+    "month": "2024-02",
+    "cves": 2778
+   },
+   {
+    "month": "2024-03",
+    "cves": 3309
+   },
+   {
+    "month": "2024-04",
+    "cves": 3621
+   },
+   {
+    "month": "2024-05",
+    "cves": 4999
+   },
+   {
+    "month": "2024-06",
+    "cves": 3078
+   },
+   {
+    "month": "2024-07",
+    "cves": 3113
+   },
+   {
+    "month": "2024-08",
+    "cves": 2896
+   },
+   {
+    "month": "2024-09",
+    "cves": 2514
+   },
+   {
+    "month": "2024-10",
+    "cves": 3564
+   },
+   {
+    "month": "2024-11",
+    "cves": 4056
+   },
+   {
+    "month": "2024-12",
+    "cves": 3431
+   },
+   {
+    "month": "2025-01",
+    "cves": 4275
+   },
+   {
+    "month": "2025-02",
+    "cves": 3673
+   },
+   {
+    "month": "2025-03",
+    "cves": 3998
+   },
+   {
+    "month": "2025-04",
+    "cves": 4034
+   },
+   {
+    "month": "2025-05",
+    "cves": 3980
+   },
+   {
+    "month": "2025-06",
+    "cves": 3681
+   },
+   {
+    "month": "2025-07",
+    "cves": 3776
+   },
+   {
+    "month": "2025-08",
+    "cves": 3628
+   },
+   {
+    "month": "2025-09",
+    "cves": 4321
+   },
+   {
+    "month": "2025-10",
+    "cves": 4273
+   },
+   {
+    "month": "2025-11",
+    "cves": 3021
+   },
+   {
+    "month": "2025-12",
+    "cves": 5491
+   },
+   {
+    "month": "2026-01",
+    "cves": 4302
+   },
+   {
+    "month": "2026-02",
+    "cves": 4616
+   },
+   {
+    "month": "2026-03",
+    "cves": 6234
+   },
+   {
+    "month": "2026-04",
+    "cves": 5810
+   },
+   {
+    "month": "2026-05",
+    "cves": 6936
+   },
+   {
+    "month": "2026-06",
+    "cves": 7942
+   },
+   {
+    "month": "2026-07",
+    "cves": 9770
+   },
+   {
+    "month": "2026-08",
+    "cves": 12258
+   },
+   {
+    "month": "2026-09",
+    "cves": 14933
+   },
+   {
+    "month": "2026-10",
+    "cves": 12543
+   }
+  ],
+  "cve_by_year": [
+   {
+    "year": 2015,
+    "cves": 6494,
+    "rejected": 101
+   },
+   {
+    "year": 2016,
+    "cves": 6449,
+    "rejected": 68
+   },
+   {
+    "year": 2017,
+    "cves": 14642,
+    "rejected": 3471
+   },
+   {
+    "year": 2018,
+    "cves": 16510,
+    "rejected": 1644
+   },
+   {
+    "year": 2019,
+    "cves": 17305,
+    "rejected": 1633
+   },
+   {
+    "year": 2020,
+    "cves": 18322,
+    "rejected": 900
+   },
+   {
+    "year": 2021,
+    "cves": 20149,
+    "rejected": 1801
+   },
+   {
+    "year": 2022,
+    "cves": 25073,
+    "rejected": 1358
+   },
+   {
+    "year": 2023,
+    "cves": 28816,
+    "rejected": 2133
+   },
+   {
+    "year": 2024,
+    "cves": 39953,
+    "rejected": 751
+   },
+   {
+    "year": 2025,
+    "cves": 48151,
+    "rejected": 1821
+   },
+   {
+    "year": 2026,
+    "cves": 85344,
+    "rejected": 2230
+   }
+  ],
+  "cve_severity_year": [
+   {
+    "year": 2015,
+    "critical": 51,
+    "high": 2352,
+    "medium": 3502,
+    "low": 589,
+    "none": 0,
+    "unscored": 0
+   },
+   {
+    "year": 2016,
+    "critical": 887,
+    "high": 2895,
+    "medium": 2446,
+    "low": 221,
+    "none": 0,
+    "unscored": 0
+   },
+   {
+    "year": 2017,
+    "critical": 2111,
+    "high": 6595,
+    "medium": 5700,
+    "low": 236,
+    "none": 0,
+    "unscored": 0
+   },
+   {
+    "year": 2018,
+    "critical": 2597,
+    "high": 7542,
+    "medium": 6203,
+    "low": 168,
+    "none": 0,
+    "unscored": 0
+   },
+   {
+    "year": 2019,
+    "critical": 2635,
+    "high": 7209,
+    "medium": 7150,
+    "low": 311,
+    "none": 0,
+    "unscored": 0
+   },
+   {
+    "year": 2020,
+    "critical": 2706,
+    "high": 7678,
+    "medium": 7513,
+    "low": 425,
+    "none": 0,
+    "unscored": 0
+   },
+   {
+    "year": 2021,
+    "critical": 2666,
+    "high": 8554,
+    "medium": 8488,
+    "low": 441,
+    "none": 0,
+    "unscored": 0
+   },
+   {
+    "year": 2022,
+    "critical": 4247,
+    "high": 10151,
+    "medium": 10178,
+    "low": 495,
+    "none": 0,
+    "unscored": 2
+   },
+   {
+    "year": 2023,
+    "critical": 4628,
+    "high": 10952,
+    "medium": 12814,
+    "low": 421,
+    "none": 0,
+    "unscored": 1
+   },
+   {
+    "year": 2024,
+    "critical": 4997,
+    "high": 14484,
+    "medium": 19635,
+    "low": 828,
+    "none": 1,
+    "unscored": 8
+   },
+   {
+    "year": 2025,
+    "critical": 6488,
+    "high": 17016,
+    "medium": 22503,
+    "low": 1240,
+    "none": 7,
+    "unscored": 897
+   },
+   {
+    "year": 2026,
+    "critical": 10332,
+    "high": 35678,
+    "medium": 33254,
+    "low": 2981,
+    "none": 28,
+    "unscored": 3071
+   }
+  ],
+  "epss_buckets": [
+   {
+    "bucket": "< 0.1%",
+    "cves": 3121
+   },
+   {
+    "bucket": "0.1% to 1%",
+    "cves": 243225
+   },
+   {
+    "bucket": "1% to 10%",
+    "cves": 130733
+   },
+   {
+    "bucket": "10% to 50%",
+    "cves": 13003
+   },
+   {
+    "bucket": ">= 50%",
+    "cves": 4333
+   }
+  ],
+  "epss_summary": [
+   {
+    "model_version": "v2026.06.15",
+    "score_date": "2026-10-22",
+    "cves_scored": 394415,
+    "above_10pct": 17336,
+    "above_50pct": 4333,
+    "share_above_10pct": 0.044
+   }
+  ],
+  "exploits_by_year": [
+   {
+    "year": 2015,
+    "exploitdb": 1374,
+    "exploitdb_with_cve": 682,
+    "metasploit_exploits": 128,
+    "nuclei_cve_templates": 67
+   },
+   {
+    "year": 2016,
+    "exploitdb": 1571,
+    "exploitdb_with_cve": 576,
+    "metasploit_exploits": 107,
+    "nuclei_cve_templates": 62
+   },
+   {
+    "year": 2017,
+    "exploitdb": 2201,
+    "exploitdb_with_cve": 1034,
+    "metasploit_exploits": 134,
+    "nuclei_cve_templates": 131
+   },
+   {
+    "year": 2018,
+    "exploitdb": 2108,
+    "exploitdb_with_cve": 1087,
+    "metasploit_exploits": 88,
+    "nuclei_cve_templates": 201
+   },
+   {
+    "year": 2019,
+    "exploitdb": 1847,
+    "exploitdb_with_cve": 783,
+    "metasploit_exploits": 104,
+    "nuclei_cve_templates": 224
+   },
+   {
+    "year": 2020,
+    "exploitdb": 1390,
+    "exploitdb_with_cve": 363,
+    "metasploit_exploits": 126,
+    "nuclei_cve_templates": 326
+   },
+   {
+    "year": 2021,
+    "exploitdb": 1143,
+    "exploitdb_with_cve": 306,
+    "metasploit_exploits": 93,
+    "nuclei_cve_templates": 546
+   },
+   {
+    "year": 2022,
+    "exploitdb": 401,
+    "exploitdb_with_cve": 183,
+    "metasploit_exploits": 87,
+    "nuclei_cve_templates": 568
+   },
+   {
+    "year": 2023,
+    "exploitdb": 690,
+    "exploitdb_with_cve": 298,
+    "metasploit_exploits": 101,
+    "nuclei_cve_templates": 564
+   },
+   {
+    "year": 2024,
+    "exploitdb": 318,
+    "exploitdb_with_cve": 58,
+    "metasploit_exploits": 89,
+    "nuclei_cve_templates": 613
+   },
+   {
+    "year": 2025,
+    "exploitdb": 374,
+    "exploitdb_with_cve": 337,
+    "metasploit_exploits": 85,
+    "nuclei_cve_templates": 423
+   },
+   {
+    "year": 2026,
+    "exploitdb": 233,
+    "exploitdb_with_cve": 183,
+    "metasploit_exploits": 66,
+    "nuclei_cve_templates": 479
+   }
+  ],
+  "kev_by_year": [
+   {
+    "year": 2021,
+    "added": 311,
+    "ransomware_known": 84
+   },
+   {
+    "year": 2022,
+    "added": 555,
+    "ransomware_known": 132
+   },
+   {
+    "year": 2023,
+    "added": 187,
+    "ransomware_known": 43
+   },
+   {
+    "year": 2024,
+    "added": 186,
+    "ransomware_known": 44
+   },
+   {
+    "year": 2025,
+    "added": 245,
+    "ransomware_known": 31
+   },
+   {
+    "year": 2026,
+    "added": 270,
+    "ransomware_known": 27
+   }
+  ],
+  "kev_lag_year": [
+   {
+    "year": 2021,
+    "fresh_cves": 10,
+    "median_days": -1.0,
+    "share_within_7d": 1.0,
+    "share_same_day_or_before": 0.7
+   },
+   {
+    "year": 2022,
+    "fresh_cves": 106,
+    "median_days": 10.5,
+    "share_within_7d": 0.4811,
+    "share_same_day_or_before": 0.3679
+   },
+   {
+    "year": 2023,
+    "fresh_cves": 148,
+    "median_days": 4.0,
+    "share_within_7d": 0.5743,
+    "share_same_day_or_before": 0.2973
+   },
+   {
+    "year": 2024,
+    "fresh_cves": 155,
+    "median_days": 7.0,
+    "share_within_7d": 0.5032,
+    "share_same_day_or_before": 0.2581
+   },
+   {
+    "year": 2025,
+    "fresh_cves": 209,
+    "median_days": 10.0,
+    "share_within_7d": 0.4641,
+    "share_same_day_or_before": 0.2344
+   },
+   {
+    "year": 2026,
+    "fresh_cves": 245,
+    "median_days": 9.0,
+    "share_within_7d": 0.4653,
+    "share_same_day_or_before": 0.2286
+   }
+  ],
+  "kev_vendors": [
+   {
+    "vendor": "Microsoft",
+    "all_time": 390,
+    "last_3_years": 115
+   },
+   {
+    "vendor": "Cisco",
+    "all_time": 101,
+    "last_3_years": 33
+   },
+   {
+    "vendor": "Apple",
+    "all_time": 95,
+    "last_3_years": 25
+   },
+   {
+    "vendor": "Adobe",
+    "all_time": 82,
+    "last_3_years": 17
+   },
+   {
+    "vendor": "Google",
+    "all_time": 75,
+    "last_3_years": 24
+   },
+   {
+    "vendor": "Oracle",
+    "all_time": 46,
+    "last_3_years": 13
+   },
+   {
+    "vendor": "Apache",
+    "all_time": 41,
+    "last_3_years": 11
+   },
+   {
+    "vendor": "Ivanti",
+    "all_time": 36,
+    "last_3_years": 24
+   },
+   {
+    "vendor": "Fortinet",
+    "all_time": 32,
+    "last_3_years": 21
+   },
+   {
+    "vendor": "Linux",
+    "all_time": 31,
+    "last_3_years": 19
+   },
+   {
+    "vendor": "Citrix",
+    "all_time": 27,
+    "last_3_years": 13
+   },
+   {
+    "vendor": "D-Link",
+    "all_time": 26,
+    "last_3_years": 12
+   },
+   {
+    "vendor": "VMware",
+    "all_time": 26,
+    "last_3_years": 8
+   },
+   {
+    "vendor": "SonicWall",
+    "all_time": 19,
+    "last_3_years": 10
+   },
+   {
+    "vendor": "Synacor",
+    "all_time": 19,
+    "last_3_years": 10
+   }
+  ],
+  "nvd_status_year": [
+   {
+    "year": 2015,
+    "analyzed": 6494,
+    "waiting": 0,
+    "deferred": 0,
+    "rejected": 101,
+    "other": 0
+   },
+   {
+    "year": 2016,
+    "analyzed": 6449,
+    "waiting": 0,
+    "deferred": 0,
+    "rejected": 68,
+    "other": 0
+   },
+   {
+    "year": 2017,
+    "analyzed": 14642,
+    "waiting": 0,
+    "deferred": 0,
+    "rejected": 3471,
+    "other": 0
+   },
+   {
+    "year": 2018,
+    "analyzed": 16508,
+    "waiting": 2,
+    "deferred": 0,
+    "rejected": 1644,
+    "other": 0
+   },
+   {
+    "year": 2019,
+    "analyzed": 17305,
+    "waiting": 0,
+    "deferred": 0,
+    "rejected": 1633,
+    "other": 0
+   },
+   {
+    "year": 2020,
+    "analyzed": 18317,
+    "waiting": 5,
+    "deferred": 0,
+    "rejected": 900,
+    "other": 0
+   },
+   {
+    "year": 2021,
+    "analyzed": 20145,
+    "waiting": 4,
+    "deferred": 0,
+    "rejected": 1801,
+    "other": 0
+   },
+   {
+    "year": 2022,
+    "analyzed": 25070,
+    "waiting": 3,
+    "deferred": 0,
+    "rejected": 1358,
+    "other": 0
+   },
+   {
+    "year": 2023,
+    "analyzed": 28815,
+    "waiting": 1,
+    "deferred": 0,
+    "rejected": 2133,
+    "other": 0
+   },
+   {
+    "year": 2024,
+    "analyzed": 32174,
+    "waiting": 10,
+    "deferred": 7769,
+    "rejected": 751,
+    "other": 0
+   },
+   {
+    "year": 2025,
+    "analyzed": 30180,
+    "waiting": 11,
+    "deferred": 17960,
+    "rejected": 1821,
+    "other": 0
+   },
+   {
+    "year": 2026,
+    "analyzed": 38311,
+    "waiting": 14865,
+    "deferred": 32168,
+    "rejected": 2230,
+    "other": 0
+   }
+  ],
+  "ransomware_by_month": [
+   {
+    "month": "2022-01",
+    "victims": 199
+   },
+   {
+    "month": "2022-02",
+    "victims": 213
+   },
+   {
+    "month": "2022-03",
+    "victims": 293
+   },
+   {
+    "month": "2022-04",
+    "victims": 294
+   },
+   {
+    "month": "2022-05",
+    "victims": 232
+   },
+   {
+    "month": "2022-06",
+    "victims": 136
+   },
+   {
+    "month": "2022-07",
+    "victims": 185
+   },
+   {
+    "month": "2022-08",
+    "victims": 171
+   },
+   {
+    "month": "2022-09",
+    "victims": 201
+   },
+   {
+    "month": "2022-10",
+    "victims": 163
+   },
+   {
+    "month": "2022-11",
+    "victims": 261
+   },
+   {
+    "month": "2022-12",
+    "victims": 485
+   },
+   {
+    "month": "2023-01",
+    "victims": 147
+   },
+   {
+    "month": "2023-02",
+    "victims": 221
+   },
+   {
+    "month": "2023-03",
+    "victims": 437
+   },
+   {
+    "month": "2023-04",
+    "victims": 479
+   },
+   {
+    "month": "2023-05",
+    "victims": 394
+   },
+   {
+    "month": "2023-06",
+    "victims": 399
+   },
+   {
+    "month": "2023-07",
+    "victims": 906
+   },
+   {
+    "month": "2023-08",
+    "victims": 418
+   },
+   {
+    "month": "2023-09",
+    "victims": 495
+   },
+   {
+    "month": "2023-10",
+    "victims": 394
+   },
+   {
+    "month": "2023-11",
+    "victims": 503
+   },
+   {
+    "month": "2023-12",
+    "victims": 533
+   },
+   {
+    "month": "2024-01",
+    "victims": 292
+   },
+   {
+    "month": "2024-02",
+    "victims": 407
+   },
+   {
+    "month": "2024-03",
+    "victims": 399
+   },
+   {
+    "month": "2024-04",
+    "victims": 737
+   },
+   {
+    "month": "2024-05",
+    "victims": 594
+   },
+   {
+    "month": "2024-06",
+    "victims": 417
+   },
+   {
+    "month": "2024-07",
+    "victims": 432
+   },
+   {
+    "month": "2024-08",
+    "victims": 488
+   },
+   {
+    "month": "2024-09",
+    "victims": 406
+   },
+   {
+    "month": "2024-10",
+    "victims": 547
+   },
+   {
+    "month": "2024-11",
+    "victims": 696
+   },
+   {
+    "month": "2024-12",
+    "victims": 683
+   },
+   {
+    "month": "2025-01",
+    "victims": 616
+   },
+   {
+    "month": "2025-02",
+    "victims": 1014
+   },
+   {
+    "month": "2025-03",
+    "victims": 756
+   },
+   {
+    "month": "2025-04",
+    "victims": 536
+   },
+   {
+    "month": "2025-05",
+    "victims": 612
+   },
+   {
+    "month": "2025-06",
+    "victims": 501
+   },
+   {
+    "month": "2025-07",
+    "victims": 547
+   },
+   {
+    "month": "2025-08",
+    "victims": 529
+   },
+   {
+    "month": "2025-09",
+    "victims": 598
+   },
+   {
+    "month": "2025-10",
+    "victims": 838
+   },
+   {
+    "month": "2025-11",
+    "victims": 717
+   },
+   {
+    "month": "2025-12",
+    "victims": 881
+   },
+   {
+    "month": "2026-01",
+    "victims": 699
+   },
+   {
+    "month": "2026-02",
+    "victims": 784
+   },
+   {
+    "month": "2026-03",
+    "victims": 842
+   },
+   {
+    "month": "2026-04",
+    "victims": 865
+   },
+   {
+    "month": "2026-05",
+    "victims": 786
+   },
+   {
+    "month": "2026-06",
+    "victims": 711
+   },
+   {
+    "month": "2026-07",
+    "victims": 952
+   },
+   {
+    "month": "2026-08",
+    "victims": 1146
+   },
+   {
+    "month": "2026-09",
+    "victims": 846
+   },
+   {
+    "month": "2026-10",
+    "victims": 790
+   }
+  ],
+  "ransomware_by_year": [
+   {
+    "year": 2022,
+    "victims": 2833,
+    "active_groups": 64
+   },
+   {
+    "year": 2023,
+    "victims": 5326,
+    "active_groups": 70
+   },
+   {
+    "year": 2024,
+    "victims": 6098,
+    "active_groups": 95
+   },
+   {
+    "year": 2025,
+    "victims": 8145,
+    "active_groups": 125
+   },
+   {
+    "year": 2026,
+    "victims": 8421,
+    "active_groups": 155
+   }
+  ],
+  "ransomware_groups": [
+   {
+    "year": 2025,
+    "group": "qilin",
+    "victims": 1058
+   },
+   {
+    "year": 2025,
+    "group": "akira",
+    "victims": 750
+   },
+   {
+    "year": 2025,
+    "group": "clop",
+    "victims": 518
+   },
+   {
+    "year": 2025,
+    "group": "play",
+    "victims": 391
+   },
+   {
+    "year": 2025,
+    "group": "incransom",
+    "victims": 388
+   },
+   {
+    "year": 2025,
+    "group": "safepay",
+    "victims": 376
+   },
+   {
+    "year": 2025,
+    "group": "lynx",
+    "victims": 270
+   },
+   {
+    "year": 2025,
+    "group": "ransomhub",
+    "victims": 233
+   },
+   {
+    "year": 2025,
+    "group": "dragonforce",
+    "victims": 221
+   },
+   {
+    "year": 2025,
+    "group": "sinobi",
+    "victims": 187
+   }
+  ],
+  "zeroday_by_year": [
+   {
+    "year": 2015,
+    "zero_days": 28
+   },
+   {
+    "year": 2016,
+    "zero_days": 25
+   },
+   {
+    "year": 2017,
+    "zero_days": 22
+   },
+   {
+    "year": 2018,
+    "zero_days": 12
+   },
+   {
+    "year": 2019,
+    "zero_days": 20
+   },
+   {
+    "year": 2020,
+    "zero_days": 25
+   },
+   {
+    "year": 2021,
+    "zero_days": 69
+   },
+   {
+    "year": 2022,
+    "zero_days": 41
+   },
+   {
+    "year": 2023,
+    "zero_days": 56
+   },
+   {
+    "year": 2024,
+    "zero_days": 36
+   },
+   {
+    "year": 2025,
+    "zero_days": 43
+   },
+   {
+    "year": 2026,
+    "zero_days": 25
+   }
+  ],
+  "zeroday_vendors": [
+   {
+    "vendor": "Microsoft",
+    "zero_days": 159
+   },
+   {
+    "vendor": "Google",
+    "zero_days": 80
+   },
+   {
+    "vendor": "Apple",
+    "zero_days": 67
+   },
+   {
+    "vendor": "Adobe",
+    "zero_days": 26
+   },
+   {
+    "vendor": "Samsung",
+    "zero_days": 13
+   },
+   {
+    "vendor": "Qualcomm",
+    "zero_days": 11
+   },
+   {
+    "vendor": "Mozilla",
+    "zero_days": 10
+   },
+   {
+    "vendor": "ARM",
+    "zero_days": 6
+   },
+   {
+    "vendor": "Cisco",
+    "zero_days": 3
+   },
+   {
+    "vendor": "Sophos",
+    "zero_days": 3
+   },
+   {
+    "vendor": "Oracle",
+    "zero_days": 2
+   },
+   {
+    "vendor": "Trend Micro",
+    "zero_days": 2
+   }
+  ]
+ },
+ "manual": {
+  "chainalysis_median_payment": [
+   {
+    "year": 2024,
+    "value": 12738.0,
+    "unit": "USD",
+    "kind": "on-chain estimate",
+    "source": "Chainalysis 2026 Crypto Crime Report",
+    "source_url": "https://www.chainalysis.com/blog/crypto-ransomware-2026/",
+    "note": "Median ransom payment."
+   },
+   {
+    "year": 2025,
+    "value": 59556.0,
+    "unit": "USD",
+    "kind": "on-chain estimate",
+    "source": "Chainalysis 2026 Crypto Crime Report",
+    "source_url": "https://www.chainalysis.com/blog/crypto-ransomware-2026/",
+    "note": "Median ransom payment, up 368%."
+   }
+  ],
+  "chainalysis_ransom_paid": [
+   {
+    "year": 2022,
+    "value": 567.0,
+    "unit": "USD m",
+    "kind": "on-chain estimate",
+    "source": "Chainalysis, Ransomware Hit $1 Billion in 2023",
+    "source_url": "https://www.chainalysis.com/blog/ransomware-2024/",
+    "note": "Lower bound; Chainalysis revises past years upward as it labels more addresses."
+   },
+   {
+    "year": 2023,
+    "value": 1250.0,
+    "unit": "USD m",
+    "kind": "on-chain estimate",
+    "source": "Chainalysis 2025 Crypto Crime Report",
+    "source_url": "https://www.chainalysis.com/blog/crypto-crime-ransomware-victim-extortion-2025/",
+    "note": "Revised up from the $1.1 bn first published in 2024."
+   },
+   {
+    "year": 2024,
+    "value": 813.55,
+    "unit": "USD m",
+    "kind": "on-chain estimate",
+    "source": "Chainalysis 2025 Crypto Crime Report",
+    "source_url": "https://www.chainalysis.com/blog/crypto-crime-ransomware-victim-extortion-2025/",
+    "note": "35% drop year over year."
+   },
+   {
+    "year": 2025,
+    "value": 820.0,
+    "unit": "USD m",
+    "kind": "on-chain estimate",
+    "source": "Chainalysis 2026 Crypto Crime Report",
+    "source_url": "https://www.chainalysis.com/blog/crypto-ransomware-2026/",
+    "note": "About 8% lower than 2024 while claimed attacks rose about 50%; only 28% of victims paid."
+   }
+  ],
+  "dbir_kev_median_patch_days": [
+   {
+    "year": 2025,
+    "value": 32.0,
+    "unit": "days",
+    "kind": "analysis",
+    "source": "Verizon 2026 DBIR (prior-year comparison)",
+    "source_url": "https://www.verizon.com/business/resources/T343/reports/2026-dbir-data-breach-investigations-report.pdf",
+    "note": "Median days to fully remediate KEV vulnerabilities."
+   },
+   {
+    "year": 2026,
+    "value": 43.0,
+    "unit": "days",
+    "kind": "analysis",
+    "source": "Verizon 2026 Data Breach Investigations Report",
+    "source_url": "https://www.verizon.com/business/resources/T343/reports/2026-dbir-data-breach-investigations-report.pdf",
+    "note": "Median days to fully remediate KEV vulnerabilities; only 26% fully remediated."
+   }
+  ],
+  "dbir_vuln_initial_access": [
+   {
+    "year": 2024,
+    "value": 14.0,
+    "unit": "% of breaches",
+    "kind": "analysis",
+    "source": "Verizon 2024 Data Breach Investigations Report",
+    "source_url": "https://www.verizon.com/business/resources/reports/dbir/",
+    "note": "Exploitation of vulnerabilities as initial access; data from late 2022 to late 2023. Nearly triple the prior year."
+   },
+   {
+    "year": 2025,
+    "value": 20.0,
+    "unit": "% of breaches",
+    "kind": "analysis",
+    "source": "Verizon 2026 DBIR (prior-year comparison)",
+    "source_url": "https://www.verizon.com/business/resources/T343/reports/2026-dbir-data-breach-investigations-report.pdf",
+    "note": "Value for the 2025 report as restated in the 2026 report."
+   },
+   {
+    "year": 2026,
+    "value": 31.0,
+    "unit": "% of breaches",
+    "kind": "analysis",
+    "source": "Verizon 2026 Data Breach Investigations Report",
+    "source_url": "https://www.verizon.com/business/resources/T343/reports/2026-dbir-data-breach-investigations-report.pdf",
+    "note": "Data Nov 2024 to Oct 2025. Now the top initial access vector, ahead of credential abuse (13%)."
+   }
+  ],
+  "gartner_security_spend": [
+   {
+    "year": 2017,
+    "value": 86.4,
+    "unit": "USD bn",
+    "kind": "estimate",
+    "source": "Gartner press release, 2017-08-16",
+    "source_url": "https://www.gartner.com/en/newsroom/press-releases/2017-08-16-gartner-says-worldwide-information-security-spending-will-grow-7-percent-to-reach-86-billion-in-2017",
+    "note": "Pre-2018 market definition."
+   },
+   {
+    "year": 2018,
+    "value": 114.2,
+    "unit": "USD bn",
+    "kind": "estimate",
+    "source": "Gartner press release, 2018-08-15",
+    "source_url": "https://www.gartner.com/en/newsroom/press-releases/2018-08-15-gartner-forecasts-worldwide-information-security-spending-to-exceed-124-billion-in-2019",
+    "note": "Series break: Gartner widened the market definition in July 2018 (added integrated risk management, threat intelligence and more)."
+   },
+   {
+    "year": 2019,
+    "value": 124.1,
+    "unit": "USD bn",
+    "kind": "forecast",
+    "source": "Gartner press release, 2018-08-15",
+    "source_url": "https://www.gartner.com/en/newsroom/press-releases/2018-08-15-gartner-forecasts-worldwide-information-security-spending-to-exceed-124-billion-in-2019",
+    "note": "Forecast made in 2018."
+   },
+   {
+    "year": 2021,
+    "value": 150.4,
+    "unit": "USD bn",
+    "kind": "forecast",
+    "source": "Gartner press release, 2021-05-17",
+    "source_url": "https://www.gartner.com/en/newsroom/press-releases/2021-05-17-gartner-forecasts-worldwide-security-and-risk-managem",
+    "note": "Security and risk management forecast."
+   },
+   {
+    "year": 2022,
+    "value": 169.2,
+    "unit": "USD bn",
+    "kind": "derived",
+    "source": "Gartner press release, 2022-10-13",
+    "source_url": "https://www.gartner.com/en/newsroom/press-releases/2022-10-13-gartner-identifies-three-factors-influencing-growth-i",
+    "note": "Derived: release forecasts $188.3 bn for 2023, up 11.3%."
+   },
+   {
+    "year": 2023,
+    "value": 188.1,
+    "unit": "USD bn",
+    "kind": "estimate",
+    "source": "Gartner press release, 2023-09-28",
+    "source_url": "https://www.gartner.com/en/newsroom/press-releases/2023-09-28-gartner-forecasts-global-security-and-risk-management-spending-to-grow-14-percent-in-2024",
+    "note": "Security and risk management end-user spending."
+   },
+   {
+    "year": 2024,
+    "value": 193.0,
+    "unit": "USD bn",
+    "kind": "estimate",
+    "source": "Gartner press release, 2025-07-29",
+    "source_url": "https://www.gartner.com/en/newsroom/press-releases/2025-07-29-gartner-forecasts-worldwide-end-user-spending-on-information-security-to-total-213-billion-us-dollars-in-2025",
+    "note": "Restated value (the 2024 release had $183.9 bn)."
+   },
+   {
+    "year": 2025,
+    "value": 213.0,
+    "unit": "USD bn",
+    "kind": "estimate",
+    "source": "Gartner press release, 2025-07-29",
+    "source_url": "https://www.gartner.com/en/newsroom/press-releases/2025-07-29-gartner-forecasts-worldwide-end-user-spending-on-information-security-to-total-213-billion-us-dollars-in-2025",
+    "note": "End-user spending on information security."
+   },
+   {
+    "year": 2026,
+    "value": 244.0,
+    "unit": "USD bn",
+    "kind": "forecast",
+    "source": "Gartner, Forecast Analysis: Information Security, Worldwide, 2026",
+    "source_url": "https://www.gartner.com/en/documents/7408930",
+    "note": "Forecast, 11.6% constant-currency growth."
+   }
+  ],
+  "gtig_zero_days": [
+   {
+    "year": 2023,
+    "value": 100.0,
+    "unit": "zero-days",
+    "kind": "analysis",
+    "source": "Google Threat Intelligence Group, 2025 Zero-Days in Review",
+    "source_url": "https://cloud.google.com/blog/topics/threat-intelligence/2025-zero-day-review",
+    "note": "Restated count for 2023."
+   },
+   {
+    "year": 2024,
+    "value": 78.0,
+    "unit": "zero-days",
+    "kind": "analysis",
+    "source": "Google Threat Intelligence Group, 2025 Zero-Days in Review",
+    "source_url": "https://cloud.google.com/blog/topics/threat-intelligence/2025-zero-day-review",
+    "note": "Restated count for 2024."
+   },
+   {
+    "year": 2025,
+    "value": 90.0,
+    "unit": "zero-days",
+    "kind": "analysis",
+    "source": "Google Threat Intelligence Group, 2025 Zero-Days in Review",
+    "source_url": "https://cloud.google.com/blog/topics/threat-intelligence/2025-zero-day-review",
+    "note": "48% targeted enterprise software and appliances."
+   }
+  ],
+  "ibm_breach_cost": [
+   {
+    "year": 2015,
+    "value": 3.79,
+    "unit": "USD m",
+    "kind": "survey",
+    "source": "IBM / Ponemon Cost of a Data Breach Report 2015",
+    "source_url": "https://www.ibm.com/reports/data-breach",
+    "note": "Global average total cost per breach; study year, breaches from the prior 12 months. Not inflation adjusted."
+   },
+   {
+    "year": 2016,
+    "value": 4.0,
+    "unit": "USD m",
+    "kind": "survey",
+    "source": "IBM / Ponemon Cost of a Data Breach Report 2016",
+    "source_url": "https://www.ibm.com/reports/data-breach",
+    "note": "Global average total cost per breach; study year, breaches from the prior 12 months. Not inflation adjusted."
+   },
+   {
+    "year": 2017,
+    "value": 3.62,
+    "unit": "USD m",
+    "kind": "survey",
+    "source": "IBM / Ponemon Cost of a Data Breach Report 2017",
+    "source_url": "https://www.ibm.com/reports/data-breach",
+    "note": "Global average total cost per breach; study year, breaches from the prior 12 months. Not inflation adjusted."
+   },
+   {
+    "year": 2018,
+    "value": 3.86,
+    "unit": "USD m",
+    "kind": "survey",
+    "source": "IBM / Ponemon Cost of a Data Breach Report 2018",
+    "source_url": "https://www.ibm.com/reports/data-breach",
+    "note": "Global average total cost per breach; study year, breaches from the prior 12 months. Not inflation adjusted."
+   },
+   {
+    "year": 2019,
+    "value": 3.92,
+    "unit": "USD m",
+    "kind": "survey",
+    "source": "IBM / Ponemon Cost of a Data Breach Report 2019",
+    "source_url": "https://www.ibm.com/reports/data-breach",
+    "note": "Global average total cost per breach; study year, breaches from the prior 12 months. Not inflation adjusted."
+   },
+   {
+    "year": 2020,
+    "value": 3.86,
+    "unit": "USD m",
+    "kind": "survey",
+    "source": "IBM / Ponemon Cost of a Data Breach Report 2020",
+    "source_url": "https://www.ibm.com/reports/data-breach",
+    "note": "Global average total cost per breach; study year, breaches from the prior 12 months. Not inflation adjusted."
+   },
+   {
+    "year": 2021,
+    "value": 4.24,
+    "unit": "USD m",
+    "kind": "survey",
+    "source": "IBM / Ponemon Cost of a Data Breach Report 2021",
+    "source_url": "https://www.ibm.com/reports/data-breach",
+    "note": "Global average total cost per breach; study year, breaches from the prior 12 months. Not inflation adjusted."
+   },
+   {
+    "year": 2022,
+    "value": 4.35,
+    "unit": "USD m",
+    "kind": "survey",
+    "source": "IBM / Ponemon Cost of a Data Breach Report 2022",
+    "source_url": "https://www.ibm.com/reports/data-breach",
+    "note": "Global average total cost per breach; study year, breaches from the prior 12 months. Not inflation adjusted."
+   },
+   {
+    "year": 2023,
+    "value": 4.45,
+    "unit": "USD m",
+    "kind": "survey",
+    "source": "IBM / Ponemon Cost of a Data Breach Report 2023",
+    "source_url": "https://www.ibm.com/reports/data-breach",
+    "note": "Global average total cost per breach; study year, breaches from the prior 12 months. Not inflation adjusted."
+   },
+   {
+    "year": 2024,
+    "value": 4.88,
+    "unit": "USD m",
+    "kind": "survey",
+    "source": "IBM / Ponemon Cost of a Data Breach Report 2024",
+    "source_url": "https://www.ibm.com/reports/data-breach",
+    "note": "Global average total cost per breach; study year, breaches from the prior 12 months. Not inflation adjusted."
+   },
+   {
+    "year": 2025,
+    "value": 4.44,
+    "unit": "USD m",
+    "kind": "survey",
+    "source": "IBM / Ponemon Cost of a Data Breach Report 2025",
+    "source_url": "https://www.ibm.com/reports/data-breach",
+    "note": "Global average total cost per breach; study year, breaches from the prior 12 months. Not inflation adjusted."
+   },
+   {
+    "year": 2026,
+    "value": 4.99,
+    "unit": "USD m",
+    "kind": "survey",
+    "source": "IBM / Ponemon Cost of a Data Breach Report 2026",
+    "source_url": "https://newsroom.ibm.com/2026-07-29-ibm-study-one-in-four-malicious-breaches-are-ai-enabled,-costing-companies-6-million-on-average",
+    "note": "Global average total cost per breach; study year, breaches from the prior 12 months. Not inflation adjusted."
+   }
+  ],
+  "ic3_complaints": [
+   {
+    "year": 2015,
+    "value": 288012.0,
+    "unit": "complaints",
+    "kind": "reported",
+    "source": "FBI IC3 Internet Crime Report 2015",
+    "source_url": "https://www.ic3.gov/annualreport/reports",
+    "note": "Complaints filed with the FBI Internet Crime Complaint Center (mostly US victims)."
+   },
+   {
+    "year": 2016,
+    "value": 298728.0,
+    "unit": "complaints",
+    "kind": "reported",
+    "source": "FBI IC3 Internet Crime Report 2016",
+    "source_url": "https://www.ic3.gov/annualreport/reports",
+    "note": "Complaints filed with the FBI Internet Crime Complaint Center (mostly US victims)."
+   },
+   {
+    "year": 2017,
+    "value": 301580.0,
+    "unit": "complaints",
+    "kind": "reported",
+    "source": "FBI IC3 Internet Crime Report 2017",
+    "source_url": "https://www.ic3.gov/annualreport/reports",
+    "note": "Complaints filed with the FBI Internet Crime Complaint Center (mostly US victims)."
+   },
+   {
+    "year": 2018,
+    "value": 351937.0,
+    "unit": "complaints",
+    "kind": "reported",
+    "source": "FBI IC3 Internet Crime Report 2018",
+    "source_url": "https://www.ic3.gov/annualreport/reports",
+    "note": "Complaints filed with the FBI Internet Crime Complaint Center (mostly US victims)."
+   },
+   {
+    "year": 2019,
+    "value": 467361.0,
+    "unit": "complaints",
+    "kind": "reported",
+    "source": "FBI IC3 Internet Crime Report 2019",
+    "source_url": "https://www.ic3.gov/annualreport/reports",
+    "note": "Complaints filed with the FBI Internet Crime Complaint Center (mostly US victims)."
+   },
+   {
+    "year": 2020,
+    "value": 791790.0,
+    "unit": "complaints",
+    "kind": "reported",
+    "source": "FBI IC3 Internet Crime Report 2020",
+    "source_url": "https://www.ic3.gov/annualreport/reports",
+    "note": "Complaints filed with the FBI Internet Crime Complaint Center (mostly US victims)."
+   },
+   {
+    "year": 2021,
+    "value": 847376.0,
+    "unit": "complaints",
+    "kind": "reported",
+    "source": "FBI IC3 Internet Crime Report 2021",
+    "source_url": "https://www.ic3.gov/annualreport/reports",
+    "note": "Complaints filed with the FBI Internet Crime Complaint Center (mostly US victims)."
+   },
+   {
+    "year": 2022,
+    "value": 800944.0,
+    "unit": "complaints",
+    "kind": "reported",
+    "source": "FBI IC3 Internet Crime Report 2022",
+    "source_url": "https://www.ic3.gov/annualreport/reports",
+    "note": "Complaints filed with the FBI Internet Crime Complaint Center (mostly US victims)."
+   },
+   {
+    "year": 2023,
+    "value": 880418.0,
+    "unit": "complaints",
+    "kind": "reported",
+    "source": "FBI IC3 Internet Crime Report 2023",
+    "source_url": "https://www.ic3.gov/annualreport/reports",
+    "note": "Complaints filed with the FBI Internet Crime Complaint Center (mostly US victims)."
+   },
+   {
+    "year": 2024,
+    "value": 859532.0,
+    "unit": "complaints",
+    "kind": "reported",
+    "source": "FBI IC3 Internet Crime Report 2024",
+    "source_url": "https://www.ic3.gov/annualreport/reports",
+    "note": "Complaints filed with the FBI Internet Crime Complaint Center (mostly US victims)."
+   },
+   {
+    "year": 2025,
+    "value": 1008597.0,
+    "unit": "complaints",
+    "kind": "reported",
+    "source": "FBI IC3 Internet Crime Report 2025",
+    "source_url": "https://www.ic3.gov/AnnualReport/Reports/2025_IC3Report.pdf",
+    "note": "Complaints filed with the FBI Internet Crime Complaint Center (mostly US victims)."
+   }
+  ],
+  "ic3_losses": [
+   {
+    "year": 2015,
+    "value": 1.07,
+    "unit": "USD bn",
+    "kind": "reported",
+    "source": "FBI IC3 Internet Crime Report 2015",
+    "source_url": "https://www.ic3.gov/annualreport/reports",
+    "note": "Losses reported by victims; fraud dominates (investment scams, BEC)."
+   },
+   {
+    "year": 2016,
+    "value": 1.45,
+    "unit": "USD bn",
+    "kind": "reported",
+    "source": "FBI IC3 Internet Crime Report 2016",
+    "source_url": "https://www.ic3.gov/annualreport/reports",
+    "note": "Losses reported by victims; fraud dominates (investment scams, BEC)."
+   },
+   {
+    "year": 2017,
+    "value": 1.42,
+    "unit": "USD bn",
+    "kind": "reported",
+    "source": "FBI IC3 Internet Crime Report 2017",
+    "source_url": "https://www.ic3.gov/annualreport/reports",
+    "note": "Losses reported by victims; fraud dominates (investment scams, BEC)."
+   },
+   {
+    "year": 2018,
+    "value": 2.71,
+    "unit": "USD bn",
+    "kind": "reported",
+    "source": "FBI IC3 Internet Crime Report 2018",
+    "source_url": "https://www.ic3.gov/annualreport/reports",
+    "note": "Losses reported by victims; fraud dominates (investment scams, BEC)."
+   },
+   {
+    "year": 2019,
+    "value": 3.5,
+    "unit": "USD bn",
+    "kind": "reported",
+    "source": "FBI IC3 Internet Crime Report 2019",
+    "source_url": "https://www.ic3.gov/annualreport/reports",
+    "note": "Losses reported by victims; fraud dominates (investment scams, BEC)."
+   },
+   {
+    "year": 2020,
+    "value": 4.2,
+    "unit": "USD bn",
+    "kind": "reported",
+    "source": "FBI IC3 Internet Crime Report 2020",
+    "source_url": "https://www.ic3.gov/annualreport/reports",
+    "note": "Losses reported by victims; fraud dominates (investment scams, BEC)."
+   },
+   {
+    "year": 2021,
+    "value": 6.9,
+    "unit": "USD bn",
+    "kind": "reported",
+    "source": "FBI IC3 Internet Crime Report 2021",
+    "source_url": "https://www.ic3.gov/annualreport/reports",
+    "note": "Losses reported by victims; fraud dominates (investment scams, BEC)."
+   },
+   {
+    "year": 2022,
+    "value": 10.3,
+    "unit": "USD bn",
+    "kind": "reported",
+    "source": "FBI IC3 Internet Crime Report 2022",
+    "source_url": "https://www.ic3.gov/annualreport/reports",
+    "note": "Losses reported by victims; fraud dominates (investment scams, BEC)."
+   },
+   {
+    "year": 2023,
+    "value": 12.5,
+    "unit": "USD bn",
+    "kind": "reported",
+    "source": "FBI IC3 Internet Crime Report 2023",
+    "source_url": "https://www.ic3.gov/annualreport/reports",
+    "note": "Losses reported by victims; fraud dominates (investment scams, BEC)."
+   },
+   {
+    "year": 2024,
+    "value": 16.6,
+    "unit": "USD bn",
+    "kind": "reported",
+    "source": "FBI IC3 Internet Crime Report 2024",
+    "source_url": "https://www.ic3.gov/annualreport/reports",
+    "note": "Losses reported by victims; fraud dominates (investment scams, BEC)."
+   },
+   {
+    "year": 2025,
+    "value": 20.877,
+    "unit": "USD bn",
+    "kind": "reported",
+    "source": "FBI IC3 Internet Crime Report 2025",
+    "source_url": "https://www.ic3.gov/AnnualReport/Reports/2025_IC3Report.pdf",
+    "note": "Losses reported by victims; fraud dominates (investment scams, BEC)."
+   }
+  ],
+  "isc2_gap": [
+   {
+    "year": 2019,
+    "value": 4.07,
+    "unit": "people m",
+    "kind": "survey estimate",
+    "source": "ISC2 Cybersecurity Workforce Study",
+    "source_url": "https://media.isc2.org/-/media/Project/ISC2/Main/Media/documents/research/ISC2_Cybersecurity_Workforce_Study_2023.pdf",
+    "note": "Historical estimate as charted in the 2023 study."
+   },
+   {
+    "year": 2020,
+    "value": 3.12,
+    "unit": "people m",
+    "kind": "survey estimate",
+    "source": "ISC2 Cybersecurity Workforce Study",
+    "source_url": "https://media.isc2.org/-/media/Project/ISC2/Main/Media/documents/research/ISC2_Cybersecurity_Workforce_Study_2023.pdf",
+    "note": "Historical estimate as charted in the 2023 study."
+   },
+   {
+    "year": 2021,
+    "value": 2.72,
+    "unit": "people m",
+    "kind": "survey estimate",
+    "source": "ISC2 Cybersecurity Workforce Study",
+    "source_url": "https://media.isc2.org/-/media/Project/ISC2/Main/Media/documents/research/ISC2_Cybersecurity_Workforce_Study_2023.pdf",
+    "note": "Historical estimate as charted in the 2023 study."
+   },
+   {
+    "year": 2022,
+    "value": 3.4,
+    "unit": "people m",
+    "kind": "survey estimate",
+    "source": "ISC2 Cybersecurity Workforce Study",
+    "source_url": "https://media.isc2.org/-/media/Project/ISC2/Main/Media/documents/research/ISC2-Cybersecurity-Workforce-Study-2022.pdf",
+    "note": "Additional professionals needed to secure organizations."
+   },
+   {
+    "year": 2023,
+    "value": 4.0,
+    "unit": "people m",
+    "kind": "survey estimate",
+    "source": "ISC2 Cybersecurity Workforce Study",
+    "source_url": "https://media.isc2.org/-/media/Project/ISC2/Main/Media/documents/research/ISC2_Cybersecurity_Workforce_Study_2023.pdf",
+    "note": "Additional professionals needed to secure organizations."
+   },
+   {
+    "year": 2024,
+    "value": 4.8,
+    "unit": "people m",
+    "kind": "survey estimate",
+    "source": "ISC2 Cybersecurity Workforce Study",
+    "source_url": "https://www.isc2.org/Insights/2024/10/Cybersecurity-Workforce-INSIGHTS-October-2024",
+    "note": "Additional professionals needed to secure organizations."
+   }
+  ],
+  "isc2_skills_need": [
+   {
+    "year": 2025,
+    "value": 59.0,
+    "unit": "%",
+    "kind": "survey",
+    "source": "2025 ISC2 Cybersecurity Workforce Study",
+    "source_url": "https://www.isc2.org/Insights/2025/12/2025-ISC2-Cybersecurity-Workforce-Study",
+    "note": "Share reporting critical or significant skills needs (44% in 2024). ISC2 stopped publishing a headcount gap in 2025."
+   }
+  ],
+  "isc2_workforce": [
+   {
+    "year": 2019,
+    "value": 2.8,
+    "unit": "people m",
+    "kind": "survey estimate",
+    "source": "ISC2 Cybersecurity Workforce Study",
+    "source_url": "https://media.isc2.org/-/media/Project/ISC2/Main/Media/documents/research/ISC2_Cybersecurity_Workforce_Study_2023.pdf",
+    "note": "Historical estimate as charted in the 2023 study."
+   },
+   {
+    "year": 2020,
+    "value": 3.5,
+    "unit": "people m",
+    "kind": "survey estimate",
+    "source": "ISC2 Cybersecurity Workforce Study",
+    "source_url": "https://media.isc2.org/-/media/Project/ISC2/Main/Media/documents/research/ISC2_Cybersecurity_Workforce_Study_2023.pdf",
+    "note": "Historical estimate as charted in the 2023 study."
+   },
+   {
+    "year": 2021,
+    "value": 4.19,
+    "unit": "people m",
+    "kind": "survey estimate",
+    "source": "ISC2 Cybersecurity Workforce Study",
+    "source_url": "https://media.isc2.org/-/media/Project/ISC2/Main/Media/documents/research/ISC2_Cybersecurity_Workforce_Study_2023.pdf",
+    "note": "Historical estimate as charted in the 2023 study."
+   },
+   {
+    "year": 2022,
+    "value": 4.7,
+    "unit": "people m",
+    "kind": "survey estimate",
+    "source": "ISC2 Cybersecurity Workforce Study",
+    "source_url": "https://media.isc2.org/-/media/Project/ISC2/Main/Media/documents/research/ISC2-Cybersecurity-Workforce-Study-2022.pdf",
+    "note": "Estimated global cybersecurity workforce."
+   },
+   {
+    "year": 2023,
+    "value": 5.5,
+    "unit": "people m",
+    "kind": "survey estimate",
+    "source": "ISC2 Cybersecurity Workforce Study",
+    "source_url": "https://media.isc2.org/-/media/Project/ISC2/Main/Media/documents/research/ISC2_Cybersecurity_Workforce_Study_2023.pdf",
+    "note": "Estimated global cybersecurity workforce."
+   },
+   {
+    "year": 2024,
+    "value": 5.5,
+    "unit": "people m",
+    "kind": "survey estimate",
+    "source": "ISC2 Cybersecurity Workforce Study",
+    "source_url": "https://www.isc2.org/Insights/2024/10/Cybersecurity-Workforce-INSIGHTS-October-2024",
+    "note": "Estimated global cybersecurity workforce."
+   }
+  ],
+  "leak_site_victims_2025": [
+   {
+    "year": 2025,
+    "value": 7458.0,
+    "unit": "victims",
+    "kind": "tracker",
+    "source": "Searchlight Cyber (via SecurityBrief)",
+    "source_url": "https://securitybrief.co.uk/story/record-ransomware-surge-as-7-458-victims-named-in-2025",
+    "note": "Searchlight Cyber"
+   },
+   {
+    "year": 2025,
+    "value": 7307.0,
+    "unit": "victims",
+    "kind": "tracker",
+    "source": "Breachsense, State of Ransomware 2025",
+    "source_url": "https://www.breachsense.com/ransomware-reports/annual-report-2025/",
+    "note": "Breachsense"
+   },
+   {
+    "year": 2025,
+    "value": 7419.0,
+    "unit": "victims",
+    "kind": "tracker",
+    "source": "Comparitech (via UVRN Research)",
+    "source_url": "https://www.uvrn.org/research/ransomware-leak-site-victims-2025-record-tracker-count-spread",
+    "note": "Comparitech"
+   },
+   {
+    "year": 2025,
+    "value": 7874.0,
+    "unit": "victims",
+    "kind": "tracker",
+    "source": "NCC Group (via UVRN Research)",
+    "source_url": "https://www.uvrn.org/research/ransomware-leak-site-victims-2025-record-tracker-count-spread",
+    "note": "NCC Group"
+   },
+   {
+    "year": 2025,
+    "value": 7079.0,
+    "unit": "victims",
+    "kind": "tracker",
+    "source": "BlackFog (via UVRN Research)",
+    "source_url": "https://www.uvrn.org/research/ransomware-leak-site-victims-2025-record-tracker-count-spread",
+    "note": "BlackFog"
+   },
+   {
+    "year": 2025,
+    "value": 8159.0,
+    "unit": "victims",
+    "kind": "tracker",
+    "source": "Picus Security (via UVRN Research)",
+    "source_url": "https://www.uvrn.org/research/ransomware-leak-site-victims-2025-record-tracker-count-spread",
+    "note": "Picus Security"
+   },
+   {
+    "year": 2025,
+    "value": 8835.0,
+    "unit": "victims",
+    "kind": "tracker",
+    "source": "Ransomnews Ransomtracker 2025",
+    "source_url": "https://ransomnews.com/ransomtracker/2025/",
+    "note": "Ransomnews"
+   }
+  ],
+  "mandiant_tte_days": [
+   {
+    "year": 2019,
+    "value": 63.0,
+    "unit": "days",
+    "kind": "analysis",
+    "source": "Mandiant, Time-to-Exploit Trends 2021-2022",
+    "source_url": "https://cloud.google.com/blog/topics/threat-intelligence/time-to-exploit-trends-2021-2022/",
+    "note": "Period 2018-2019. Average days between disclosure and first known exploitation."
+   },
+   {
+    "year": 2020,
+    "value": 44.0,
+    "unit": "days",
+    "kind": "analysis",
+    "source": "Mandiant, Time-to-Exploit Trends 2021-2022",
+    "source_url": "https://cloud.google.com/blog/topics/threat-intelligence/time-to-exploit-trends-2021-2022/",
+    "note": "Period 2020."
+   },
+   {
+    "year": 2022,
+    "value": 32.0,
+    "unit": "days",
+    "kind": "analysis",
+    "source": "Mandiant, Time-to-Exploit Trends 2021-2022",
+    "source_url": "https://cloud.google.com/blog/topics/threat-intelligence/time-to-exploit-trends-2021-2022/",
+    "note": "Period 2021-2022."
+   },
+   {
+    "year": 2023,
+    "value": 5.0,
+    "unit": "days",
+    "kind": "analysis",
+    "source": "Mandiant, How Low Can You Go? 2023 Time-to-Exploit Trends",
+    "source_url": "https://cloud.google.com/blog/topics/threat-intelligence/time-to-exploit-trends-2023",
+    "note": "138 exploited vulnerabilities, 70% exploited as zero-days."
+   },
+   {
+    "year": 2024,
+    "value": -1.0,
+    "unit": "days",
+    "kind": "analysis",
+    "source": "Mandiant / GTIG 2024 time-to-exploit analysis (via CIO)",
+    "source_url": "https://www.cio.com/article/4072435/when-time-turns-against-you-what-a-negative-tte-means-for-cyber-resilience.html",
+    "note": "First negative average: exploitation typically starts before a patch exists. Full report is customer-only."
+   }
+  ]
+ },
+ "milestones": [
+  {
+   "date": "2022-11-30",
+   "side": "ecosystem",
+   "title": "ChatGPT launches",
+   "detail": "General-purpose LLMs reach the public; the AI era of this story starts here.",
+   "figure": null,
+   "source": "OpenAI",
+   "source_url": "https://openai.com/index/chatgpt/"
+  },
+  {
+   "date": "2025-06-24",
+   "side": "defense",
+   "title": "An AI tops the HackerOne US leaderboard",
+   "detail": "XBOW, an autonomous pentesting system, ranks first in the US after about 1,060 submitted reports in a few months.",
+   "figure": 1060.0,
+   "source": "XBOW",
+   "source_url": "https://xbow.com/blog/top-1-how-xbow-did-it"
+  },
+  {
+   "date": "2025-07-15",
+   "side": "defense",
+   "title": "Big Sleep stops an exploit before it ships",
+   "detail": "Google's Big Sleep agent finds SQLite flaw CVE-2025-6965, known to attackers but not yet exploited, and it is patched first.",
+   "figure": null,
+   "source": "Google",
+   "source_url": "https://blog.google/innovation-and-ai/technology/safety-security/cybersecurity-updates-summer-2025/"
+  },
+  {
+   "date": "2025-08-04",
+   "side": "defense",
+   "title": "Big Sleep reports its first 20 bugs",
+   "detail": "Twenty vulnerabilities in open source projects such as FFmpeg and ImageMagick, found and reproduced by the agent.",
+   "figure": 20.0,
+   "source": "TechCrunch",
+   "source_url": "https://techcrunch.com/2025/08/04/google-says-its-ai-based-bug-hunter-found-20-security-vulnerabilities/"
+  },
+  {
+   "date": "2025-08-08",
+   "side": "defense",
+   "title": "DARPA AIxCC finals",
+   "detail": "Autonomous systems find 54 of 63 planted bugs in 54 million lines of code, patch 43, and uncover 18 real vulnerabilities.",
+   "figure": 18.0,
+   "source": "DARPA",
+   "source_url": "https://www.darpa.mil/news/2025/aixcc-results"
+  },
+  {
+   "date": "2025-11-13",
+   "side": "offense",
+   "title": "First reported AI-orchestrated espionage campaign",
+   "detail": "Anthropic says a state-backed group used Claude Code to run 80 to 90 percent of an intrusion campaign against about 30 targets.",
+   "figure": 30.0,
+   "source": "Anthropic",
+   "source_url": "https://www.anthropic.com/news/disrupting-AI-espionage"
+  },
+  {
+   "date": "2026-03-05",
+   "side": "offense",
+   "title": "90 zero-days exploited in 2025",
+   "detail": "Google counts 90 zero-days used in the wild in 2025, almost half against enterprise products, and expects AI to speed up discovery.",
+   "figure": 90.0,
+   "source": "Google Threat Intelligence Group",
+   "source_url": "https://cloud.google.com/blog/topics/threat-intelligence/2025-zero-day-review"
+  },
+  {
+   "date": "2026-04-06",
+   "side": "offense",
+   "title": "AI scams enter the FBI ledger",
+   "detail": "The FBI's 2025 report lists nearly $893 million in losses tied to AI-enabled scams, out of $20.9 billion overall.",
+   "figure": 893.0,
+   "source": "FBI",
+   "source_url": "https://www.fbi.gov/news/press-releases/cryptocurrency-and-ai-scams-bilk-americans-of-billions"
+  },
+  {
+   "date": "2026-05-20",
+   "side": "offense",
+   "title": "Exploits become the top way in",
+   "detail": "Verizon's 2026 DBIR: exploitation of vulnerabilities is the first step in 31% of breaches, overtaking stolen credentials.",
+   "figure": 31.0,
+   "source": "Verizon",
+   "source_url": "https://www.verizon.com/business/resources/T343/reports/2026-dbir-data-breach-investigations-report.pdf"
+  },
+  {
+   "date": "2026-05-22",
+   "side": "defense",
+   "title": "Project Glasswing: 10,000 serious bugs in a month",
+   "detail": "About 50 partners using Claude Mythos Preview report over 10,000 high or critical vulnerabilities; 23,019 candidates flagged in open source.",
+   "figure": 10000.0,
+   "source": "Anthropic",
+   "source_url": "https://www.anthropic.com/research/glasswing-initial-update"
+  },
+  {
+   "date": "2026-07-29",
+   "side": "offense",
+   "title": "One in four breaches is AI-enabled",
+   "detail": "IBM's 2026 study: AI-driven attacks behind 1 in 4 malicious breaches; global average breach cost hits a record $4.99 million.",
+   "figure": 4.99,
+   "source": "IBM",
+   "source_url": "https://newsroom.ibm.com/2026-07-29-ibm-study-one-in-four-malicious-breaches-are-ai-enabled,-costing-companies-6-million-on-average"
+  }
+ ],
+ "index": {
+  "indicators": [
+   {
+    "id": "cves",
+    "label": "CVEs published",
+    "group": "pressure",
+    "source": "NVD",
+    "baseline_label": "2017-2019",
+    "baseline_value": 16152.3333,
+    "latest_year": 2025,
+    "latest_value": 48151.0,
+    "multiple": 2.9811
+   },
+   {
+    "id": "severe_cves",
+    "label": "Critical and high severity CVEs",
+    "group": "pressure",
+    "source": "NVD",
+    "baseline_label": "2017-2019",
+    "baseline_value": 9563.0,
+    "latest_year": 2025,
+    "latest_value": 23504.0,
+    "multiple": 2.4578
+   },
+   {
+    "id": "zero_days",
+    "label": "Zero-days exploited in the wild",
+    "group": "pressure",
+    "source": "Project Zero",
+    "baseline_label": "2017-2019",
+    "baseline_value": 18.0,
+    "latest_year": 2025,
+    "latest_value": 43.0,
+    "multiple": 2.3889
+   },
+   {
+    "id": "ransomware",
+    "label": "Ransomware leak-site victims",
+    "group": "pressure",
+    "source": "ransomware.live",
+    "baseline_label": "2022",
+    "baseline_value": 2833.0,
+    "latest_year": 2025,
+    "latest_value": 8145.0,
+    "multiple": 2.875
+   },
+   {
+    "id": "ic3_losses",
+    "label": "Cybercrime losses reported to the FBI",
+    "group": "pressure",
+    "source": "FBI IC3",
+    "baseline_label": "2017-2019",
+    "baseline_value": 2.5433,
+    "latest_year": 2025,
+    "latest_value": 20.877,
+    "multiple": 8.2085
+   },
+   {
+    "id": "breach_cost",
+    "label": "Average cost of a data breach",
+    "group": "pressure",
+    "source": "IBM",
+    "baseline_label": "2017-2019",
+    "baseline_value": 3.8,
+    "latest_year": 2026,
+    "latest_value": 4.99,
+    "multiple": 1.3132
+   },
+   {
+    "id": "spending",
+    "label": "Security spending",
+    "group": "response",
+    "source": "Gartner",
+    "baseline_label": "2018",
+    "baseline_value": 114.2,
+    "latest_year": 2025,
+    "latest_value": 213.0,
+    "multiple": 1.8651
+   },
+   {
+    "id": "workforce",
+    "label": "Security workforce",
+    "group": "response",
+    "source": "ISC2",
+    "baseline_label": "2019",
+    "baseline_value": 2.8,
+    "latest_year": 2024,
+    "latest_value": 5.5,
+    "multiple": 1.9643
+   }
+  ],
+  "summary": {
+   "pressure_multiple": 2.856,
+   "response_multiple": 1.914,
+   "ratio": 1.492,
+   "verdict": {
+    "level": 1,
+    "label": "Simmering",
+    "text": "Threats are growing a bit faster than defenses."
+   }
+  }
+ }
+}

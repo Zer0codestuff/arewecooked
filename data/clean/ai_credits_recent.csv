@@ -1,0 +1,43 @@
+cve,published,system,credit
+CVE-2026-94300,2026-10-21,OpenAI,"While this flaw was discovered in internal testing, ISC would like to thank Dave Aitel from OpenAI who independently discovered and responsibly reported the iss"
+CVE-2026-92824,2026-10-21,AISLE,Red Hat would like to thank AISLE Research for reporting this issue.
+CVE-2026-92823,2026-10-21,AISLE,Red Hat would like to thank AISLE Research for reporting this issue.
+CVE-2026-92822,2026-10-21,AISLE,Red Hat would like to thank AISLE Research for reporting this issue.
+CVE-2026-114038,2026-10-21,AISLE,This issue was discovered by Found by AISLE in partnership with Red Hat.
+CVE-2026-111815,2026-10-21,Theori Xint,"Yonghwa Lee, Xint by Theori"
+CVE-2026-109619,2026-10-21,OpenAI,OpenAI
+CVE-2026-109618,2026-10-21,OpenAI,OpenAI
+CVE-2026-107928,2026-10-20,Anthropic Claude,Anthropic
+CVE-2026-112991,2026-10-19,Anthropic Claude,Claude Opus 5 (1M context)
+CVE-2026-112192,2026-10-19,Anthropic Claude,Claude Opus 5
+CVE-2026-112188,2026-10-19,Anthropic Claude,Claude Opus 5
+CVE-2026-112184,2026-10-19,Anthropic Claude,Claude Opus 5.5 (1M context)
+CVE-2026-112183,2026-10-19,Anthropic Claude,Claude Opus 5.5 (1M context)
+CVE-2026-112180,2026-10-19,Anthropic Claude,Claude Opus 5.5 (1M context)
+CVE-2026-112179,2026-10-19,Anthropic Claude,Claude Opus 5.5 (1M context)
+CVE-2026-112178,2026-10-19,Anthropic Claude,Claude Opus 5.5 (1M context)
+CVE-2026-89088,2026-10-16,AISLE,This issue was discovered by Found by AISLE in partnership with Red Hat.
+CVE-2026-89085,2026-10-16,AISLE,Red Hat would like to thank AISLE Research for reporting this issue.
+CVE-2026-85977,2026-10-16,AISLE,This issue was discovered by Found by AISLE in partnership with Red Hat.
+CVE-2026-109588,2026-10-16,Anthropic Claude,Anthropic
+CVE-2026-109587,2026-10-16,Anthropic Claude,Anthropic
+CVE-2026-101311,2026-10-15,Anthropic Claude,Brian Delgado from Intel using Anthropic Opus 4.8
+CVE-2026-101310,2026-10-15,Anthropic Claude,Brian Delgado from Intel using Anthropic Opus 4.8
+CVE-2026-101309,2026-10-15,Anthropic Claude,Brian Delgado from Intel using Anthropic Opus 4.8
+CVE-2026-92392,2026-10-14,Anthropic Claude,Anthropic
+CVE-2026-86856,2026-10-14,Anthropic Claude,Red Hat would like to thank Anthropic Research for reporting this issue.
+CVE-2026-86847,2026-10-14,Anthropic Claude,Red Hat would like to thank Anthropic Research for reporting this issue.
+CVE-2026-86846,2026-10-14,Anthropic Claude,Red Hat would like to thank Anthropic Research for reporting this issue.
+CVE-2026-86845,2026-10-14,Anthropic Claude,Red Hat would like to thank Anthropic Research for reporting this issue.
+CVE-2026-86566,2026-10-14,Anthropic Claude,Red Hat would like to thank Anthropic Research and Arthur Chan (Ada Logics) for reporting this issue.
+CVE-2026-59774,2026-10-14,XBOW,https://github.com/fedek-xbow
+CVE-2026-107350,2026-10-14,OpenAI,"Thanks to Dave Aitel (@daveaitel-openai, OpenAI) for finding and reporting this issue."
+CVE-2026-105236,2026-10-14,Theori Xint,Yonghwa Lee / Xint by Theori
+CVE-2026-79611,2026-10-13,Anthropic Claude,"This issue was discovered by Claude Opus and diagnosed as a security issue
+by Teddy Astie of Vates."
+CVE-2026-79610,2026-10-13,Anthropic Claude,"This issue was discovered by Claude Opus and diagnosed as a security issue
+by Teddy Astie of Vates."
+CVE-2026-77207,2026-10-13,Anthropic Claude,Claude (Anthropic)
+CVE-2026-77206,2026-10-13,Anthropic Claude,Claude (Anthropic)
+CVE-2026-110036,2026-10-13,AISLE,This issue was discovered by Found by AISLE in partnership with Red Hat.
+CVE-2026-109733,2026-10-13,OpenAI,Amy Burnett of OpenAI

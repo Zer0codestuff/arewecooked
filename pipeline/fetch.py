@@ -10,7 +10,7 @@ already exist (delete them to refresh).
 
 from __future__ import annotations
 
-import json
+import re
 import subprocess
 import sys
 import time
@@ -30,23 +30,44 @@ def download(url: str, dest: Path, force: bool = False, headers: dict | None = N
         return dest
     print(f"  get  {url}")
     # curl handles big files, retries and redirects well
-    cmd = ["curl", "--http1.1", "-sSL", "--fail", "--retry", "5", "--retry-delay", "3", "-A", UA["User-Agent"], "-o", str(dest), url]
+    cmd = ["curl", "-sSL", "--fail", "--retry", "5", "--retry-delay", "3", "-A", UA["User-Agent"], "-o", str(dest), url]
     for k, v in (headers or {}).items():
         cmd[1:1] = ["-H", f"{k}: {v}"]
     subprocess.run(cmd, check=True)
     return dest
 
 
+def latest_release(repo: str) -> dict:
+    """Return the latest GitHub release metadata (public API, no token needed)."""
+    resp = requests.get(f"https://api.github.com/repos/{repo}/releases/latest", headers=UA, timeout=60)
+    resp.raise_for_status()
+    return resp.json()
+
+
 def src_cvelist():
     """Full CVE List (CVE JSON 5) from the CVE Program, all records incl. ADP data."""
-    rel = json.loads(subprocess.check_output(["gh", "api", "repos/CVEProject/cvelistV5/releases/latest"]))
+    rel = latest_release("CVEProject/cvelistV5")
     asset = next(a for a in rel["assets"] if a["name"].endswith("all_CVEs_at_midnight.zip.zip"))
     download(asset["browser_download_url"], RAW / "cvelist" / "cvelist.zip.zip")
     (RAW / "cvelist" / "RELEASE.txt").write_text(rel["tag_name"])
 
 
 def src_nvd():
-    """NVD CVE 2.0 yearly JSON feeds (NVD analysis status, CVSS, CWE, CPE)."""
+    """NVD CVE 2.0 data via the fkie-cad/nvd-json-data-feeds mirror (xz, served by GitHub).
+
+    The official nvd.nist.gov feed host is heavily throttled (minutes per file),
+    so the default uses this daily rebuilt mirror of the same NVD API 2.0 records.
+    Files are grouped by CVE ID year; processing uses the `published` field.
+    """
+    rel = latest_release("fkie-cad/nvd-json-data-feeds")
+    for asset in rel["assets"]:
+        if re.fullmatch(r"CVE-\d{4}\.json\.xz", asset["name"]):
+            download(asset["browser_download_url"], RAW / "nvd" / asset["name"], force=True)
+    (RAW / "nvd" / "RELEASE.txt").write_text(rel["tag_name"])
+
+
+def src_nvd_official():
+    """NVD CVE 2.0 yearly JSON feeds straight from nvd.nist.gov (slow, kept as fallback)."""
     for year in range(2002, 2027):
         download(f"https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-{year}.json.gz", RAW / "nvd" / f"nvdcve-2.0-{year}.json.gz")
         time.sleep(1)
@@ -98,8 +119,8 @@ def src_p0():
             print(f"  ! p0 {year} not available")
 
 
-def src_ransomware():
-    """ransomware.live: victims claimed on ransomware leak sites, month by month."""
+def src_ransomwarelive():
+    """Ransomware leak-site victim posts per month from the public ransomware.live API (v2)."""
     from datetime import date
 
     today = date.today()
@@ -107,47 +128,16 @@ def src_ransomware():
         for month in range(1, 13):
             if (year, month) > (today.year, today.month):
                 break
-            dest = RAW / "ransomware_live" / f"{year}-{month:02d}.json"
-            current = (year, month) >= (today.year, today.month - 1)
+            dest = RAW / "ransomwarelive" / f"{year}-{month:02d}.json"
+            current = (year, month) >= ((today.year, today.month - 1) if today.month > 1 else (today.year - 1, 12))
             try:
                 download(f"https://api.ransomware.live/v2/victims/{year}/{month:02d}", dest, force=current)
             except subprocess.CalledProcessError:
-                print(f"  ! ransomware.live {year}-{month:02d} failed")
-            time.sleep(1.5)
-
-
-TICKERS = [
-    # cybersecurity ETFs
-    "CIBR", "HACK", "BUG", "IHAK",
-    # benchmarks
-    "QQQ", "SPY",
-    # listed security vendors
-    "CRWD", "PANW", "FTNT", "ZS", "NET", "S", "OKTA", "CHKP", "CYBR", "TENB", "RPD", "QLYS",
-]
-
-
-def src_prices():
-    """Monthly adjusted prices from Yahoo Finance chart API."""
-    for t in TICKERS:
-        url = f"https://query1.finance.yahoo.com/v8/finance/chart/{t}?range=max&interval=1mo&events=div%2Csplit"
-        dest = RAW / "prices" / f"{t}.json"
-        dest.parent.mkdir(parents=True, exist_ok=True)
-        subprocess.run(["curl", "-sSL", "--fail", "-A", "Mozilla/5.0", "-o", str(dest), url], check=False)
-        time.sleep(1)
-
-
-def src_msrc():
-    """Microsoft Security Response Center CVRF: every monthly security update."""
-    idx = RAW / "msrc" / "updates.json"
-    download("https://api.msrc.microsoft.com/cvrf/v3.0/updates", idx, force=True, headers={"Accept": "application/json"})
-    for u in json.loads(idx.read_text())["value"]:
-        download(u["CvrfUrl"], RAW / "msrc" / f"{u['ID']}.json", headers={"Accept": "application/json"})
+                print(f"  ! ransomware.live {year}-{month:02d} not available")
+            time.sleep(1)
 
 
 SOURCES = {
-    "ransomware": src_ransomware,
-    "prices": src_prices,
-    "msrc": src_msrc,
     "kev": src_kev,
     "epss": src_epss,
     "hibp": src_hibp,
@@ -155,14 +145,19 @@ SOURCES = {
     "metasploit": src_metasploit,
     "nuclei": src_nuclei,
     "p0": src_p0,
+    "ransomwarelive": src_ransomwarelive,
     "osv": src_osv,
     "nvd": src_nvd,
+    "nvd_official": src_nvd_official,
     "cvelist": src_cvelist,
 }
 
+OPT_IN = {"osv", "nvd_official"}
+
 
 if __name__ == "__main__":
-    wanted = sys.argv[1:] or list(SOURCES)
+    # osv (package advisories, not used by the story yet) and nvd_official (slow) are opt-in.
+    wanted = sys.argv[1:] or [k for k in SOURCES if k not in OPT_IN]
     for name in wanted:
         print(f"[{name}]")
         try:

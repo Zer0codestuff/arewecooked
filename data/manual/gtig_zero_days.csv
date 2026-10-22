@@ -1,0 +1,4 @@
+metric,year,value,unit,kind,source,source_url,note
+gtig_zero_days,2023,100,zero-days,analysis,"Google Threat Intelligence Group, 2025 Zero-Days in Review",https://cloud.google.com/blog/topics/threat-intelligence/2025-zero-day-review,Restated count for 2023.
+gtig_zero_days,2024,78,zero-days,analysis,"Google Threat Intelligence Group, 2025 Zero-Days in Review",https://cloud.google.com/blog/topics/threat-intelligence/2025-zero-day-review,Restated count for 2024.
+gtig_zero_days,2025,90,zero-days,analysis,"Google Threat Intelligence Group, 2025 Zero-Days in Review",https://cloud.google.com/blog/topics/threat-intelligence/2025-zero-day-review,48% targeted enterprise software and appliances.

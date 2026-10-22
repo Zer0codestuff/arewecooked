@@ -1,0 +1,65 @@
+{
+  "as_of": "2026-10-22",
+  "sources": {
+    "cvelist": {
+      "built_as_of": "2026-10-22",
+      "tables": [
+        "ai_credits_month",
+        "ai_credits_tool",
+        "ai_credits_recent"
+      ]
+    },
+    "epss": {
+      "built_as_of": "2026-10-22",
+      "tables": [
+        "epss_buckets",
+        "epss_summary"
+      ]
+    },
+    "exploits": {
+      "built_as_of": "2026-10-22",
+      "tables": [
+        "exploits_by_year"
+      ]
+    },
+    "hibp": {
+      "built_as_of": "2026-10-22",
+      "tables": [
+        "breaches_by_year",
+        "breaches_largest"
+      ]
+    },
+    "kev": {
+      "built_as_of": "2026-10-22",
+      "tables": [
+        "kev_by_year",
+        "kev_lag_year",
+        "kev_vendors"
+      ]
+    },
+    "nvd": {
+      "built_as_of": "2026-10-22",
+      "tables": [
+        "cve_by_year",
+        "cve_by_month",
+        "cve_severity_year",
+        "nvd_status_year"
+      ]
+    },
+    "p0": {
+      "built_as_of": "2026-10-22",
+      "tables": [
+        "zeroday_by_year",
+        "zeroday_vendors"
+      ]
+    },
+    "ransomware": {
+      "built_as_of": "2026-10-22",
+      "tables": [
+        "ransomware_by_month",
+        "ransomware_by_year",
+        "ransomware_groups"
+      ]
+    }
+  }
+}

@@ -1,0 +1,8 @@
+metric,year,value,unit,kind,source,source_url,note
+leak_site_victims_2025,2025,7458,victims,tracker,Searchlight Cyber (via SecurityBrief),https://securitybrief.co.uk/story/record-ransomware-surge-as-7-458-victims-named-in-2025,Searchlight Cyber
+leak_site_victims_2025,2025,7307,victims,tracker,"Breachsense, State of Ransomware 2025",https://www.breachsense.com/ransomware-reports/annual-report-2025/,Breachsense
+leak_site_victims_2025,2025,7419,victims,tracker,Comparitech (via UVRN Research),https://www.uvrn.org/research/ransomware-leak-site-victims-2025-record-tracker-count-spread,Comparitech
+leak_site_victims_2025,2025,7874,victims,tracker,NCC Group (via UVRN Research),https://www.uvrn.org/research/ransomware-leak-site-victims-2025-record-tracker-count-spread,NCC Group
+leak_site_victims_2025,2025,7079,victims,tracker,BlackFog (via UVRN Research),https://www.uvrn.org/research/ransomware-leak-site-victims-2025-record-tracker-count-spread,BlackFog
+leak_site_victims_2025,2025,8159,victims,tracker,Picus Security (via UVRN Research),https://www.uvrn.org/research/ransomware-leak-site-victims-2025-record-tracker-count-spread,Picus Security
+leak_site_victims_2025,2025,8835,victims,tracker,Ransomnews Ransomtracker 2025,https://ransomnews.com/ransomtracker/2025/,Ransomnews

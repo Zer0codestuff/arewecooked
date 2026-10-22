@@ -1,0 +1,23 @@
+metric,year,value,unit,kind,source,source_url,note
+ic3_complaints,2015,288012,complaints,reported,FBI IC3 Internet Crime Report 2015,https://www.ic3.gov/annualreport/reports,Complaints filed with the FBI Internet Crime Complaint Center (mostly US victims).
+ic3_losses,2015,1.07,USD bn,reported,FBI IC3 Internet Crime Report 2015,https://www.ic3.gov/annualreport/reports,"Losses reported by victims; fraud dominates (investment scams, BEC)."
+ic3_complaints,2016,298728,complaints,reported,FBI IC3 Internet Crime Report 2016,https://www.ic3.gov/annualreport/reports,Complaints filed with the FBI Internet Crime Complaint Center (mostly US victims).
+ic3_losses,2016,1.45,USD bn,reported,FBI IC3 Internet Crime Report 2016,https://www.ic3.gov/annualreport/reports,"Losses reported by victims; fraud dominates (investment scams, BEC)."
+ic3_complaints,2017,301580,complaints,reported,FBI IC3 Internet Crime Report 2017,https://www.ic3.gov/annualreport/reports,Complaints filed with the FBI Internet Crime Complaint Center (mostly US victims).
+ic3_losses,2017,1.42,USD bn,reported,FBI IC3 Internet Crime Report 2017,https://www.ic3.gov/annualreport/reports,"Losses reported by victims; fraud dominates (investment scams, BEC)."
+ic3_complaints,2018,351937,complaints,reported,FBI IC3 Internet Crime Report 2018,https://www.ic3.gov/annualreport/reports,Complaints filed with the FBI Internet Crime Complaint Center (mostly US victims).
+ic3_losses,2018,2.71,USD bn,reported,FBI IC3 Internet Crime Report 2018,https://www.ic3.gov/annualreport/reports,"Losses reported by victims; fraud dominates (investment scams, BEC)."
+ic3_complaints,2019,467361,complaints,reported,FBI IC3 Internet Crime Report 2019,https://www.ic3.gov/annualreport/reports,Complaints filed with the FBI Internet Crime Complaint Center (mostly US victims).
+ic3_losses,2019,3.5,USD bn,reported,FBI IC3 Internet Crime Report 2019,https://www.ic3.gov/annualreport/reports,"Losses reported by victims; fraud dominates (investment scams, BEC)."
+ic3_complaints,2020,791790,complaints,reported,FBI IC3 Internet Crime Report 2020,https://www.ic3.gov/annualreport/reports,Complaints filed with the FBI Internet Crime Complaint Center (mostly US victims).
+ic3_losses,2020,4.2,USD bn,reported,FBI IC3 Internet Crime Report 2020,https://www.ic3.gov/annualreport/reports,"Losses reported by victims; fraud dominates (investment scams, BEC)."
+ic3_complaints,2021,847376,complaints,reported,FBI IC3 Internet Crime Report 2021,https://www.ic3.gov/annualreport/reports,Complaints filed with the FBI Internet Crime Complaint Center (mostly US victims).
+ic3_losses,2021,6.9,USD bn,reported,FBI IC3 Internet Crime Report 2021,https://www.ic3.gov/annualreport/reports,"Losses reported by victims; fraud dominates (investment scams, BEC)."
+ic3_complaints,2022,800944,complaints,reported,FBI IC3 Internet Crime Report 2022,https://www.ic3.gov/annualreport/reports,Complaints filed with the FBI Internet Crime Complaint Center (mostly US victims).
+ic3_losses,2022,10.3,USD bn,reported,FBI IC3 Internet Crime Report 2022,https://www.ic3.gov/annualreport/reports,"Losses reported by victims; fraud dominates (investment scams, BEC)."
+ic3_complaints,2023,880418,complaints,reported,FBI IC3 Internet Crime Report 2023,https://www.ic3.gov/annualreport/reports,Complaints filed with the FBI Internet Crime Complaint Center (mostly US victims).
+ic3_losses,2023,12.5,USD bn,reported,FBI IC3 Internet Crime Report 2023,https://www.ic3.gov/annualreport/reports,"Losses reported by victims; fraud dominates (investment scams, BEC)."
+ic3_complaints,2024,859532,complaints,reported,FBI IC3 Internet Crime Report 2024,https://www.ic3.gov/annualreport/reports,Complaints filed with the FBI Internet Crime Complaint Center (mostly US victims).
+ic3_losses,2024,16.6,USD bn,reported,FBI IC3 Internet Crime Report 2024,https://www.ic3.gov/annualreport/reports,"Losses reported by victims; fraud dominates (investment scams, BEC)."
+ic3_complaints,2025,1008597,complaints,reported,FBI IC3 Internet Crime Report 2025,https://www.ic3.gov/AnnualReport/Reports/2025_IC3Report.pdf,Complaints filed with the FBI Internet Crime Complaint Center (mostly US victims).
+ic3_losses,2025,20.877,USD bn,reported,FBI IC3 Internet Crime Report 2025,https://www.ic3.gov/AnnualReport/Reports/2025_IC3Report.pdf,"Losses reported by victims; fraud dominates (investment scams, BEC)."
