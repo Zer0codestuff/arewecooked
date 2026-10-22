@@ -115,6 +115,11 @@ def main():
     ytd = ytd.sort_values("cur", ascending=False).head(25).reset_index()
     ytd_total = same[same.year.isin([cur_year - 1, cur_year])].groupby("year").size().to_dict()
 
+    # Big vendors month by month: did something change in spring 2026?
+    vend_map = {"microsoft": "Microsoft", "oracle": "Oracle", "Chrome": "Google Chrome", "mozilla": "Mozilla", "apple": "Apple", "redhat": "Red Hat", "apache": "Apache", "ibm": "IBM"}
+    vm = df[df.assigner.isin(vend_map) & (df.month >= "2024-01-01")]
+    vendor_monthly = vm.pivot_table(index="month", columns="assigner", values="cve_id", aggfunc="count", fill_value=0).rename(columns=vend_map).reset_index()
+
     # ---------- severity ----------
     sev = df[df.year >= 2016].pivot_table(index="year", columns="severity", values="cve_id", aggfunc="count", fill_value=0)
     sev = sev.reindex(columns=SEV_ORDER, fill_value=0).reset_index()
@@ -130,6 +135,9 @@ def main():
     # ---------- AI attribution ----------
     ai = df[df.ai_finder.notna()]
     ai_monthly = ai[ai.month >= "2024-07-01"].pivot_table(index="month", columns="ai_finder", values="cve_id", aggfunc="count", fill_value=0)
+    full_months = pd.date_range("2024-07-01", df.month.max(), freq="MS")
+    ai_monthly = ai_monthly.reindex(full_months, fill_value=0)
+    ai_monthly.index.name = "month"
     top_orgs = ai.ai_finder.value_counts()
     ai_by_org = top_orgs.rename_axis("org").reset_index(name="cves")
     keep = list(top_orgs.index[:7])
@@ -137,7 +145,7 @@ def main():
     ai_monthly_slim["Others"] = ai_monthly.drop(columns=keep).sum(axis=1)
     ai_monthly_slim = ai_monthly_slim.reset_index()
     all_monthly = df[df.month >= "2024-07-01"].groupby("month").size()
-    ai_share = (ai.groupby("month").size() / all_monthly).dropna().rename("share").reset_index()
+    ai_share = (ai.groupby("month").size().reindex(all_monthly.index, fill_value=0) / all_monthly).rename("share").reset_index()
     ai_share = ai_share[ai_share.month >= "2024-07-01"]
 
     sev_cmp = []
@@ -245,6 +253,7 @@ def main():
         "monthly": records(monthly),
         "monthly_group": records(monthly_group),
         "ytd_assigners": records(ytd),
+        "vendor_monthly": records(vendor_monthly),
         "severity": records(sev),
         "crit_high_monthly": records(crit_high_monthly),
         "cwe_top": {str(y): [{"cwe": k, "n": int(v)} for k, v in s.items()] for y, s in from_cwe.items()},
