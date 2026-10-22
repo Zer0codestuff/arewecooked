@@ -1,0 +1,45 @@
+curl: (92) HTTP/2 stream 1 was not closed cleanly: INTERNAL_ERROR (err 2)
+[kev]
+  get  https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json
+[epss]
+  get  https://epss.empiricalsecurity.com/epss_scores-current.csv.gz
+[hibp]
+  get  https://haveibeenpwned.com/api/v3/breaches
+[exploitdb]
+  get  https://gitlab.com/exploit-database/exploitdb/-/raw/main/files_exploits.csv
+[metasploit]
+  get  https://raw.githubusercontent.com/rapid7/metasploit-framework/master/db/modules_metadata_base.json
+[nuclei]
+  get  https://raw.githubusercontent.com/projectdiscovery/nuclei-templates/main/cves.json
+[p0]
+  get  https://docs.google.com/spreadsheets/d/1lkNJ0uQwbeC1ZTRrxdtuPLCIl7mlUreoKfSIgajnSyY/gviz/tq?tqx=out:csv&sheet=2014
+  get  https://docs.google.com/spreadsheets/d/1lkNJ0uQwbeC1ZTRrxdtuPLCIl7mlUreoKfSIgajnSyY/gviz/tq?tqx=out:csv&sheet=2015
+  get  https://docs.google.com/spreadsheets/d/1lkNJ0uQwbeC1ZTRrxdtuPLCIl7mlUreoKfSIgajnSyY/gviz/tq?tqx=out:csv&sheet=2016
+  get  https://docs.google.com/spreadsheets/d/1lkNJ0uQwbeC1ZTRrxdtuPLCIl7mlUreoKfSIgajnSyY/gviz/tq?tqx=out:csv&sheet=2017
+  get  https://docs.google.com/spreadsheets/d/1lkNJ0uQwbeC1ZTRrxdtuPLCIl7mlUreoKfSIgajnSyY/gviz/tq?tqx=out:csv&sheet=2018
+  get  https://docs.google.com/spreadsheets/d/1lkNJ0uQwbeC1ZTRrxdtuPLCIl7mlUreoKfSIgajnSyY/gviz/tq?tqx=out:csv&sheet=2019
+  get  https://docs.google.com/spreadsheets/d/1lkNJ0uQwbeC1ZTRrxdtuPLCIl7mlUreoKfSIgajnSyY/gviz/tq?tqx=out:csv&sheet=2020
+  get  https://docs.google.com/spreadsheets/d/1lkNJ0uQwbeC1ZTRrxdtuPLCIl7mlUreoKfSIgajnSyY/gviz/tq?tqx=out:csv&sheet=2021
+  get  https://docs.google.com/spreadsheets/d/1lkNJ0uQwbeC1ZTRrxdtuPLCIl7mlUreoKfSIgajnSyY/gviz/tq?tqx=out:csv&sheet=2022
+  get  https://docs.google.com/spreadsheets/d/1lkNJ0uQwbeC1ZTRrxdtuPLCIl7mlUreoKfSIgajnSyY/gviz/tq?tqx=out:csv&sheet=2023
+  get  https://docs.google.com/spreadsheets/d/1lkNJ0uQwbeC1ZTRrxdtuPLCIl7mlUreoKfSIgajnSyY/gviz/tq?tqx=out:csv&sheet=2024
+  get  https://docs.google.com/spreadsheets/d/1lkNJ0uQwbeC1ZTRrxdtuPLCIl7mlUreoKfSIgajnSyY/gviz/tq?tqx=out:csv&sheet=2025
+  get  https://docs.google.com/spreadsheets/d/1lkNJ0uQwbeC1ZTRrxdtuPLCIl7mlUreoKfSIgajnSyY/gviz/tq?tqx=out:csv&sheet=2026
+[osv]
+  get  https://osv-vulnerabilities.storage.googleapis.com/npm/all.zip
+  get  https://osv-vulnerabilities.storage.googleapis.com/PyPI/all.zip
+  get  https://osv-vulnerabilities.storage.googleapis.com/crates.io/all.zip
+  get  https://osv-vulnerabilities.storage.googleapis.com/Go/all.zip
+  get  https://osv-vulnerabilities.storage.googleapis.com/Maven/all.zip
+  get  https://osv-vulnerabilities.storage.googleapis.com/RubyGems/all.zip
+  get  https://osv-vulnerabilities.storage.googleapis.com/NuGet/all.zip
+  get  https://osv-vulnerabilities.storage.googleapis.com/Packagist/all.zip
+[nvd]
+  get  https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2002.json.gz
+  get  https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2003.json.gz
+  get  https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2004.json.gz
+  get  https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2005.json.gz
+  get  https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2006.json.gz
+  ! nvd failed: Command '['curl', '-sSL', '--fail', '--retry', '5', '--retry-delay', '3', '-A', 'arewecooked-data-pipeline/0.1 (research project)', '-o', '/Users/gabrielemonni/.t3/projects/arewecooked/data/raw/nvd/nvdcve-2.0-2006.json.gz', 'https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-2006.json.gz']' returned non-zero exit status 92.
+[cvelist]
+  skip data/raw/cvelist/cvelist.zip.zip (exists)

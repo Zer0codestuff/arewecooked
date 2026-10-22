@@ -30,7 +30,7 @@ def download(url: str, dest: Path, force: bool = False, headers: dict | None = N
         return dest
     print(f"  get  {url}")
     # curl handles big files, retries and redirects well
-    cmd = ["curl", "-sSL", "--fail", "--retry", "5", "--retry-delay", "3", "-A", UA["User-Agent"], "-o", str(dest), url]
+    cmd = ["curl", "--http1.1", "-sSL", "--fail", "--retry", "5", "--retry-delay", "3", "-A", UA["User-Agent"], "-o", str(dest), url]
     for k, v in (headers or {}).items():
         cmd[1:1] = ["-H", f"{k}: {v}"]
     subprocess.run(cmd, check=True)
@@ -98,7 +98,55 @@ def src_p0():
             print(f"  ! p0 {year} not available")
 
 
+def src_ransomware():
+    """ransomware.live: victims claimed on ransomware leak sites, month by month."""
+    from datetime import date
+
+    today = date.today()
+    for year in range(2020, today.year + 1):
+        for month in range(1, 13):
+            if (year, month) > (today.year, today.month):
+                break
+            dest = RAW / "ransomware_live" / f"{year}-{month:02d}.json"
+            current = (year, month) >= (today.year, today.month - 1)
+            try:
+                download(f"https://api.ransomware.live/v2/victims/{year}/{month:02d}", dest, force=current)
+            except subprocess.CalledProcessError:
+                print(f"  ! ransomware.live {year}-{month:02d} failed")
+            time.sleep(1.5)
+
+
+TICKERS = [
+    # cybersecurity ETFs
+    "CIBR", "HACK", "BUG", "IHAK",
+    # benchmarks
+    "QQQ", "SPY",
+    # listed security vendors
+    "CRWD", "PANW", "FTNT", "ZS", "NET", "S", "OKTA", "CHKP", "CYBR", "TENB", "RPD", "QLYS",
+]
+
+
+def src_prices():
+    """Monthly adjusted prices from Yahoo Finance chart API."""
+    for t in TICKERS:
+        url = f"https://query1.finance.yahoo.com/v8/finance/chart/{t}?range=max&interval=1mo&events=div%2Csplit"
+        dest = RAW / "prices" / f"{t}.json"
+        subprocess.run(["curl", "-sSL", "--fail", "-A", "Mozilla/5.0", "-o", str(dest), url], check=False)
+        time.sleep(1)
+
+
+def src_msrc():
+    """Microsoft Security Response Center CVRF: every monthly security update."""
+    idx = RAW / "msrc" / "updates.json"
+    download("https://api.msrc.microsoft.com/cvrf/v3.0/updates", idx, force=True, headers={"Accept": "application/json"})
+    for u in json.loads(idx.read_text())["value"]:
+        download(u["CvrfUrl"], RAW / "msrc" / f"{u['ID']}.json", headers={"Accept": "application/json"})
+
+
 SOURCES = {
+    "ransomware": src_ransomware,
+    "prices": src_prices,
+    "msrc": src_msrc,
     "kev": src_kev,
     "epss": src_epss,
     "hibp": src_hibp,
