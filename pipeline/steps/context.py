@@ -1,6 +1,6 @@
 """Hand-curated report figures, the incident timeline and Anthropic's disclosure dashboard.
 
-Inputs : data/manual/series.csv, data/manual/timeline.csv, data/raw/anthropic_cvd/payload.json
+Inputs : data/manual/story/series.csv, data/manual/story/timeline.csv, data/raw/anthropic_cvd/payload.json
 Outputs: site/public/data/context.json, site/public/data/glasswing.json
 """
 
@@ -12,12 +12,13 @@ from pathlib import Path
 
 import pandas as pd
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from common import MANUAL, RAW, records, write_clean_csv, write_site_json  # noqa: E402
+from _common import MANUAL, RAW, records, write_clean_csv, write_site_json  # noqa: E402
 
 
 def context():
-    s = pd.read_csv(MANUAL / "series.csv")
+    s = pd.read_csv(MANUAL / "story" / "series.csv")
     series = {}
     for name, sub in s.groupby("dataset"):
         series[name] = {
@@ -25,7 +26,7 @@ def context():
             "points": [{"year": int(r.year), "value": float(r.value), "note": r.note if isinstance(r.note, str) else None,
                         "source": r.source_name, "url": r.source_url} for r in sub.itertuples()],
         }
-    t = pd.read_csv(MANUAL / "timeline.csv").sort_values("date")
+    t = pd.read_csv(MANUAL / "story" / "timeline.csv").sort_values("date")
     write_site_json("context", {"series": series, "timeline": records(t)})
 
 

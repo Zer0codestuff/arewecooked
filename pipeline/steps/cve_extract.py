@@ -14,8 +14,9 @@ from pathlib import Path
 import orjson
 import pandas as pd
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from common import INTERIM, RAW  # noqa: E402
+from _common import INTERIM, RAW  # noqa: E402
 
 ZIP = RAW / "cvelist" / "cves.zip"
 SEV_ORDER = ["cvssV4_0", "cvssV3_1", "cvssV3_0", "cvssV2_0"]

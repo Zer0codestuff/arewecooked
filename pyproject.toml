@@ -11,6 +11,8 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8"]
+# extra libraries used by pipeline/steps (the data-story build for the website)
+story = ["pyarrow>=16", "duckdb>=1.0", "pyyaml>=6", "pdfplumber>=0.11"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
