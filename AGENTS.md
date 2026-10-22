@@ -8,7 +8,7 @@ Audience: curious non-specialists. Tone: clear, not dumbed down, not chatty. Sna
 ## Architecture
 - `pipeline/fetch.py` downloads public raw data to `data/raw/` (gitignored, about 2 GB). NVD comes from the fkie-cad mirror; the official NVD feeds are slow and flaky.
 - Two processing paths coexist (a parallel commit, 0c59393, added the second on 22 Oct 2026):
-  - `pipeline/steps/` (data story, renders the website): `fetch_extra.py` for extra raw data, `run_all.py` runs `cve_extract` (CVE List zip to `data/interim/cves.parquet`), `vulns`, `threats`, `ecosystem`, `context`. Helpers live in `pipeline/steps/_common.py`, independent of `pipeline/common.py`.
+  - `pipeline/steps/` (data story, renders the website): `fetch_extra.py` for extra raw data, `run_all.py` runs `cve_extract` (CVE List zip to `data/interim/cves.parquet`), `vulns`, `threats`, `ecosystem`, `context`, `nvd_status` (NVD enrichment backlog from the fkie-cad mirror). Helpers live in `pipeline/steps/_common.py`, independent of `pipeline/common.py`.
   - `pipeline/build.py` + `pipeline/sources/` + `pipeline/export.py` + `pipeline/indicators.py` (source processors, clean CSVs, `site/public/data/story.json`, a "cooked index"), covered by `tests/`. The site does not read `story.json` yet.
   - Consolidating the two is an open decision for the user.
 - `pipeline/ai_patterns.py`: regex rules for "AI-attributed" CVEs (credits and explicit description statements, org list based on Berkeley's tracker, plus the Anthropic-Credited-CVEs list) and for "CVEs in AI software". This is a documented lower bound.
@@ -41,7 +41,7 @@ GitHub Pages via `.github/workflows/pages.yml` (manual `workflow_dispatch`). Pag
 Data pipeline complete; full site with 10 chapters and 30+ charts renders locally (desktop and mobile checked).
 
 ## Known issues / next steps
-- NVD feed download is slow and incomplete; NVD data is not used yet (could add NVD backlog status and CVSS for pre-2022 severity).
+- NVD backlog is shown in chapter 02 (only 45% of 2026 CVEs analyzed by NVD). NVD CVSS could still extend the severity chart before 2022.
 - SEC 8-K Item 1.05 incident filings not included (EDGAR requires a contact email in the User-Agent).
 - Some 2026 report figures come from press coverage rather than the original reports (labeled in series.csv).
 
