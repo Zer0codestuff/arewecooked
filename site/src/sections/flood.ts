@@ -1,4 +1,5 @@
 import type { Data } from "../main";
+import { GREEN_RAMP, calendar } from "../lib/charts2";
 import { columns, hbars, lines } from "../lib/charts";
 import { figure } from "../lib/figure";
 import { fmtInt, monthLabel, shortMonth, times } from "../lib/format";
@@ -183,4 +184,32 @@ export function renderFlood(main: HTMLElement, d: Data) {
     "patch tuesday",
     `Microsoft's monthly security update used to fix 70 to 120 of its own CVEs. In 2026 it has fixed <b>${fmtInt(pt26.cves)}</b> so far, against <b>${fmtInt(pt25.cves)}</b> in all of 2025. Only ${pt26.exploited} of this year's were already being exploited when the fix shipped. Source: ${link("https://api.msrc.microsoft.com/cvrf/v3.0/updates", "MSRC CVRF API")}.`,
   );
+
+  // Daily calendar
+  const an = d.anatomy;
+  const dowMean: number[] = an.dow_mean_cur;
+  const top = an.top_days as any[];
+  prose(
+    sec,
+    `<h3>The weekly heartbeat</h3>
+     <p>Day by day, the flood has a rhythm. In 2026 an average Tuesday brings <strong>${fmtInt(dowMean[1])}</strong> new CVEs, a Sunday ${fmtInt(dowMean[6])}. The five busiest days of the year were all Tuesdays: Microsoft's Patch Tuesday (second Tuesday of the month) and Oracle's quarterly Critical Patch Update (third Tuesday of January, April, July and October). On 13 October Microsoft alone published 1,407 CVEs, more than it used to publish in a year.</p>`,
+  );
+  const secondTue = (dt: Date) => dt.getUTCDay() === 2 && dt.getUTCDate() >= 8 && dt.getUTCDate() <= 14;
+  const oracleCpu = (dt: Date) => dt.getUTCDay() === 2 && dt.getUTCDate() >= 15 && dt.getUTCDate() <= 21 && [0, 3, 6, 9].includes(dt.getUTCMonth());
+  const fc = figure(sec, {
+    title: "Every day of 2025 and 2026, by CVEs published",
+    source: "CVE Program cvelistV5, publication date (UTC)",
+    table: {
+      columns: [{ key: "date", label: "Date", fmt: (x: string) => x.slice(0, 10) }, { key: "cves", label: "CVEs", fmt: fmtInt }],
+      rows: [...top, ...(an.daily as any[]).slice(-30).reverse()],
+    },
+  });
+  calendar(fc, {
+    data: an.daily,
+    value: "cves",
+    thresholds: [50, 150, 300, 600, 1000],
+    colors: GREEN_RAMP,
+    label: "CVEs per day",
+    marked: (dt) => (secondTue(dt) ? "Microsoft Patch Tuesday" : oracleCpu(dt) ? "Oracle Critical Patch Update" : null),
+  });
 }

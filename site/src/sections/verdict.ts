@@ -28,6 +28,10 @@ export function renderVerdict(main: HTMLElement, d: Data) {
   const ays = v.ai_software_yearly as any[];
   const aiYear = (y: number) => (v.ai_monthly as any[]).filter((r) => r.month.startsWith(String(y))).reduce((a, r) => a + Object.entries(r).filter(([k]) => k !== "month").reduce((b, [, x]) => b + (x as number), 0), 0);
   const ms = d.threats.patch_tuesday.yearly as any[];
+  const wsp = d.weapon.speed as any[];
+  const msafe = d.anatomy.memsafety as any[];
+  const tri = d.triage;
+  const combo = (tri.points as any[]).find((p) => p.rule === "Critical, or EPSS 1% or more");
 
   const threat: Axis[] = [
     { key: "cves", label: "New vulnerabilities", then: yr(v.yearly, 2020, "cves"), now: pace(t.cur_year), thenLabel: "2020", nowLabel: "2026 pace", fmt: fmtInt },
@@ -37,6 +41,7 @@ export function renderVerdict(main: HTMLElement, d: Data) {
     { key: "loss", label: "Cybercrime losses", then: pt("ic3_losses", 2020), now: pt("ic3_losses", 2025), thenLabel: "2020", nowLabel: "2025", fmt: (x) => `$${x.toFixed(1)}B` },
     { key: "cost", label: "Cost per breach", then: pt("ibm_breach_cost", 2020), now: pt("ibm_breach_cost", 2026), thenLabel: "2020", nowLabel: "2026", fmt: (x) => `$${x.toFixed(2)}M` },
     { key: "aisw", label: "Bugs in AI software", then: yr(ays, 2022, "cves"), now: pace(yr(ays, 2026, "cves")), thenLabel: "2022", nowLabel: "2026 pace", fmt: fmtInt },
+    { key: "poc", label: "Exploit code within a week", then: yr(wsp, 2020, "within_7d"), now: pace(yr(wsp, 2026, "within_7d")), thenLabel: "2020 CVEs", nowLabel: "2026 pace", fmt: fmtInt },
   ];
   const defense: Axis[] = [
     { key: "spend", label: "Security spending", then: pt("gartner_spend_srm", 2021), now: pt("gartner_spend_infosec", 2026), thenLabel: "2021", nowLabel: "2026", fmt: (x) => `$${x.toFixed(0)}B` },
@@ -45,6 +50,7 @@ export function renderVerdict(main: HTMLElement, d: Data) {
     { key: "refuse", label: "Victims refusing to pay", then: 100 - pt("ransom_pay_rate", 2024), now: 100 - pt("ransom_pay_rate", 2025), thenLabel: "2024", nowLabel: "2025", fmt: (x) => `${x.toFixed(0)}%` },
     { key: "fixes", label: "Microsoft flaws fixed", then: yr(ms, 2020, "cves"), now: pace(yr(ms, 2026, "cves")), thenLabel: "2020", nowLabel: "2026 pace", fmt: fmtInt },
     { key: "vc", label: "Startup funding", then: pt("cyber_vc", 2024), now: pt("cyber_vc", 2025), thenLabel: "2024", nowLabel: "2025", fmt: (x) => `$${x.toFixed(1)}B` },
+    { key: "msafe", label: "Memory-safe code (Android)", then: yr(msafe, 2019, "Android"), now: yr(msafe, 2026, "Android"), thenLabel: "2019 memory-bug share", nowLabel: "2026 memory-bug share", fmt: (x) => `${Math.round(x * 100)}%`, inverse: true },
   ];
 
   const mult = (a: Axis) => (a.inverse ? a.then / a.now : a.now / a.then);
@@ -76,13 +82,13 @@ export function renderVerdict(main: HTMLElement, d: Data) {
   });
   prose(
     sec,
-    `<p>To pull everything together we picked seven measures of <strong>threat pressure</strong> and six of <strong>defensive capacity</strong>, each compared between an earlier year and today. On each radar, "now" sits on the outer ring and "then" shows how far back things were. A small gray shape means that dimension has grown a lot. Hover any point for the raw numbers and years.</p>`,
+    `<p>To pull everything together we picked ${threat.length} measures of <strong>threat pressure</strong> and ${defense.length} of <strong>defensive capacity</strong>, each compared between an earlier year and today. On each radar, "now" sits on the outer ring and "then" shows how far back things were. A small gray shape means that dimension has grown a lot. Hover any point for the raw numbers and years.</p>`,
   );
   const g = grid2(sec);
   const f1 = figure(g, {
     title: "Threat pressure, then vs now",
     sub: `Typical threat measure grew ${gT.toFixed(1)}x (geometric mean).`,
-    source: "CVE Program, CISA KEV, ransomware.live, FBI IC3, IBM (see chapters above)",
+    source: "CVE Program, CISA KEV, PoC-in-GitHub, ransomware.live, FBI IC3, IBM (see chapters above)",
     legend: [
       { label: "Then", color: C.other },
       { label: "Now", color: C.s7 },
@@ -96,7 +102,7 @@ export function renderVerdict(main: HTMLElement, d: Data) {
   const f2 = figure(g, {
     title: "Defensive capacity, then vs now",
     sub: `Typical defense measure grew ${gD.toFixed(1)}x (geometric mean).`,
-    source: "Gartner, ISC2, CVE Program, Chainalysis, MSRC, Crunchbase (see chapters above)",
+    source: "Gartner, ISC2, CVE Program, Chainalysis, MSRC, Crunchbase, Android CVEs (see chapters above)",
     legend: [
       { label: "Then", color: C.other },
       { label: "Now", color: C.s1 },
@@ -137,9 +143,10 @@ export function renderVerdict(main: HTMLElement, d: Data) {
      <ul>
        <li><strong>Most of the new bugs are found by defenders first.</strong> The 2026 surge is largely vendors, open-source projects and AI labs cleaning up code before attackers get there. A bug found and fixed is a bug that cannot hurt anyone.</li>
        <li><strong>Attackers still use a tiny fraction.</strong> About 0.2% of 2026 CVEs are known to be exploited, and that share keeps falling. Knowing which ones matter is a solvable problem.</li>
-       <li><strong>The money is there.</strong> Record spending, record bug bounties, fewer ransom payments.</li>
+       <li><strong>Triage works.</strong> In our backtest, patching critical CVEs plus those with an EPSS score of 1% or more (${Math.round(combo.effort * 100)}% of the backlog) caught ${Math.round(combo.coverage * 100)}% of the bugs attackers used next.</li>
+       <li><strong>The money is there, and so is the engineering.</strong> Record spending, record bug bounties, fewer ransom payments, and proof from Android that memory-safe languages remove the worst class of bugs at the source.</li>
      </ul>
-     <p>What would make us cooked is the gap the data keeps pointing to: <strong>fixing</strong>. Exploitation now takes days, while patches for AI-found bugs in volunteer-run projects can take months, and the security workforce has stopped growing. The next two years will be decided less by who finds bugs fastest, and more by who can fix them fastest. AI will have to do that part too.</p>
+     <p>What would make us cooked is the gap the data keeps pointing to: <strong>fixing</strong>. Exploit code now appears on GitHub within a day for over a thousand CVEs a year, and exploitation takes days, while patches for AI-found bugs in volunteer-run projects can take months, and the security workforce has stopped growing. The next two years will be decided less by who finds bugs fastest, and more by who can fix them fastest. AI will have to do that part too.</p>
      <p class="dim">Method note: this composite is a rough summary, not a scientific index. Measures use different years depending on data availability (labeled in each tooltip and table), partial 2026 values are scaled to a full-year pace, and Gartner's spending definition changed in 2024. Every input is shown in the chapters above.</p>`,
   );
 }

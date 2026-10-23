@@ -8,7 +8,9 @@ const SOURCES: [string, string, string][] = [
   ["CVE List (cvelistV5)", "https://github.com/CVEProject/cvelistV5", "All 412,863 CVE records (JSON 5), release of 22 Oct 2026. Publication dates, assigners, severity, credits."],
   ["CISA KEV", "https://www.cisa.gov/known-exploited-vulnerabilities-catalog", "Vulnerabilities with confirmed exploitation, 1,754 entries as of 21 Oct 2026."],
   ["CISA Vulnrichment", "https://github.com/cisagov/vulnrichment", "CVSS and SSVC scores CISA adds to CVE records."],
-  ["FIRST EPSS", "https://www.first.org/epss/", "Daily exploitation probability for every CVE."],
+  ["FIRST EPSS", "https://www.first.org/epss/", "Daily exploitation probability for every CVE: today's scores plus 43 monthly snapshots (Jan 2023 to Jul 2026) for the triage backtest."],
+  ["NIST NVD (fkie-cad mirror)", "https://github.com/fkie-cad/nvd-json-data-feeds", "NVD analysis status, CVSS scores and CWE tags, used where CVE records have none."],
+  ["PoC-in-GitHub", "https://github.com/nomi-sec/PoC-in-GitHub", "26,000+ GitHub repositories publishing exploit code, indexed by CVE with creation dates."],
   ["Berkeley Agentic Vulnerability Coverage Map", "https://vuln.cs.berkeley.edu/", "List of AI vulnerability finders and their statistics."],
   ["Anthropic-Credited-CVEs", "https://github.com/patrickmgarrity/Anthropic-Credited-CVEs", "Community tracker of CVEs crediting Anthropic researchers."],
   ["Anthropic CVD dashboard", "https://red.anthropic.com/2026/cvd/", "Findings, disclosures and fixes from Claude models in open source."],
@@ -19,6 +21,8 @@ const SOURCES: [string, string, string][] = [
   ["OSV.dev", "https://osv.dev/", "Malicious packages and advisories for npm, PyPI and six other registries."],
   ["Have I Been Pwned", "https://haveibeenpwned.com/api/v3/breaches", "Catalog of 1,000+ verified data breaches (in the clean data files)."],
   ["Yahoo Finance", "https://finance.yahoo.com/quote/CIBR/", "Monthly prices for security ETFs, vendors and benchmarks."],
+  ["OpenAlex", "https://openalex.org/", "Scholarly works index; yearly counts of papers on LLMs and security."],
+  ["World Bank", "https://data.worldbank.org/", "2024 population and GDP for per-capita ransomware rates."],
   ["AI model releases", "#", "Release dates of 16 major models (OpenAI, Anthropic, Google, DeepSeek) marked on time charts, from each lab's announcement page; listed in data/manual/story/ai_releases.csv. A marker shows timing only, not cause."],
   ["Reports", "#", "FBI IC3, Gartner, Chainalysis, IBM, ISC2, Verizon DBIR, Crunchbase, GitGuardian, Google GTIG, VulnCheck, HackerOne, CyberSN: transcribed in data/manual/story/series.csv with a source link on every row."],
 ];
@@ -37,6 +41,14 @@ const CLEAN = [
   "hibp_breaches_yearly.csv",
   "cyber_stocks_indexed_2020.csv",
   "anthropic_cvd_ledger_weekly.csv",
+  "cwe_family_yearly.csv",
+  "ai_era_weaknesses_monthly.csv",
+  "cve_daily_2025_2026.csv",
+  "github_poc_first_seen.csv",
+  "kev_product_category.csv",
+  "triage_curves.csv",
+  "ransomware_countries_2026.csv",
+  "ransomware_group_ranks.csv",
 ];
 
 export function renderMethod(main: HTMLElement, _d: Data) {
@@ -56,6 +68,9 @@ export function renderMethod(main: HTMLElement, _d: Data) {
        <li><strong>"Found by AI" is a lower bound.</strong> It relies on public credits. Many vendors credit nobody, and AI-assisted human researchers rarely say so.</li>
        <li><strong>2026 is partial</strong> (to 22 October). Where we compare with full years we say so, or scale to a full-year pace.</li>
        <li><strong>Leak sites undercount ransomware</strong>: victims who pay quickly are never posted.</li>
+       <li><strong>Weakness families and product types are our own groupings</strong> of CWE IDs and KEV products (rules in the pipeline code). Borderline cases could reasonably go elsewhere.</li>
+       <li><strong>The triage backtest</strong> uses EPSS as published on each date, but today's CVSS scores (they rarely change after publication). "Exploited" means added to KEV within 90 days, which misses attacks CISA never confirmed.</li>
+       <li><strong>Exploit repositories on GitHub</strong> are counted as indexed by PoC-in-GitHub. Some are fakes or malware, and deleted repositories drop out of the index.</li>
        <li><strong>Exploitation is measured by CISA KEV</strong>, which focuses on vulnerabilities relevant to US government networks and requires solid evidence. It misses many attacks.</li>
        <li>Some 2026 report figures (IBM 2026, Gartner 3Q26, Verizon 2026) come from press coverage of the report rather than the report itself; they are labeled as such in the data file.</li>
      </ul>`,

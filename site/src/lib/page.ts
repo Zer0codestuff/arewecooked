@@ -23,8 +23,12 @@ export interface ChapterOpts {
   kicker: string;
 }
 
+let chapterCount = 0;
+
+/** Chapters are numbered in render order; `num` is kept for reference only. */
 export function chapter(main: HTMLElement, o: ChapterOpts): HTMLElement {
   const sec = el("section", "chapter");
+  o = { ...o, num: String(++chapterCount).padStart(2, "0") };
   sec.id = o.id;
   const head = el("div", "chapter-head");
   const num = el("div", "num");
@@ -64,6 +68,21 @@ export function grid2(parent: HTMLElement): HTMLElement {
   const g = el("div", "grid-2");
   parent.appendChild(g);
   return g;
+}
+
+/** A row of small stat tiles: [value, label] pairs. Labels are author-written text. */
+export function stats(parent: HTMLElement, items: [string, string][]) {
+  const row = el("div", "stat-row");
+  for (const [v, k] of items) {
+    const s = el("div", "stat");
+    const a = el("div", "v");
+    a.textContent = v;
+    const b = el("div", "k");
+    b.textContent = k;
+    s.append(a, b);
+    row.appendChild(s);
+  }
+  parent.appendChild(row);
 }
 
 export const link = (url: string, text: string) => `<a href="${url}" target="_blank" rel="noopener">${text}</a>`;

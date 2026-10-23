@@ -157,4 +157,65 @@ export function renderHunters(main: HTMLElement, d: Data) {
   const note = el("div", "prose");
   note.innerHTML = `<p class="dim">The bump in mid-2025 is a single AI scanner (ZAST.AI) filing batches of web-application bugs through VulDB. The steady climb starts in early 2026. Most vendors still list no finder at all, so treat this line as the visible tip.</p>`;
   sec.appendChild(note);
+
+  // AI review inside the Linux kernel
+  const an = d.anatomy;
+  const ka = (an.kernel_ai as any[]).map((r) => ({ ...r }));
+  const kt = an.kernel_ai_totals;
+  prose(
+    sec,
+    `<h3>The reviewer that never sleeps</h3>
+     <p>The clearest sign that AI is now part of ordinary maintenance comes from the Linux kernel, the most scrutinized codebase on earth. On 17 March 2026 Google engineers ${link("https://lkml.iu.edu/hypermail/linux/kernel/2603.2/03802.html", "announced Sashiko")}, an AI system that reviews every patch posted to the kernel mailing lists (it runs on Gemini; the project is moving to the Linux Foundation). Kernel fixes are published as CVEs, and their descriptions say who spotted the bug.</p>
+     <p>Since April, <strong>${fmtInt(kt.since_apr)}</strong> kernel CVE fixes credit an AI reviewer: ${fmtInt(kt.sashiko)} name Sashiko, the rest Claude or other LLM tools. That is ${pct(kt.since_apr / kt.kernel_since_apr, 1)} of all kernel CVEs in the period, up from almost none a year earlier. These records have no "credits" entry at all, the AI shows up only in the text of the fix, which is why our classifier reads descriptions too.</p>`,
+  );
+  const fk = figure(sec, {
+    title: "Linux kernel CVE fixes that credit an AI reviewer, per month",
+    source: `Linux kernel CNA records in cvelistV5 (text of the fix description); ${link("https://www.theregister.com/2026/03/20/sashiko_code_review_linux/", "Sashiko background")}`,
+    narrow: true,
+    legend: [
+      { label: "Sashiko (Google, Gemini)", color: C.s3 },
+      { label: "Other AI or LLM review", color: C.s1 },
+    ],
+    table: { columns: [{ key: "month", label: "Month", fmt: (x) => monthLabel(x) }, { key: "sashiko", label: "Sashiko", fmt: fmtInt }, { key: "other_ai", label: "Other AI", fmt: fmtInt }, { key: "kernel_cves", label: "All kernel CVEs", fmt: fmtInt }], rows: ka },
+  });
+  columns(fk, {
+    data: ka,
+    x: "month",
+    xLabel: shortMonth,
+    xTickEvery: (m: string) => new Date(m).getUTCMonth() % 3 === 0,
+    series: [
+      { key: "sashiko", label: "Sashiko", color: C.s3 },
+      { key: "other_ai", label: "Other AI", color: C.s1 },
+    ],
+    stacked: true,
+    height: 240,
+    tipHead: (r) => monthLabel(r.month),
+    tipExtra: (r) => [{ label: "all kernel CVEs", value: fmtInt(r.kernel_cves) }],
+    annotations: [{ x: "2026-03-01T00:00:00.000Z", text: "Sashiko launch", dy: 0, align: "end" }],
+  });
+
+  // Research boom
+  const rs = (an.research as any[]).filter((r) => r.year >= 2019);
+  const r22 = rs.find((r) => r.year === 2022);
+  const r26 = rs.find((r) => r.year === 2026);
+  prose(
+    sec,
+    `<p>Behind the tools sits a research boom. Papers that pair large language models with vulnerabilities, exploits, fuzzing, malware or penetration testing went from ${fmtInt(r22.llm_security)} in 2022 to <strong>${fmtInt(r26.llm_security)}</strong> in 2026 so far, according to the OpenAlex scholarly index. In 2026, about ${pct(r26.llm_security / r26.llm_all)} of all LLM papers are about security.</p>`,
+  );
+  const fr = figure(sec, {
+    title: "Research papers on LLMs and software security, per year",
+    source: `${link("https://openalex.org/", "OpenAlex")} title and abstract search ("large language model" and vulnerability, exploit, fuzzing, malware or penetration testing); 2026 to 22 Oct`,
+    narrow: true,
+    table: { columns: [{ key: "year", label: "Year" }, { key: "llm_security", label: "LLM + security papers", fmt: fmtInt }, { key: "llm_all", label: "All LLM papers", fmt: fmtInt }], rows: rs },
+  });
+  columns(fr, {
+    data: rs,
+    x: "year",
+    series: [{ key: "llm_security", label: "Papers", color: C.s6 }],
+    colorFn: () => C.s6,
+    labelBars: (r) => r.year >= 2022,
+    partial: (r) => r.year === 2026,
+    height: 230,
+    tipExtra: (r) => [{ label: "share of all LLM papers", value: r.llm_all ? pct(r.llm_security / r.llm_all, 1) : "" }],
+  });
 }

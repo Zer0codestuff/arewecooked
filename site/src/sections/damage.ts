@@ -1,7 +1,8 @@
 import type { Data } from "../main";
-import { columns, lines } from "../lib/charts";
+import { RED_RAMP, bump, choropleth } from "../lib/charts2";
+import { columns, hbars, lines } from "../lib/charts";
 import { el, figure } from "../lib/figure";
-import { fmtInt, monthLabel, shortMonth } from "../lib/format";
+import { fmtInt, monthLabel, pct, shortMonth } from "../lib/format";
 import { C, callout, chapter, grid2, link, prose } from "../lib/page";
 
 export function renderDamage(main: HTMLElement, d: Data) {
@@ -40,6 +41,8 @@ export function renderDamage(main: HTMLElement, d: Data) {
     tipExtra: (r) => [{ label: "active groups", value: fmtInt(r.groups) }],
     releases: true,
   });
+
+  renderRansomGeo(sec, d);
 
   const pay = d.context.series.ransom_payments.points as any[];
   const rate = d.context.series.ransom_pay_rate.points as any[];
@@ -166,4 +169,150 @@ export function renderDamage(main: HTMLElement, d: Data) {
     "pattern",
     `Look at the incident column: most of the biggest events of the last six years were not exotic hacks. They were <b>supply chains</b> (SolarWinds, MOVEit, XZ, Shai-Hulud, Railway), <b>help desks talked into resetting a password</b> (MGM, M&S) and <b>internet-facing boxes left unpatched</b>. AI accelerates all three.`,
   );
+}
+
+const BRAND_COLORS: Record<string, string> = {
+  Qilin: "#e66767",
+  "The Gentlemen": "#c98500",
+  Akira: "#3987e5",
+  LockBit: "#9085e9",
+  RansomHub: "#d55181",
+  "ALPHV/BlackCat": "#34a870",
+};
+
+function renderRansomGeo(sec: HTMLElement, d: Data) {
+  const r = d.ransom;
+  const it = r.italy;
+  const us = (r.countries as any[]).find((c) => c.iso2 === "US");
+  const known = r.country_known as number;
+  prose(
+    sec,
+    `<h3>Where the victims are</h3>
+     <p>Ransomware is a business, and it goes where the money is. American organizations are ${pct(us.victims / known)} of the 2026 victims whose country is known. Per person the picture spreads out: rich, highly digitized economies such as Singapore, Switzerland, Hong Kong, Canada and the United Arab Emirates rank close to the US. <strong>Italy</strong> is the ${it ? ordinal(r.italy_rank) : ""} most-hit country in absolute terms, with ${it ? fmtInt(it.victims) : ""} victims named so far in 2026, already ${it ? pct(it.victims / it.victims_prev - 1) : ""} more than in all of 2025.</p>`,
+  );
+  const fig = figure(sec, {
+    title: "Ransomware victims named in 2026, by country",
+    source: `${link("https://www.ransomware.live/", "ransomware.live")}; population and GDP from the ${link("https://data.worldbank.org/", "World Bank")} (2024)`,
+    table: {
+      columns: [
+        { key: "name", label: "Country" },
+        { key: "victims", label: "Victims 2026", fmt: fmtInt },
+        { key: "victims_prev", label: "Victims 2025", fmt: (x: number) => (x ? fmtInt(x) : "") },
+        { key: "per_million", label: "Per million people", fmt: (x: number) => (x ? x.toFixed(1) : "") },
+      ],
+      rows: r.countries,
+    },
+  });
+  const toggle = el("div", "seg-toggle");
+  const modes = [
+    { key: "victims", label: "victims", thresholds: [5, 20, 50, 100, 300], fmt: (x: number) => fmtInt(x), title: "Victims named" },
+    { key: "per_million", label: "per million people", thresholds: [0.2, 0.5, 1, 2.5, 5], fmt: (x: number) => (x < 1 ? x.toFixed(1) : x.toFixed(x < 10 ? 1 : 0)), title: "Victims per million people" },
+  ];
+  fig.chart.before(toggle);
+  import("world-atlas/countries-110m.json").then(async (topo: any) => {
+    const { feature } = await import("topojson-client");
+    const features = (feature(topo.default ?? topo, (topo.default ?? topo).objects.countries) as any).features;
+    const draw = (i: number) => {
+      toggle.querySelectorAll("button").forEach((b, j) => b.classList.toggle("on", j === i));
+      const m = modes[i];
+      choropleth(fig, {
+        features,
+        data: r.countries,
+        value: m.key,
+        thresholds: m.thresholds,
+        colors: RED_RAMP,
+        label: m.title,
+        format: m.fmt,
+        extra: (c) => [
+          { label: "victims", value: fmtInt(c.victims) },
+          { label: "per million people", value: c.per_million ? c.per_million.toFixed(1) : "n/a" },
+          { label: "2025, full year", value: c.victims_prev ? fmtInt(c.victims_prev) : "0" },
+        ],
+      });
+    };
+    modes.forEach((m, i) => {
+      const b = el("button");
+      b.type = "button";
+      b.textContent = m.label;
+      b.addEventListener("click", () => draw(i));
+      toggle.appendChild(b);
+    });
+    draw(0);
+  });
+  prose(sec, `<p class="dim">${fmtInt(r.country_unknown)} of the year's victims have no country attached. Small states such as Singapore and Hong Kong are too small to see on the map; they are in the table view.</p>`);
+
+  // Brands
+  const bumpRows = r.bump as any[];
+  const yrs: number[] = r.bump_years;
+  // ransomware.live coverage starts in 2020, so brand age is only meaningful from 2023 on
+  const ch = (r.churn as any[]).filter((x) => x.year >= 2023);
+  const ch26 = ch.find((x) => x.year === 2026);
+  const chTot = (x: any) => (r.churn_order as string[]).reduce((s, k) => s + (x[k] ?? 0), 0);
+  prose(
+    sec,
+    `<h3>Brands come and go, the business stays</h3>
+     <p>Police takedowns work, briefly. LockBit led the market for three years until an international operation seized its servers in February 2024; ALPHV/BlackCat vanished after an apparent exit scam the same spring; RansomHub rose to first place in 2024 and went dark in April 2025. Each time, the affiliates who actually break into networks moved to the next brand. Of the ${r.brands_50plus} brands that ever named 50 or more victims, ${r.brands_gone} have gone quiet; their median lifespan was about <strong>${Math.round(r.lifespan_median_months)} months</strong>. In 2026, ${pct(ch26["New this year"] / chTot(ch26))} of victims were claimed by brands that did not exist a year earlier.</p>`,
+  );
+  const fb = figure(sec, {
+    title: "Ransomware brands ranked by victims named, per year",
+    source: `${link("https://www.ransomware.live/", "ransomware.live")}; versions of the same brand merged (LockBit 2/3/5)`,
+    legend: Object.entries(BRAND_COLORS).map(([k, c]) => ({ label: k, color: c, shape: "line" as const })),
+    table: {
+      columns: [{ key: "year", label: "Year" }, { key: "rank", label: "Rank" }, { key: "group", label: "Brand" }, { key: "victims", label: "Victims", fmt: fmtInt }, { key: "share", label: "Share", fmt: (x: number) => pct(x, 1) }],
+      rows: [...bumpRows].filter((x) => x.rank <= 10).sort((a, b) => a.year - b.year || a.rank - b.rank),
+    },
+  });
+  bump(fb, { data: bumpRows, years: yrs, highlight: BRAND_COLORS, maxRank: 10, height: 340 });
+
+  // Sectors
+  const st = (r.sectors as any[]).filter((x) => x.sector !== "Other").slice(0, 10).map((x) => ({ ...x, prev: x.prev, pace: Math.round(x.cur_pace) }));
+  const g = grid2(sec);
+  const f2 = figure(g, {
+    title: "Victims by sector: 2025 vs 2026 full-year pace",
+    source: "ransomware.live sector labels; 2026 scaled from 1 Jan to 22 Oct",
+    legend: [
+      { label: "2025", color: C.other },
+      { label: "2026 pace", color: C.s7 },
+    ],
+    table: { columns: [{ key: "sector", label: "Sector" }, { key: "prev", label: "2025", fmt: fmtInt }, { key: "cur", label: "2026 to date", fmt: fmtInt }, { key: "pace", label: "2026 pace", fmt: fmtInt }], rows: st },
+  });
+  hbars(f2, {
+    data: st,
+    label: "sector",
+    value: "pace",
+    value2: "prev",
+    color: C.s7,
+    color2: C.other,
+    labelWidth: 170,
+    tip: (x: any) => ({
+      head: x.sector,
+      rows: [
+        { label: "2026 to date", value: fmtInt(x.cur), color: "transparent" },
+        { label: "2026 full-year pace", value: fmtInt(x.pace), color: C.s7 },
+        { label: "2025", value: fmtInt(x.prev), color: C.other },
+      ],
+    }),
+  });
+  const order: string[] = r.churn_order;
+  const AGE = [C.s7, C.s5, C.s3, C.other];
+  const f3 = figure(g, {
+    title: "Victims by age of the brand that claimed them",
+    source: "ransomware.live; brand age = years since its first leak-site post",
+    legend: order.map((o, i) => ({ label: o, color: AGE[i] })),
+    table: { columns: [{ key: "year", label: "Year" }, ...order.map((o) => ({ key: o, label: o, fmt: fmtInt }))], rows: ch },
+  });
+  columns(f3, {
+    data: ch,
+    x: "year",
+    series: order.map((o, i) => ({ key: o, label: o, color: AGE[i] })),
+    stacked: true,
+    percent: true,
+    height: 260,
+  });
+}
+
+function ordinal(n: number): string {
+  const s = ["th", "st", "nd", "rd"];
+  const v = n % 100;
+  return n + (s[(v - 20) % 10] || s[v] || s[0]);
 }
