@@ -73,6 +73,52 @@ def trackers():
         get(f"https://raw.githubusercontent.com/patrickmgarrity/Anthropic-Credited-CVEs/main/{f}", RAW / "anthropic_cves" / f, force=True)
 
 
+OPENALEX_QUERIES = {
+    "llm_security": '"large language model" AND (vulnerability OR exploit OR "penetration testing" OR fuzzing OR malware OR "vulnerability detection")',
+    "llm_all": '"large language model"',
+    "ml_vuln": '("machine learning" OR "deep learning") AND ("vulnerability detection" OR fuzzing OR "penetration testing")',
+}
+
+
+def openalex():
+    """Yearly counts of research papers (OpenAlex, title+abstract search). No key; anonymous shared quota."""
+    import urllib.parse
+
+    for name, q in OPENALEX_QUERIES.items():
+        f = urllib.parse.quote(f"title_and_abstract.search:{q},publication_year:2015-{date.today().year}", safe=":,")
+        get(f"https://api.openalex.org/works?filter={f}&group_by=publication_year", RAW / "openalex" / f"{name}.json", force=True)
+        time.sleep(1)
+
+
+def pocs():
+    """nomi-sec/PoC-in-GitHub: GitHub repositories that publish exploit code per CVE (shallow clone, about 75 MB)."""
+    import subprocess
+
+    dest = RAW / "poc_github" / "repo"
+    if dest.exists():
+        subprocess.run(["git", "-C", str(dest), "pull", "-q", "--depth", "1"], check=False)
+    else:
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        subprocess.run(["git", "clone", "-q", "--depth", "1", "https://github.com/nomi-sec/PoC-in-GitHub.git", str(dest)], check=True)
+
+
+def epss_history():
+    """EPSS snapshots on the first day of each month since 2023 (used by the triage backtest)."""
+    d = date(2023, 1, 1)
+    while d <= date.today():
+        name = f"epss_{d.isoformat()}.csv.gz"
+        get(f"https://epss.empiricalsecurity.com/epss_scores-{d.isoformat()}.csv.gz", RAW / "epss" / name)
+        if not (RAW / "epss" / name).exists():  # a few days are missing upstream; take the next day
+            alt = d.replace(day=2)
+            get(f"https://epss.empiricalsecurity.com/epss_scores-{alt.isoformat()}.csv.gz", RAW / "epss" / f"epss_{alt.isoformat()}.csv.gz")
+        d = date(d.year + (d.month == 12), d.month % 12 + 1, 1)
+
+
+def worldbank():
+    for ind, name in (("SP.POP.TOTL", "pop_2024"), ("NY.GDP.MKTP.CD", "gdp_2024")):
+        get(f"https://api.worldbank.org/v2/country/all/indicator/{ind}?date=2024&format=json&per_page=400", RAW / "worldbank" / f"{name}.json")
+
+
 def unzip_cvelist():
     outer = RAW / "cvelist" / "cvelist.zip.zip"
     if outer.exists() and not (RAW / "cvelist" / "cves.zip").exists():
@@ -81,6 +127,6 @@ def unzip_cvelist():
 
 
 if __name__ == "__main__":
-    for fn in (unzip_cvelist, trackers, prices, msrc, ransomware_live):
+    for fn in (unzip_cvelist, trackers, prices, msrc, ransomware_live, openalex, pocs, epss_history, worldbank):
         print(f"[{fn.__name__}]")
         fn()

@@ -52,7 +52,9 @@ AI_DESC = re.compile(
     r"(discovered|found|identified|detected|uncovered)\s+(using|with|by|via)\s+(an?\s+)?"
     r"(ai\b|ai-assisted|llm|large language model|claude|gpt|codex|gemini|automated ai)|"
     r"ai-assisted (static )?analysis|\(using claude\)|with the help of (ai|an ai|claude|an llm)|"
-    r"powered by mythos",
+    r"powered by mythos|"
+    # AI code review in the Linux kernel: Google's Sashiko (Gemini) and other LLM reviewers named in fix descriptions
+    r"\bsashiko\b|\blollm\b|found by (an )?ai\b|\bai review|an llm scan|\bai-generated (bug )?report",
     re.I,
 )
 
@@ -76,6 +78,8 @@ def ai_finder(credits: str | None, description: str | None) -> str | None:
                 return label
         if re.search(r"intel product security", description, re.I):
             return "Intel AI-assisted analysis"
+        if re.search(r"\bsashiko\b", description, re.I):
+            return "Google Sashiko (kernel review)"
         return "Other AI agent or tool"
     return None
 
