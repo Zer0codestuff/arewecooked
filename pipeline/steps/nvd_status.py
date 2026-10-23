@@ -1,7 +1,8 @@
 """NVD enrichment backlog and NVD severity, from the fkie-cad NVD mirror.
 
 Input : data/raw/nvd/CVE-YYYY.json.xz  (pipeline/fetch.py nvd)
-Output: site/public/data/nvd.json, data/clean/nvd_status_monthly.csv
+Output: site/public/data/nvd.json, data/clean/nvd_status_monthly.csv,
+        data/interim/nvd.parquet (per-CVE NVD status, severity, score and CWE for joins in later steps)
 """
 
 from __future__ import annotations
@@ -15,7 +16,7 @@ from pathlib import Path
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from _common import AS_OF, RAW, records, write_clean_csv, write_site_json  # noqa: E402
+from _common import AS_OF, INTERIM, RAW, records, write_clean_csv, write_site_json  # noqa: E402
 
 STATUS_MAP = {
     "Analyzed": "Analyzed by NVD",
@@ -41,6 +42,27 @@ def severity(metrics: dict) -> str | None:
     return None
 
 
+def score(metrics: dict) -> float | None:
+    for key in ("cvssMetricV40", "cvssMetricV31", "cvssMetricV30", "cvssMetricV2"):
+        for m in metrics.get(key, []) or []:
+            if m.get("type") == "Primary":
+                v = (m.get("cvssData") or {}).get("baseScore")
+                if v is not None:
+                    return float(v)
+    return None
+
+
+def cwe(weak: list) -> str | None:
+    """CWE IDs from NVD weaknesses, Primary (NVD's own) first, skipping noinfo/Other placeholders."""
+    out: list[str] = []
+    for w in sorted(weak or [], key=lambda w: w.get("type") != "Primary"):
+        for d in w.get("description", []):
+            v = d.get("value", "")
+            if v.startswith("CWE-") and v not in out:
+                out.append(v)
+    return ";".join(out) or None
+
+
 def main():
     rows = []
     for f in sorted(glob.glob(str(RAW / "nvd" / "CVE-*.json.xz"))):
@@ -51,9 +73,13 @@ def main():
                 "published": it.get("published"),
                 "status": STATUS_MAP.get(it.get("vulnStatus"), it.get("vulnStatus")),
                 "nvd_sev": severity(it.get("metrics") or {}),
+                "nvd_score": score(it.get("metrics") or {}),
+                "nvd_cwe": cwe(it.get("weaknesses")),
                 "has_cpe": bool(it.get("configurations")),
             })
     df = pd.DataFrame(rows)
+    INTERIM.mkdir(parents=True, exist_ok=True)
+    df[["id", "status", "nvd_sev", "nvd_score", "nvd_cwe", "has_cpe"]].rename(columns={"id": "cve_id"}).to_parquet(INTERIM / "nvd.parquet", index=False)
     df["published"] = pd.to_datetime(df.published, errors="coerce")
     df = df[df.published.notna() & (df.published <= pd.Timestamp(AS_OF) + pd.Timedelta(days=1)) & (df.status != "Rejected")]
     df["year"] = df.published.dt.year

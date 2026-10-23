@@ -297,6 +297,8 @@ CVE-2026-41357,2026-04-23 21:58:16.049,VulnCheck,OpenClaw,OpenClaw,LOW,2.0,Ant G
 CVE-2026-41358,2026-04-23 21:58:16.948,VulnCheck,OpenClaw,OpenClaw,LOW,2.3,Ant Group AI Security Lab,cve-record,AntAISecurityLab [reporter]
 CVE-2026-41361,2026-04-23 21:58:19.188,VulnCheck,OpenClaw,OpenClaw,MEDIUM,5.1,Tencent (Xuanwu Atuin / Zhuque),cve-record,Nicky (@nicky-cc) of Tencent zhuque Lab [reporter]
 CVE-2026-31554,2026-04-24 14:35:38.527,Linux,Linux,Linux,HIGH,7.8,Anthropic (Claude),anthropic-cve-tracker,
+CVE-2026-31652,2026-04-24 14:45:04.930,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-31653,2026-04-24 14:45:05.689,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
 CVE-2026-31689,2026-04-27 17:34:27.793,Linux,Linux,Linux,Not scored,,Anthropic (Claude),cve-record,
 CVE-2026-5394,2026-04-27 19:15:04.496,Fluid Attacks,pimcore,pimcore,HIGH,7.0,Fluid Attacks AI SAST,cve-record,Oscar Naveda [finder] | Fluid Attacks' AI SAST Scanner [finder]
 CVE-2026-5362,2026-04-27 20:16:01.154,Fluid Attacks,pimcore,pimcore,MEDIUM,4.8,Fluid Attacks AI SAST,cve-record,Oscar Naveda [finder] | Fluid Attacks' AI SAST Scanner [finder]
@@ -319,6 +321,8 @@ CVE-2026-42511,2026-04-30 06:56:36.929,freebsd,FreeBSD,FreeBSD,HIGH,8.1,AISLE,cv
 CVE-2026-7270,2026-04-30 07:02:48.276,freebsd,FreeBSD,FreeBSD,HIGH,7.8,Calif.io,cve-record,Ryan Austin of Calif.io [finder]
 CVE-2026-42512,2026-04-30 07:58:37.145,freebsd,FreeBSD,FreeBSD,HIGH,8.1,AISLE,cve-record,Joshua Rogers of AISLE Research Team [finder]
 CVE-2026-39457,2026-04-30 08:01:49.015,freebsd,FreeBSD,FreeBSD,HIGH,7.8,AISLE,cve-record,Joshua Rogers of AISLE Research Team [finder]
+CVE-2026-43038,2026-05-01 14:15:35.986,Linux,Linux,Linux,CRITICAL,9.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-43065,2026-05-05 15:23:25.326,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
 CVE-2026-43074,2026-05-06 07:21:58.210,Linux,Linux,Linux,HIGH,7.8,Anthropic (Claude),anthropic-cve-tracker,
 CVE-2026-43185,2026-05-06 11:27:56.386,Linux,Linux,Linux,CRITICAL,9.8,Anthropic (Claude),anthropic-cve-tracker,
 CVE-2026-42010,2026-05-07 12:00:05.433,redhat,,,HIGH,7.1,AISLE,cve-record,Red Hat would like to thank Joshua Rogers (AISLE Research Team) for reporting this issue. []
@@ -371,10 +375,27 @@ CVE-2026-48896,2026-05-26 16:45:55.573,Joomla,Joomla! Project,Joomla! CMS,HIGH,8
 CVE-2026-5260,2026-05-26 21:29:20.743,redhat,,,HIGH,8.2,AISLE,cve-record,Red Hat would like to thank Joshua Rogers (AISLE Research Team) for reporting this issue. []
 CVE-2026-42013,2026-05-26 21:29:32.887,redhat,,,HIGH,8.2,AISLE,cve-record,Red Hat would like to thank Haruto Kimura (Stella) and Joshua Rogers (AISLE Research Team) for reporting this issue. []
 CVE-2026-9022,2026-05-27 02:27:36.744,Wordfence,dkjensen,Splide Carousel Block,MEDIUM,6.4,ZAST.AI,cve-record,ZAST.AI [finder]
+CVE-2026-45914,2026-05-27 12:17:29.426,Linux,Linux,Linux,Not scored,,Other AI agent or tool,cve-record,
+CVE-2026-45920,2026-05-27 12:17:38.234,Linux,Linux,Linux,Not scored,,Other AI agent or tool,cve-record,
 CVE-2026-42789,2026-05-27 12:23:06.355,EEF,Erlang,OTP,HIGH,7.0,Anthropic (Claude),anthropic-cve-tracker,John Downey [finder] | Ingela Anderton Andin [remediation developer] | Jakub Witczak [analyst] | Ada Logics [remediation reviewer]
+CVE-2026-46007,2026-05-27 12:56:06.623,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-46013,2026-05-27 12:56:15.236,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-46078,2026-05-27 12:58:11.916,Linux,Linux,Linux,HIGH,7.1,Google Sashiko (kernel review),cve-record,
 CVE-2026-44604,2026-05-28 05:59:20.978,redhat,Red Hat,Red Hat Hardened Images,HIGH,7.0,AISLE,cve-record,This issue was discovered by Found by AISLE in partnership with Red Hat. []
 CVE-2026-4408,2026-05-28 07:25:27.169,redhat,Red Hat,Red Hat Enterprise Linux 10,CRITICAL,9.0,ZeroPath,cve-record,Red Hat would like to thank John Walker (ZeroPath) and Ron Ben Yizhak (SafeBreach) for reporting this issue. []
 CVE-2026-9813,2026-05-28 09:27:26.124,CIRCL,flowintel,flowintel,MEDIUM,6.2,OpenAI (Codex / GPT),cve-record,Bilal Teke [finder] | David Cruciani [remediation verifier] | Alexandre Dulaunoy [remediation developer] | Codex (GPT-5.5) [tool]
+CVE-2026-46112,2026-05-28 09:35:20.879,Linux,Linux,Linux,HIGH,7.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-46117,2026-05-28 09:35:32.344,Linux,Linux,Linux,HIGH,7.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-46126,2026-05-28 09:35:41.364,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-46127,2026-05-28 09:35:42.368,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-46144,2026-05-28 09:36:00.412,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-46145,2026-05-28 09:36:01.805,Linux,Linux,Linux,HIGH,7.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-46178,2026-05-28 09:36:32.222,Linux,Linux,Linux,HIGH,7.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-46181,2026-05-28 09:36:34.706,Linux,Linux,Linux,HIGH,7.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-46189,2026-05-28 09:36:43.205,Linux,Linux,Linux,HIGH,7.0,Google Sashiko (kernel review),cve-record,
+CVE-2026-46190,2026-05-28 09:36:44.017,Linux,Linux,Linux,HIGH,7.1,Google Sashiko (kernel review),cve-record,
+CVE-2026-46203,2026-05-28 09:40:20.631,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-46241,2026-05-28 09:41:09.145,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
 CVE-2026-40914,2026-05-28 12:28:25.972,apache,Apache Software Foundation,Apache Artemis Stomp Protocol,MEDIUM,4.3,BugBunny.ai,cve-record,bugbunny.ai [tool] | Isaac David <isaac@bugbunny.ai> [reporter] | Arthur Gervais <arthur@bugbunny.ai> [reporter]
 CVE-2026-10028,2026-05-28 22:33:09.922,redhat,Red Hat,Red Hat Enterprise Linux 10,MEDIUM,4.3,AISLE,cve-record,Red Hat would like to thank AISLE Research for reporting this issue. []
 CVE-2026-6275,2026-05-29 05:32:35.478,Wordfence,statcounter,StatCounter – Free Real Time Visitor Stats,MEDIUM,6.4,ZAST.AI,cve-record,ZAST.AI [finder]
@@ -401,9 +422,13 @@ CVE-2026-44631,2026-06-08 15:19:23.570,apache,Apache Software Foundation,Apache 
 CVE-2026-44185,2026-06-08 15:22:11.809,apache,Apache Software Foundation,Apache HTTP Server,HIGH,7.3,depthfirst,cve-record,Zhenpeng (Leo) Lin at depthfirst [finder]
 CVE-2026-42536,2026-06-08 15:23:46.290,apache,Apache Software Foundation,Apache HTTP Server,HIGH,7.5,depthfirst,cve-record,Zhenpeng (Leo) Lin at depthfirst [finder]
 CVE-2026-49975,2026-06-08 15:26:04.674,apache,Apache Software Foundation,Apache HTTP Server,HIGH,7.5,OpenAI (Codex / GPT),cve-record,Quang Luong of Calif.IO in collaboration with OpenAI Codex [finder]
+CVE-2026-46289,2026-06-08 15:46:15.888,Linux,Linux,Linux,CRITICAL,9.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-46290,2026-06-08 15:46:17.224,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
 CVE-2026-46294,2026-06-08 15:46:21.401,Linux,Linux,Linux,Not scored,,Anthropic (Claude),cve-record,
+CVE-2026-46296,2026-06-08 15:46:23.539,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
 CVE-2026-47345,2026-06-08 19:04:08.337,TYPO3,TYPO3,HTML Sanitizer,MEDIUM,5.1,Anthropic (Claude),cve-record,Doyensec in collaboration with Claude and Anthropic Research [reporter] | Benjamin Franzke [remediation developer]
 CVE-2026-11623,2026-06-09 03:15:12.467,VulDB,n/a,tmux,LOW,2.0,Tencent (Xuanwu Atuin / Zhuque),cve-record,XlabAI (VulDB User) [reporter] | XlabAI (VulDB User) [analyst]
+CVE-2026-52905,2026-06-09 12:36:02.516,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
 CVE-2026-34181,2026-06-09 16:03:22.065,openssl,OpenSSL,OpenSSL,HIGH,7.4,Anthropic (Claude),cve-record,Pavol Žáčik (Red Hat) [reporter] | Alex Gaynor (Anthropic) [reporter] | Alicja Kario (Red Hat) [remediation developer]
 CVE-2026-34182,2026-06-09 16:03:22.848,openssl,OpenSSL,OpenSSL,CRITICAL,9.1,Anthropic (Claude),cve-record,Asim Viladi Oglu Manizada [reporter] | Alex Gaynor (Anthropic) [reporter] | Ying Dong [reporter] | Haiyang Huang [reporter] | Neil Horman [remediation developer]
 CVE-2026-42768,2026-06-09 16:03:28.206,openssl,OpenSSL,OpenSSL,LOW,3.7,Anthropic (Claude),cve-record,Alex Gaynor (Anthropic) [reporter] | Dmitry Belyavskiy (Red Hat) [remediation developer] | Alicja Kario (Red Hat) [remediation developer]
@@ -453,10 +478,19 @@ CVE-2026-50709,2026-06-24 15:04:39.793,Fluid Attacks,Frappe,Frappe Framework,MED
 CVE-2026-50710,2026-06-24 15:08:41.416,Fluid Attacks,Frappe,Frappe Framework,MEDIUM,4.6,Fluid Attacks AI SAST,cve-record,Fluid Attacks' AI SAST Scanner [finder] | Oscar Uribe [finder]
 CVE-2026-50711,2026-06-24 15:18:43.359,Fluid Attacks,Frappe,Frappe Framework,MEDIUM,4.6,Fluid Attacks AI SAST,cve-record,Fluid Attacks' AI SAST Scanner [finder] | Oscar Uribe [finder]
 CVE-2026-50712,2026-06-24 15:26:54.413,Fluid Attacks,Frappe,Frappe Framework,MEDIUM,4.8,Fluid Attacks AI SAST,cve-record,Fluid Attacks' AI SAST Scanner [finder] | Oscar Uribe [finder]
+CVE-2026-52950,2026-06-24 16:28:33.469,Linux,Linux,Linux,HIGH,7.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-52981,2026-06-24 16:28:57.074,Linux,Linux,Linux,HIGH,7.5,Google Sashiko (kernel review),cve-record,
+CVE-2026-53015,2026-06-24 16:29:25.396,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-53080,2026-06-24 16:30:21.172,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
 CVE-2026-53121,2026-06-24 16:30:51.294,Linux,Linux,Linux,Not scored,,Anthropic (Claude),cve-record,
 CVE-2026-46348,2026-06-24 19:39:46.332,GitHub_M,mastodon,mastodon,HIGH,8.7,Anthropic (Claude),anthropic-cve-tracker,
 CVE-2026-46349,2026-06-24 19:40:35.022,GitHub_M,mastodon,mastodon,MEDIUM,5.3,Anthropic (Claude),anthropic-cve-tracker,
 CVE-2026-46751,2026-06-25 08:01:00.294,apache,Apache Software Foundation,Apache Kvrocks,MEDIUM,5.5,Other AI agent or tool,cve-record,4ra2n (A code security AI agent) [finder]
+CVE-2026-53188,2026-06-25 08:39:00.960,Linux,Linux,Linux,HIGH,8.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-53220,2026-06-25 08:39:22.394,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-53231,2026-06-25 08:39:29.871,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-53232,2026-06-25 08:39:30.527,Linux,Linux,Linux,HIGH,8.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-53233,2026-06-25 08:39:31.191,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
 CVE-2026-12340,2026-06-25 19:36:21.468,wolfSSL,wolfSSL,wolfSSL,MEDIUM,6.3,Anthropic (Claude),cve-record,"David Pokora, Trail of Bits (in collaboration with Anthropic) [finder]"
 CVE-2026-7531,2026-06-25 20:01:16.991,wolfSSL,wolfSSL,wolfSSL,LOW,2.3,Anthropic (Claude),cve-record,Thai Duong (Calif.io / Anthropic) [finder]
 CVE-2026-6681,2026-06-25 20:11:39.446,wolfSSL,wolfSSL,wolfSSL,LOW,1.0,Anthropic (Claude),cve-record,Nicholas Carlini from Anthropic [finder]
@@ -468,13 +502,15 @@ CVE-2026-6329,2026-06-25 21:02:45.860,wolfSSL,wolfSSL,wolfSSL,MEDIUM,6.0,Anthrop
 CVE-2026-7511,2026-06-25 21:32:29.283,wolfSSL,wolfSSL,wolfSSL,MEDIUM,5.9,Anthropic (Claude),cve-record,Nicholas Carlini from Anthropic [finder]
 CVE-2026-57527,2026-06-26 14:43:32.982,VulnCheck,zaproxy,zap-extensions,HIGH,8.7,ProjectDiscovery Neo,cve-record,Neo by ProjectDiscovery [finder]
 CVE-2026-29509,2026-06-26 19:31:07.165,VulnCheck,wummel,patool,MEDIUM,5.3,CodeAnt AI,cve-record,CodeAnt AI Security [finder] | VulnCheck [coordinator]
-CVE-2026-53281,2026-06-26 19:40:43.040,Linux,Linux,Linux,HIGH,8.8,Other AI agent or tool,cve-record,
+CVE-2026-53280,2026-06-26 19:40:42.226,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-53281,2026-06-26 19:40:43.040,Linux,Linux,Linux,HIGH,8.8,Google Sashiko (kernel review),cve-record,
 CVE-2026-53283,2026-06-26 19:40:44.573,Linux,Linux,Linux,Not scored,,Anthropic (Claude),anthropic-cve-tracker,
 CVE-2026-49412,2026-06-27 09:02:55.482,freebsd,FreeBSD,FreeBSD,HIGH,7.8,Calif.io,cve-record,Andrew Griffiths at Calif.io [finder] | Maik Münch [finder]
 CVE-2026-13595,2026-06-29 08:06:09.059,redhat,Red Hat,Red Hat Hardened Images,MEDIUM,6.8,Anthropic (Claude),cve-record,Red Hat would like to thank Thai Duong (Calif.io in collaboration with Claude and Anthropic Research) for reporting this issue. []
 CVE-2026-43715,2026-06-29 19:42:42.075,apple,Apple,Safari,HIGH,8.8,Anthropic (Claude),anthropic-cve-tracker,
 CVE-2026-41579,2026-07-01 00:02:08.639,GitHub_M,opencontainers,runc,LOW,3.3,Anthropic (Claude),anthropic-cve-tracker,
 CVE-2026-14258,2026-07-01 09:24:51.479,redhat,Red Hat,Red Hat Enterprise Linux 10,MEDIUM,6.5,AISLE,cve-record,Red Hat would like to thank AISLE Research for reporting this issue. []
+CVE-2026-53334,2026-07-01 13:32:17.419,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
 CVE-2026-20214,2026-07-01 16:27:33.622,cisco,Cisco,Cisco Secure Endpoint,HIGH,7.5,Anthropic (Claude),anthropic-cve-tracker,
 CVE-2026-20213,2026-07-01 16:27:38.657,cisco,Cisco,Cisco Secure Endpoint,HIGH,7.5,Anthropic (Claude),anthropic-cve-tracker,
 CVE-2026-20215,2026-07-01 16:28:09.844,cisco,Cisco,Cisco Secure Endpoint,HIGH,7.5,Anthropic (Claude),anthropic-cve-tracker,
@@ -507,6 +543,7 @@ CVE-2026-61502,2026-07-13 17:22:59.734,VulnCheck,rejetto,hfs,MEDIUM,5.1,Anthropi
 CVE-2026-61503,2026-07-13 17:23:20.688,VulnCheck,rejetto,hfs,MEDIUM,6.9,Anthropic (Claude),cve-record,"Zach Hanley (@hacks_zach) of Horizon3.ai, in collaboration with Claude and Anthropic Research [finder]"
 CVE-2026-61504,2026-07-13 17:23:40.045,VulnCheck,rejetto,hfs,MEDIUM,5.1,Anthropic (Claude),cve-record,"Zach Hanley (@hacks_zach) of Horizon3.ai, in collaboration with Claude and Anthropic Research [finder]"
 CVE-2026-61505,2026-07-13 17:23:58.901,VulnCheck,rejetto,hfs,MEDIUM,6.9,Anthropic (Claude),cve-record,"Zach Hanley (@hacks_zach) of Horizon3.ai, in collaboration with Claude and Anthropic Research [finder]"
+CVE-2026-53365,2026-07-13 17:33:52.863,Linux,Linux,Linux,HIGH,7.8,Google Sashiko (kernel review),cve-record,
 CVE-2026-45067,2026-07-14 17:41:53.874,GitHub_M,symfony,symfony,MEDIUM,6.3,Anthropic (Claude),anthropic-cve-tracker,
 CVE-2026-47429,2026-07-14 19:28:08.688,GitHub_M,vitest-dev,vitest,CRITICAL,9.8,Anthropic (Claude),anthropic-cve-tracker,
 CVE-2026-47732,2026-07-14 21:12:13.071,GitHub_M,twigphp,Twig,HIGH,7.1,Anthropic (Claude),anthropic-cve-tracker,
@@ -523,7 +560,30 @@ CVE-2026-16108,2026-07-17 16:43:14.900,redhat,Red Hat,Red Hat build of Keycloak 
 CVE-2026-16104,2026-07-17 16:43:54.168,redhat,Red Hat,Red Hat build of Keycloak 26.6,MEDIUM,4.3,OpenAI (Codex / GPT),cve-record,Red Hat would like to thank Paul Bottinelli (Trail of Bits in collaboration with OpenAI) for reporting this issue. []
 CVE-2026-9103,2026-07-17 18:49:43.340,ibm,IBM,Langflow OSS,CRITICAL,9.8,BugBunny.ai,cve-record,Bugbunny  (bugbunny-research) Bugbunny @bugbunny_ai bugbunny.ai https://x.com/bugbunny_ai [finder]
 CVE-2026-8635,2026-07-17 19:02:03.977,ibm,IBM,Langflow OSS,CRITICAL,9.9,Tencent (Xuanwu Atuin / Zhuque),cve-record,XlabAI (XlabAITeam) xlabai@tencent.com [finder]
+CVE-2026-63839,2026-07-19 14:04:35.146,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-63862,2026-07-19 14:04:49.380,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-63968,2026-07-19 14:55:55.620,Linux,Linux,Linux,HIGH,7.5,Google Sashiko (kernel review),cve-record,
+CVE-2026-63969,2026-07-19 14:55:56.330,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-63993,2026-07-19 14:56:13.218,Linux,Linux,Linux,CRITICAL,9.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-63994,2026-07-19 14:56:13.896,Linux,Linux,Linux,CRITICAL,9.8,Google Sashiko (kernel review),cve-record,
 CVE-2026-64015,2026-07-19 15:39:10.557,Linux,Linux,Linux,HIGH,7.8,Anthropic (Claude),anthropic-cve-tracker,
+CVE-2026-64035,2026-07-19 15:39:24.128,Linux,Linux,Linux,CRITICAL,9.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-64038,2026-07-19 15:39:26.071,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-64046,2026-07-19 15:39:31.129,Linux,Linux,Linux,CRITICAL,9.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-64055,2026-07-19 15:39:37.077,Linux,Linux,Linux,CRITICAL,9.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-64056,2026-07-19 15:39:37.673,Linux,Linux,Linux,CRITICAL,9.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-64059,2026-07-19 15:39:39.607,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-64076,2026-07-19 15:39:50.346,Linux,Linux,Linux,HIGH,7.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-64115,2026-07-19 15:40:15.513,Linux,Linux,Linux,HIGH,8.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-64116,2026-07-19 15:40:16.240,Linux,Linux,Linux,HIGH,7.5,Google Sashiko (kernel review),cve-record,
+CVE-2026-64132,2026-07-19 15:40:27.590,Linux,Linux,Linux,CRITICAL,9.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-64150,2026-07-19 15:40:40.027,Linux,Linux,Linux,CRITICAL,9.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-64151,2026-07-19 15:40:40.643,Linux,Linux,Linux,HIGH,8.4,Google Sashiko (kernel review),cve-record,
+CVE-2026-64152,2026-07-19 15:40:41.354,Linux,Linux,Linux,HIGH,7.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-64168,2026-07-19 15:40:52.741,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-64169,2026-07-19 15:40:54.092,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-64170,2026-07-19 15:40:54.999,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-64184,2026-07-19 15:41:06.615,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
 CVE-2026-64620,2026-07-20 12:04:53.105,VulnCheck,FreeRDP,FreeRDP,CRITICAL,9.3,Anthropic (Claude),anthropic-cve-tracker,DavidKorczynski [reporter]
 CVE-2026-64621,2026-07-20 12:04:53.788,VulnCheck,FreeRDP,FreeRDP,CRITICAL,9.3,Anthropic (Claude),anthropic-cve-tracker,DavidKorczynski [reporter]
 CVE-2026-35590,2026-07-20 16:23:33.905,GitHub_M,libvips,libvips,MEDIUM,6.8,Anthropic (Claude),anthropic-cve-tracker,
@@ -539,7 +599,22 @@ CVE-2026-59849,2026-07-21 14:08:15.016,redhat,Red Hat,Red Hat Enterprise Linux 1
 CVE-2026-47391,2026-07-21 15:21:22.916,GitHub_M,MervinPraison,PraisonAI,CRITICAL,9.8,Anthropic (Claude),anthropic-cve-tracker,
 CVE-2026-55084,2026-07-21 18:30:09.057,GitHub_M,dhis2,dhis2-core,HIGH,8.8,Anthropic (Claude),anthropic-cve-tracker,
 CVE-2026-14899,2026-07-22 19:19:42.305,mozilla,Mozilla,Thunderbird,HIGH,7.5,Anthropic (Claude),cve-record,"Claude, Kai Engert []"
+CVE-2026-64213,2026-07-24 15:23:02.987,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-64221,2026-07-24 15:23:07.502,Linux,Linux,Linux,HIGH,7.8,Google Sashiko (kernel review),cve-record,
 CVE-2026-66032,2026-07-24 16:32:39.596,VulnCheck,libssh2,libssh2,HIGH,8.7,Anthropic (Claude),anthropic-cve-tracker,VladimirEliTokarev [finder]
+CVE-2026-64256,2026-07-25 08:49:08.676,Linux,Linux,Linux,Not scored,,Other AI agent or tool,cve-record,
+CVE-2026-64307,2026-07-25 08:49:40.782,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-64308,2026-07-25 08:49:41.411,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-64309,2026-07-25 08:49:42.035,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-64310,2026-07-25 08:49:42.683,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-64333,2026-07-25 08:49:59.616,Linux,Linux,Linux,HIGH,7.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-64334,2026-07-25 08:50:00.229,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-64413,2026-07-25 08:50:53.759,Linux,Linux,Linux,HIGH,7.0,Google Sashiko (kernel review),cve-record,
+CVE-2026-64414,2026-07-25 08:50:54.495,Linux,Linux,Linux,HIGH,7.5,Google Sashiko (kernel review),cve-record,
+CVE-2026-64461,2026-07-25 08:51:28.309,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-64470,2026-07-25 08:51:34.673,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-64471,2026-07-25 08:51:35.245,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-64528,2026-07-25 09:20:51.774,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
 CVE-2026-42016,2026-07-27 19:20:56.352,JFROG,jfrog,artifactory,HIGH,8.1,OpenAI (Codex / GPT),cve-record,Kostya Kortchinsky | OpenAI [finder]
 CVE-2026-42017,2026-07-27 19:26:23.746,JFROG,jfrog,artifactory,HIGH,8.8,OpenAI (Codex / GPT),cve-record,Kostya Kortchinsky | OpenAI [finder]
 CVE-2026-65921,2026-07-27 19:27:31.034,JFROG,jfrog,artifactory,HIGH,8.8,OpenAI (Codex / GPT),cve-record,Matthew Bryant | OpenAI [finder]
@@ -620,6 +695,9 @@ CVE-2026-16100,2026-08-05 13:50:57.057,redhat,Red Hat,Red Hat build of Keycloak 
 CVE-2026-16442,2026-08-05 15:00:39.236,redhat,Red Hat,Red Hat build of Keycloak 26.4,HIGH,7.4,OpenAI (Codex / GPT),cve-record,Red Hat would like to thank Paul Bottinelli (Trail of Bits in collaboration with OpenAI) for reporting this issue. []
 CVE-2026-5430,2026-08-06 07:33:28.156,WSO2,WSO2,WSO2 Universal Gateway,CRITICAL,10.0,Hacktron AI,cve-record,hacktron.ai [finder]
 CVE-2026-18938,2026-08-07 08:19:08.239,redhat,Red Hat,Red Hat Enterprise Linux 10,MEDIUM,6.2,AISLE,cve-record,This issue was discovered by Found by AISLE in partnership with Red Hat. []
+CVE-2026-68164,2026-08-10 11:59:31.670,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-68217,2026-08-10 12:00:36.773,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-68240,2026-08-10 12:01:05.810,Linux,Linux,Linux,HIGH,8.8,Google Sashiko (kernel review),cve-record,
 CVE-2026-68241,2026-08-10 12:01:07.103,Linux,Linux,Linux,Not scored,,Other AI agent or tool,cve-record,
 CVE-2026-68242,2026-08-10 12:01:08.447,Linux,Linux,Linux,Not scored,,Intel AI-assisted analysis,cve-record,
 CVE-2026-68243,2026-08-10 12:01:09.484,Linux,Linux,Linux,Not scored,,Intel AI-assisted analysis,cve-record,
@@ -630,6 +708,8 @@ CVE-2026-68253,2026-08-10 12:01:19.402,Linux,Linux,Linux,HIGH,7.8,Other AI agent
 CVE-2026-68254,2026-08-10 12:01:20.400,Linux,Linux,Linux,Not scored,,Other AI agent or tool,cve-record,
 CVE-2026-68265,2026-08-10 12:01:40.271,Linux,Linux,Linux,HIGH,7.3,Other AI agent or tool,cve-record,
 CVE-2026-68269,2026-08-10 12:01:44.575,Linux,Linux,Linux,Not scored,,Other AI agent or tool,cve-record,
+CVE-2026-68382,2026-08-10 12:04:01.187,Linux,Linux,Linux,HIGH,7.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-68401,2026-08-10 12:04:21.020,Linux,Linux,Linux,HIGH,7.8,Google Sashiko (kernel review),cve-record,
 CVE-2026-72694,2026-08-11 08:37:55.392,redhat,Red Hat,Red Hat Enterprise Linux 10,HIGH,7.1,AISLE,cve-record,This issue was discovered by Found by AISLE in partnership with Red Hat. []
 CVE-2026-72693,2026-08-11 08:39:24.983,redhat,Red Hat,Red Hat Enterprise Linux 10,HIGH,7.8,AISLE,cve-record,This issue was discovered by Found by AISLE in partnership with Red Hat. []
 CVE-2026-71217,2026-08-11 08:50:10.140,redhat,Red Hat,Red Hat Enterprise Linux 10,HIGH,7.5,AISLE,cve-record,This issue was discovered by Found by AISLE in partnership with Red Hat. []
@@ -679,7 +759,38 @@ CVE-2026-58435,2026-08-13 16:44:51.733,Gitea,Gitea,Gitea Open Source Git Server,
 CVE-2026-13002,2026-08-14 15:02:26.469,redhat,Red Hat,Red Hat Enterprise Linux 10,MEDIUM,4.4,Anthropic (Claude),anthropic-cve-tracker,Red Hat would like to thank Lennart Espe for reporting this issue. []
 CVE-2026-63361,2026-08-14 17:04:07.902,Fluid Attacks,LimeSurvey,LimeSurvey,HIGH,8.5,Fluid Attacks AI SAST,cve-record,Miguel Gómez [finder] | Fluid Attacks' AI SAST Scanner [finder]
 CVE-2026-18403,2026-08-14 18:33:31.017,Fluid Attacks,LimeSurvey,LimeSurvey,MEDIUM,6.0,Fluid Attacks AI SAST,cve-record,Miguel Gomez [finder] | Fluid Attacks' AI SAST Scanner [finder]
+CVE-2026-68477,2026-08-15 05:51:32.820,Linux,Linux,Linux,CRITICAL,9.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-72113,2026-08-15 05:52:54.001,Linux,Linux,Linux,HIGH,7.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-72120,2026-08-15 05:52:59.226,Linux,Linux,Linux,HIGH,7.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-72175,2026-08-15 05:53:40.011,Linux,Linux,Linux,HIGH,7.1,Google Sashiko (kernel review),cve-record,
+CVE-2026-72176,2026-08-15 05:53:40.759,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-72177,2026-08-15 05:53:41.496,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-72251,2026-08-15 05:54:39.983,Linux,Linux,Linux,CRITICAL,9.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-72279,2026-08-15 05:55:04.313,Linux,Linux,Linux,CRITICAL,9.0,Google Sashiko (kernel review),cve-record,
+CVE-2026-72295,2026-08-15 05:55:16.590,Linux,Linux,Linux,HIGH,8.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-72313,2026-08-15 05:55:28.455,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-72319,2026-08-15 05:55:32.313,Linux,Linux,Linux,CRITICAL,9.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-72359,2026-08-15 05:55:59.424,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-72370,2026-08-15 05:56:06.648,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-72394,2026-08-15 05:56:21.707,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-72395,2026-08-15 05:56:22.400,Linux,Linux,Linux,HIGH,7.1,Google Sashiko (kernel review),cve-record,
+CVE-2026-72396,2026-08-15 05:56:23.067,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-72415,2026-08-15 05:56:36.210,Linux,Linux,Linux,HIGH,7.1,Google Sashiko (kernel review),cve-record,
+CVE-2026-72434,2026-08-15 05:56:48.756,Linux,Linux,Linux,HIGH,7.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-72435,2026-08-15 05:56:49.402,Linux,Linux,Linux,HIGH,7.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-72436,2026-08-15 05:56:50.051,Linux,Linux,Linux,CRITICAL,9.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-74258,2026-08-15 05:57:36.257,Linux,Linux,Linux,HIGH,7.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-74328,2026-08-15 05:58:22.371,Linux,Linux,Linux,HIGH,8.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-74334,2026-08-15 05:58:26.455,Linux,Linux,Linux,HIGH,7.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-74346,2026-08-15 05:58:34.606,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-74403,2026-08-15 05:59:13.399,Linux,Linux,Linux,HIGH,7.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-74404,2026-08-15 05:59:14.073,Linux,Linux,Linux,HIGH,7.8,Google Sashiko (kernel review),cve-record,
 CVE-2026-74427,2026-08-15 05:59:29.053,Linux,Linux,Linux,CRITICAL,9.8,Other AI agent or tool,cve-record,
+CVE-2026-74435,2026-08-15 05:59:34.073,Linux,Linux,Linux,HIGH,7.5,Google Sashiko (kernel review),cve-record,
+CVE-2026-74464,2026-08-15 12:27:03.786,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-74549,2026-08-15 12:27:56.993,Linux,Linux,Linux,HIGH,7.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-74551,2026-08-15 12:27:58.237,Linux,Linux,Linux,HIGH,7.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-74560,2026-08-15 12:28:03.912,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
 CVE-2026-19895,2026-08-15 13:30:08.755,VulDB,opensourcepos,Open Source Point of Sale,MEDIUM,6.3,ZAST.AI,cve-record,ZAST.AI (VulDB User) [reporter] | VulDB CNA Team [coordinator]
 CVE-2026-19896,2026-08-15 14:15:08.291,VulDB,mangroup,dtale,MEDIUM,6.3,ZAST.AI,cve-record,ZAST.AI (VulDB User) [reporter] | VulDB CNA Team [coordinator]
 CVE-2026-19897,2026-08-15 15:30:08.386,VulDB,mangroup,dtale,MEDIUM,6.3,ZAST.AI,cve-record,ZAST.AI (VulDB User) [reporter] | VulDB CNA Team [coordinator]
@@ -721,7 +832,10 @@ CVE-2026-76634,2026-08-20 13:48:20.910,VulnCheck,LabRedesCefetRJ,WeGIA,HIGH,7.1,
 CVE-2026-76635,2026-08-20 13:58:05.913,VulnCheck,baserproject,basercms,HIGH,8.6,ProjectDiscovery Neo,cve-record,Neo by ProjectDiscovery [finder]
 CVE-2026-75140,2026-08-20 15:56:50.377,VulnCheck,jhy,soup,HIGH,8.7,AISLE,cve-record,Joshua Rogers (AISLE Research) [finder]
 CVE-2026-77220,2026-08-21 20:54:34.762,VulnCheck,michaelrsweet,pdfio,HIGH,7.1,AISLE,cve-record,Joshua Rogers (AISLE Research) [finder]
+CVE-2026-74645,2026-08-22 15:32:22.645,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
 CVE-2026-74699,2026-08-22 15:33:00.316,Linux,Linux,Linux,Not scored,,Other AI agent or tool,cve-record,
+CVE-2026-74711,2026-08-22 15:33:07.779,Linux,Linux,Linux,HIGH,8.4,Google Sashiko (kernel review),cve-record,
+CVE-2026-74724,2026-08-22 15:33:15.832,Linux,Linux,Linux,HIGH,7.8,Google Sashiko (kernel review),cve-record,
 CVE-2026-59230,2026-08-24 16:09:44.229,apache,Apache Software Foundation,Apache Camel,MEDIUM,6.5,Tencent (Xuanwu Atuin / Zhuque),cve-record,"Atuin - Automated Vulnerability Discovery Engine, anciety of Tencent Xuanwu Lab [finder] | Andrea Cosentino [remediation developer]"
 CVE-2026-71503,2026-08-24 18:57:05.485,VulnCheck,Dolibarr,dolibarr,MEDIUM,5.1,CodeAnt AI,cve-record,CodeAnt AI Security Research [finder] | VulnCheck [coordinator]
 CVE-2026-71504,2026-08-24 18:57:47.028,VulnCheck,Dolibarr,dolibarr,HIGH,8.6,CodeAnt AI,cve-record,CodeAnt AI Security Research [finder] | VulnCheck [coordinator]
@@ -737,11 +851,21 @@ CVE-2026-69104,2026-08-25 15:09:29.369,JFROG,jfrog,artifactory,HIGH,7.6,OpenAI (
 CVE-2026-70548,2026-08-25 15:17:16.973,JFROG,jfrog,artifactory,LOW,3.5,OpenAI (Codex / GPT),cve-record,Kostya Kortchinsky | OpenAI [finder]
 CVE-2026-70550,2026-08-25 15:22:53.484,JFROG,jfrog,artifactory,MEDIUM,6.5,OpenAI (Codex / GPT),cve-record,Khai Tran | OpenAI [finder]
 CVE-2026-18664,2026-08-26 08:34:22.871,NLnet Labs,NLnet Labs,NSD,HIGH,8.2,Anthropic (Claude),cve-record,Qifan Zhang from Palo Alto Networks [finder] | Claude and Ada Logics [finder]
+CVE-2026-74747,2026-08-26 14:36:56.563,Linux,Linux,Linux,HIGH,7.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-80524,2026-08-26 14:37:04.373,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-80531,2026-08-26 14:37:08.594,Linux,Linux,Linux,HIGH,7.8,Other AI agent or tool,cve-record,
+CVE-2026-80533,2026-08-26 14:37:09.785,Linux,Linux,Linux,Not scored,,Other AI agent or tool,cve-record,
+CVE-2026-80535,2026-08-26 14:37:10.985,Linux,Linux,Linux,Not scored,,Other AI agent or tool,cve-record,
 CVE-2026-15973,2026-08-26 20:42:44.008,Fluid Attacks,LimeSurvey,LimeSurvey,HIGH,8.4,Fluid Attacks AI SAST,cve-record,Miguel Gomez [finder] | Fluid Attacks' AI SAST Scanner [finder]
 CVE-2026-65930,2026-08-26 21:24:52.232,Fluid Attacks,LimeSurvey,LimeSurvey,MEDIUM,4.8,Fluid Attacks AI SAST,cve-record,Miguel Gómez [finder] | Fluid Attacks' AI SAST Scanner [finder]
 CVE-2026-16809,2026-08-26 21:39:12.944,Fluid Attacks,LimeSurvey,LimeSurvey,HIGH,7.2,Fluid Attacks AI SAST,cve-record,Miguel Gómez [finder] | Fluid Attacks' AI SAST Scanner [finder]
 CVE-2026-63360,2026-08-26 21:47:49.875,Fluid Attacks,LimeSurvey,LimeSurvey,HIGH,7.4,Fluid Attacks AI SAST,cve-record,Miguel Gómez [finder] | Fluid Attacks' AI SAST Scanner [finder]
 CVE-2026-80590,2026-08-28 06:35:12.516,Linux,Linux,Linux,HIGH,8.6,Anthropic (Claude),anthropic-cve-tracker,
+CVE-2026-80607,2026-08-28 06:48:31.556,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-80625,2026-08-28 06:48:43.583,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-80646,2026-08-28 06:48:56.277,Linux,Linux,Linux,HIGH,7.5,Google Sashiko (kernel review),cve-record,
+CVE-2026-80695,2026-08-28 06:53:01.037,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-80704,2026-08-28 06:53:06.442,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
 CVE-2026-82461,2026-08-29 16:35:25.482,VulnCheck,pac4j,pac4j,HIGH,8.6,AISLE,cve-record,Joshua Rogers (AISLE Research) [finder]
 CVE-2026-82462,2026-08-29 16:35:26.177,VulnCheck,pac4j,pac4j,MEDIUM,6.9,AISLE,cve-record,Joshua Rogers (AISLE Research) [finder]
 CVE-2026-82463,2026-08-29 16:35:26.904,VulnCheck,pac4j,pac4j,HIGH,8.6,AISLE,cve-record,Joshua Rogers (AISLE Research) [finder]
@@ -765,6 +889,10 @@ CVE-2026-85226,2026-09-03 14:35:17.020,CIRCL,misp,misp,MEDIUM,5.3,Anthropic (Cla
 CVE-2026-85236,2026-09-03 15:13:00.493,CIRCL,misp,misp,HIGH,8.8,Anthropic (Claude),cve-record,Andras Iklody [remediation developer] | Peter James [finder] | Scottish Government - National Cyber Team [finder] | Claude Opus 5 (1M context) [tool]
 CVE-2026-85533,2026-09-04 08:53:46.725,CIRCL,misp,misp,HIGH,7.6,Anthropic (Claude),cve-record,Andras Iklody [remediation developer] | elhoim (David André) [finder] | Claude Opus 5 (1M context) [finder]
 CVE-2026-85538,2026-09-04 09:05:41.350,CIRCL,misp,misp,HIGH,8.3,Anthropic (Claude),cve-record,Andras Iklody [remediation developer] | elhoim (David André) [finder] | Claude Opus 5 (1M context) [finder]
+CVE-2026-80820,2026-09-04 15:13:41.355,Linux,Linux,Linux,Not scored,,Other AI agent or tool,cve-record,
+CVE-2026-80865,2026-09-04 16:48:08.582,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-80889,2026-09-04 17:11:05.854,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-80901,2026-09-04 17:11:15.780,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
 CVE-2026-86283,2026-09-06 14:15:06.533,CIRCL,MISP,MISP,HIGH,7.1,Anthropic (Claude),cve-record,Scottish Government - National Cyber Team [reporter] | iglocska [remediation developer] | Claude Opus 5 (1M context) [remediation developer]
 CVE-2026-13608,2026-09-06 17:47:01.951,curl,curl,curl,HIGH,7.4,Microsoft autonomous code security,cve-record,Eunsoo Kim (Autonomous Code Security team at Microsoft) [finder] | Eunsoo Kim [remediation developer]
 CVE-2026-86342,2026-09-07 09:02:55.830,CIRCL,MISP,MISP,MEDIUM,5.3,Anthropic (Claude),cve-record,Scottish Government - National Cyber Team [finder] | iglocska [remediation developer] | Claude Opus 5 (1M context) [remediation developer]
@@ -791,6 +919,8 @@ CVE-2026-88921,2026-09-10 13:41:51.214,CIRCL,MISP,MISP,MEDIUM,5.1,Anthropic (Cla
 CVE-2026-45751,2026-09-10 20:28:30.868,GitHub_M,OISF,suricata,MEDIUM,5.9,Anthropic (Claude),anthropic-cve-tracker,
 CVE-2026-45752,2026-09-10 20:37:49.927,GitHub_M,OISF,suricata,MEDIUM,5.9,Anthropic (Claude),anthropic-cve-tracker,
 CVE-2026-89329,2026-09-11 18:42:25.288,redhat,Red Hat,Red Hat Enterprise Linux 10,MEDIUM,6.2,AISLE,cve-record,This issue was discovered by Found by AISLE in partnership with Red Hat. []
+CVE-2026-89454,2026-09-11 19:43:18.717,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-89717,2026-09-11 19:46:30.698,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
 CVE-2026-90580,2026-09-13 19:15:09.741,VulDB,FlowiseAI,Flowise,MEDIUM,5.3,ZAST.AI,cve-record,ZAST.AI (VulDB User) [reporter]
 CVE-2026-90893,2026-09-14 09:12:03.863,CIRCL,MISP,MISP,MEDIUM,5.1,Anthropic (Claude),cve-record,Scottish Government - National Cyber Team [reporter] | iglocska [remediation developer] | Claude Opus 5 (1M context) [remediation developer]
 CVE-2026-90895,2026-09-14 09:40:55.800,CIRCL,MISP,MISP,HIGH,8.4,Anthropic (Claude),cve-record,Scottish Government - National Cyber Team [reporter] | iglocska [remediation developer] | Claude Opus 4.8 [remediation developer]
@@ -871,12 +1001,28 @@ CVE-2026-76186,2026-09-16 09:09:57.800,apache,Apache Software Foundation,Apache 
 CVE-2026-76187,2026-09-16 09:10:57.704,apache,Apache Software Foundation,Apache Airflow Keycloak provider,CRITICAL,9.8,Anthropic (Claude),cve-record,Claude Security Scans [tool] | Jarek Potiuk [remediation developer]
 CVE-2026-86466,2026-09-16 09:12:51.849,apache,Apache Software Foundation,Apache Airflow FAB provider,HIGH,8.1,ProjectDiscovery Neo,cve-record,Ritik Chaddha & NEO by ProjectDiscovery [finder] | Jarek Potiuk [remediation developer]
 CVE-2026-8462,2026-09-16 10:14:34.372,Kong,openmeter,openmeter,HIGH,8.9,Anthropic (Claude),anthropic-cve-tracker,
+CVE-2026-89796,2026-09-16 10:30:27.478,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-89920,2026-09-16 10:32:14.735,Linux,Linux,Linux,HIGH,7.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-89962,2026-09-16 10:32:44.623,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-89963,2026-09-16 10:32:45.336,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-90004,2026-09-16 10:33:14.085,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-90006,2026-09-16 10:33:15.423,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-90046,2026-09-16 10:33:43.156,Linux,Linux,Linux,HIGH,7.8,Google Sashiko (kernel review),cve-record,
 CVE-2026-92380,2026-09-16 14:30:09.348,VulDB,n/a,WuzhiCMS,MEDIUM,6.9,ZAST.AI,cve-record,ZAST.AI (VulDB User) [reporter] | VulDB CNA Team [coordinator]
 CVE-2026-18212,2026-09-16 14:54:15.431,redhat,Red Hat,Red Hat build of Keycloak 26.4,HIGH,7.5,OpenAI (Codex / GPT),cve-record,Red Hat would like to thank Paul Bottinelli (Trail of Bits in collaboration with OpenAI) for reporting this issue. []
 CVE-2026-92729,2026-09-16 18:31:19.245,VulnCheck,SigNoz,signoz,HIGH,8.8,Anthropic (Claude),cve-record,"4NK1T [finder] | lighthousekeeper1212 [finder] | 0xVijay [finder] | axel-corsiez [finder] | morimori-dev [finder] | PLpaPLpa [finder] | newugly [finder] | thaidn (Calif.io, in collaboration with Anthropic) [finder] | hackchang [finder] | Wenhao Wu (d3do-23), Southeast University [finder]"
 CVE-2026-91104,2026-09-16 18:53:59.083,hp,HP Inc.,HP Linux Imaging and Printing Software (HPLIP),CRITICAL,9.3,Anthropic (Claude),cve-record,Calif.io in collaboration with Anthropic [finder]
 CVE-2026-86320,2026-09-17 07:27:33.167,redhat,Red Hat,Red Hat Enterprise Linux 10,HIGH,7.8,AISLE,cve-record,Red Hat would like to thank AISLE Research for reporting this issue. []
 CVE-2026-92951,2026-09-17 13:46:10.792,VulnCheck,patriksimek,vm2,CRITICAL,9.4,Tencent (Xuanwu Atuin / Zhuque),cve-record,XlabAITeam [reporter] | keenanwgn [reporter] | liangjs [reporter]
+CVE-2026-90135,2026-09-17 16:06:34.543,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-90248,2026-09-17 16:07:50.104,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-90290,2026-09-17 16:08:18.058,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-90342,2026-09-17 16:08:53.010,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-90384,2026-09-17 16:09:20.536,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-92516,2026-09-17 16:10:24.804,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-93134,2026-09-17 16:11:36.077,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-93150,2026-09-17 16:11:46.799,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-93193,2026-09-17 16:12:17.117,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
 CVE-2026-93295,2026-09-17 16:25:40.730,CIRCL,misp,misp,HIGH,8.7,Anthropic (Claude),cve-record,Niels Teusink of Eye Security [reporter] | iglocska [remediation developer] | Claude Opus 5 (1M context) [remediation developer]
 CVE-2026-93292,2026-09-17 16:26:42.867,VulnCheck,SigNoz,signoz,HIGH,8.4,Anthropic (Claude),cve-record,"4NK1T [finder] | axel-corsiez [finder] | morimori-dev [finder] | newugly [finder] | thaidn (Calif.io, in collaboration with Anthropic) [finder] | hackchang [finder] | Scott Moore - VulnCheck [finder]"
 CVE-2026-93296,2026-09-17 16:29:19.457,CIRCL,misp,misp,HIGH,8.5,Anthropic (Claude),cve-record,Jeroen Pinoy [reporter] | iglocska [remediation developer] | Claude Opus 4.8 [remediation developer]
@@ -948,17 +1094,35 @@ CVE-2026-97177,2026-09-24 05:47:57.900,redhat,Red Hat,Red Hat Build of Keycloak,
 CVE-2026-95519,2026-09-24 13:26:54.847,redhat,Red Hat,Red Hat Enterprise Linux 10,HIGH,7.8,AISLE,cve-record,This issue was discovered by Found by AISLE in partnership with Red Hat. []
 CVE-2026-95521,2026-09-24 13:26:56.782,redhat,Red Hat,Red Hat Enterprise Linux 10,HIGH,7.8,Calif.io,cve-record,Red Hat would like to thank Calif.io for reporting this issue. []
 CVE-2026-93541,2026-09-24 15:58:58.788,suse,X.org,libXi,MEDIUM,6.5,AISLE,cve-record,AISLE in partnership with Red Hat [finder]
+CVE-2026-93288,2026-09-24 16:02:12.144,Linux,Linux,Linux,HIGH,7.8,Google Sashiko (kernel review),cve-record,
+CVE-2026-93798,2026-09-24 16:02:31.291,Linux,Linux,Linux,HIGH,7.8,Google Sashiko (kernel review),cve-record,
 CVE-2026-93542,2026-09-24 16:03:00.095,suse,x.org,libXi,MEDIUM,6.5,AISLE,cve-record,AISLE in partnership with Red Hat [finder]
+CVE-2026-97504,2026-09-24 16:04:52.618,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
 CVE-2026-93543,2026-09-24 16:09:51.221,suse,x.org,libXi,HIGH,7.4,AISLE,cve-record,AISLE in partnership with Red Hat [finder]
 CVE-2026-93544,2026-09-24 16:13:29.067,suse,x.org,libXi,MEDIUM,6.5,AISLE,cve-record,AISLE in partnership with Red Hat [finder]
 CVE-2026-93545,2026-09-24 16:20:35.334,suse,x.org,libXi,MEDIUM,6.5,AISLE,cve-record,AISLE in partnership with Red Hat [finder]
 CVE-2026-94281,2026-09-24 16:23:50.110,suse,x.org,libXi,MEDIUM,6.5,AISLE,cve-record,AISLE-Report-PSIRTSUPT-14718 [finder]
+CVE-2026-84302,2026-09-24 16:49:56.499,GitHub_M,discourse,discourse,MEDIUM,4.2,Other AI agent or tool,cve-record,
 CVE-2026-95811,2026-09-25 01:31:22.472,CPANSec,,,MEDIUM,6.5,Other AI agent or tool,cve-record,"Deepseek agent, Linagora [finder]"
 CVE-2026-97863,2026-09-25 08:03:24.441,CIRCL,misp,misp-modules,MEDIUM,6.3,Anthropic (Claude),cve-record,elhoim [remediation developer] | Claude Opus 5 [remediation developer]
 CVE-2026-92573,2026-09-25 08:11:12.150,apache,Apache Software Foundation,Apache Qpid Broker-J,MEDIUM,6.5,AISLE,cve-record,Khaled Suliman of AISLE Research [finder] | n0mi1k [reporter]
 CVE-2026-92550,2026-09-25 08:17:38.849,apache,Apache Software Foundation,Apache Qpid Broker-J,HIGH,7.5,AISLE,cve-record,Khaled Suliman of AISLE Research [finder] | n0mi1k [reporter]
 CVE-2026-97523,2026-09-25 10:21:27.042,Linux,Linux,Linux,HIGH,7.5,Anthropic (Claude),anthropic-cve-tracker,
 CVE-2026-97524,2026-09-25 10:21:27.668,Linux,Linux,Linux,HIGH,7.5,Anthropic (Claude),anthropic-cve-tracker,
+CVE-2026-97542,2026-09-25 10:21:38.646,Linux,Linux,Linux,Not scored,,Other AI agent or tool,cve-record,
+CVE-2026-97543,2026-09-25 10:21:39.249,Linux,Linux,Linux,Not scored,,Other AI agent or tool,cve-record,
+CVE-2026-97544,2026-09-25 10:21:39.839,Linux,Linux,Linux,Not scored,,Other AI agent or tool,cve-record,
+CVE-2026-97545,2026-09-25 10:21:40.433,Linux,Linux,Linux,Not scored,,Other AI agent or tool,cve-record,
+CVE-2026-97546,2026-09-25 10:21:41.029,Linux,Linux,Linux,Not scored,,Other AI agent or tool,cve-record,
+CVE-2026-97548,2026-09-25 10:21:42.239,Linux,Linux,Linux,HIGH,7.8,Other AI agent or tool,cve-record,
+CVE-2026-97550,2026-09-25 10:21:43.450,Linux,Linux,Linux,Not scored,,Other AI agent or tool,cve-record,
+CVE-2026-97553,2026-09-25 10:21:45.260,Linux,Linux,Linux,Not scored,,Other AI agent or tool,cve-record,
+CVE-2026-97556,2026-09-25 10:21:47.078,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-97567,2026-09-25 10:21:53.677,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-97906,2026-09-25 10:22:31.640,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-97979,2026-09-25 10:23:16.422,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-98000,2026-09-25 10:23:28.703,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-98026,2026-09-25 10:23:44.505,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
 CVE-2026-98033,2026-09-25 10:23:48.761,Linux,Linux,Linux,Not scored,,Anthropic (Claude),anthropic-cve-tracker,
 CVE-2026-98034,2026-09-25 10:23:49.352,Linux,Linux,Linux,Not scored,,Anthropic (Claude),anthropic-cve-tracker,
 CVE-2026-98036,2026-09-25 10:23:50.530,Linux,Linux,Linux,Not scored,,Anthropic (Claude),anthropic-cve-tracker,
@@ -967,12 +1131,16 @@ CVE-2026-98038,2026-09-25 10:23:51.746,Linux,Linux,Linux,Not scored,,Anthropic (
 CVE-2026-98040,2026-09-25 10:23:53.001,Linux,Linux,Linux,Not scored,,Anthropic (Claude),anthropic-cve-tracker,
 CVE-2026-98047,2026-09-25 10:23:57.347,Linux,Linux,Linux,Not scored,,Anthropic (Claude),anthropic-cve-tracker,
 CVE-2026-98049,2026-09-25 10:23:58.561,Linux,Linux,Linux,Not scored,,Anthropic (Claude),anthropic-cve-tracker,
+CVE-2026-98057,2026-09-25 10:24:03.541,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
 CVE-2026-98058,2026-09-25 10:24:04.190,Linux,Linux,Linux,Not scored,,Anthropic (Claude),anthropic-cve-tracker,
 CVE-2026-98060,2026-09-25 10:24:05.380,Linux,Linux,Linux,Not scored,,Anthropic (Claude),anthropic-cve-tracker,
 CVE-2026-98061,2026-09-25 10:24:06.001,Linux,Linux,Linux,Not scored,,Anthropic (Claude),anthropic-cve-tracker,
 CVE-2026-98062,2026-09-25 10:24:06.597,Linux,Linux,Linux,Not scored,,Anthropic (Claude),anthropic-cve-tracker,
+CVE-2026-98066,2026-09-25 10:24:08.999,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-98082,2026-09-25 10:24:18.685,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
 CVE-2026-98085,2026-09-25 10:24:20.485,Linux,Linux,Linux,Not scored,,Anthropic (Claude),anthropic-cve-tracker,
 CVE-2026-98134,2026-09-25 10:36:12.919,Linux,Linux,Linux,Not scored,,Anthropic (Claude),anthropic-cve-tracker,
+CVE-2026-100070,2026-09-25 13:06:44.311,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
 CVE-2026-96812,2026-09-25 14:47:47.410,Google,Google,gVisor,HIGH,8.8,Anthropic (Claude),cve-record,Anthropic (using Claude) [finder]
 CVE-2026-94419,2026-09-27 08:54:18.510,wolfSSL,wolfSSL,wolfSSL,LOW,2.3,Anthropic (Claude),cve-record,Anthropic OSS program [finder]
 CVE-2026-94418,2026-09-27 08:58:56.538,wolfSSL,wolfSSL,wolfSSL,LOW,2.3,Anthropic (Claude),cve-record,Anthropic OSS program [finder]
@@ -1098,6 +1266,8 @@ CVE-2026-104041,2026-10-06 01:00:49.767,redhat,Red Hat,Red Hat Enterprise Linux 
 CVE-2026-104042,2026-10-06 01:02:12.036,redhat,Red Hat,Red Hat Enterprise Linux 10,MEDIUM,5.5,AISLE,cve-record,This issue was discovered by Found by AISLE in partnership with Red Hat. []
 CVE-2026-104043,2026-10-06 01:02:13.343,redhat,Red Hat,Red Hat Enterprise Linux 10,MEDIUM,5.5,AISLE,cve-record,This issue was discovered by Found by AISLE in partnership with Red Hat. []
 CVE-2026-104044,2026-10-06 01:02:22.041,redhat,Red Hat,Red Hat Enterprise Linux 10,MEDIUM,6.2,AISLE,cve-record,This issue was discovered by Found by AISLE in partnership with Red Hat. []
+CVE-2026-98199,2026-10-06 08:44:37.623,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-98301,2026-10-06 08:45:58.908,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
 CVE-2026-98348,2026-10-06 08:46:36.927,Linux,Linux,Linux,HIGH,7.1,Other AI agent or tool,cve-record,
 CVE-2026-98349,2026-10-06 08:46:37.713,Linux,Linux,Linux,HIGH,7.1,Other AI agent or tool,cve-record,
 CVE-2026-106512,2026-10-06 18:48:29.598,CIRCL,MISP,sachertortephp,HIGH,8.4,Anthropic (Claude),cve-record,Logan Homolka [reporter] | iglocska [remediation developer] | Claude Opus 4.8 [remediation developer] | Claude Opus 4.8 [tool] | CCB [coordinator] | Alexandre Dulaunoy [coordinator]
@@ -1186,12 +1356,25 @@ CVE-2026-89085,2026-10-16 23:04:28.673,redhat,Red Hat,Red Hat Enterprise Linux 1
 CVE-2026-89088,2026-10-16 23:06:18.907,redhat,Red Hat,Red Hat Enterprise Linux 10,MEDIUM,5.5,AISLE,cve-record,This issue was discovered by Found by AISLE in partnership with Red Hat. []
 CVE-2026-111868,2026-10-18 00:15:17.334,VulDB,datastax,pulsar-jms,MEDIUM,5.3,ZAST.AI,cve-record,ZAST.AI (VulDB User) [reporter] | VulDB CNA Team [coordinator]
 CVE-2026-111869,2026-10-18 02:45:15.572,VulDB,makeplane,plane,MEDIUM,6.9,ZAST.AI,cve-record,ZAST.AI (VulDB User) [reporter]
+CVE-2026-98443,2026-10-18 15:14:53.597,Linux,Linux,Linux,Not scored,,Other AI agent or tool,cve-record,
+CVE-2026-98444,2026-10-18 15:14:54.559,Linux,Linux,Linux,Not scored,,Other AI agent or tool,cve-record,
+CVE-2026-98445,2026-10-18 15:14:55.754,Linux,Linux,Linux,Not scored,,Other AI agent or tool,cve-record,
+CVE-2026-98446,2026-10-18 15:14:56.724,Linux,Linux,Linux,Not scored,,Other AI agent or tool,cve-record,
+CVE-2026-98447,2026-10-18 15:14:57.561,Linux,Linux,Linux,Not scored,,Other AI agent or tool,cve-record,
+CVE-2026-98448,2026-10-18 15:14:58.880,Linux,Linux,Linux,Not scored,,Other AI agent or tool,cve-record,
+CVE-2026-98505,2026-10-18 15:17:06.200,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-98521,2026-10-18 15:17:38.938,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
 CVE-2026-98589,2026-10-18 15:19:01.769,Linux,Linux,Linux,Not scored,,Anthropic (Claude),anthropic-cve-tracker,
 CVE-2026-98591,2026-10-18 15:19:03.567,Linux,Linux,Linux,Not scored,,Anthropic (Claude),anthropic-cve-tracker,
 CVE-2026-98613,2026-10-18 15:19:33.624,Linux,Linux,Linux,Not scored,,Anthropic (Claude),anthropic-cve-tracker,
 CVE-2026-98626,2026-10-18 15:19:47.832,Linux,Linux,Linux,Not scored,,Anthropic (Claude),anthropic-cve-tracker,
 CVE-2026-98627,2026-10-18 15:19:48.952,Linux,Linux,Linux,Not scored,,Anthropic (Claude),anthropic-cve-tracker,
 CVE-2026-98628,2026-10-18 15:19:49.746,Linux,Linux,Linux,Not scored,,Anthropic (Claude),anthropic-cve-tracker,
+CVE-2026-98718,2026-10-18 15:46:53.611,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-98719,2026-10-18 15:46:54.631,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-98740,2026-10-18 15:47:24.602,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-98815,2026-10-18 15:49:03.248,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
+CVE-2026-98860,2026-10-18 15:51:21.403,Linux,Linux,Linux,Not scored,,Google Sashiko (kernel review),cve-record,
 CVE-2026-112178,2026-10-19 08:50:52.402,CIRCL,MISP,MISP,HIGH,7.1,Anthropic (Claude),cve-record,iglocska [remediation developer] | Claude Opus 5.5 (1M context) [remediation developer] | elhoim [reporter]
 CVE-2026-112179,2026-10-19 08:53:57.689,CIRCL,MISP,MISP,MEDIUM,5.3,Anthropic (Claude),cve-record,iglocska [remediation developer] | Claude Opus 5.5 (1M context) [remediation developer] | elhoim [reporter]
 CVE-2026-112180,2026-10-19 09:00:13.049,CIRCL,MISP,MISP,MEDIUM,5.1,Anthropic (Claude),cve-record,iglocska [remediation developer] | Claude Opus 5.5 (1M context) [remediation developer]
