@@ -4,6 +4,8 @@
 
 A data story about cybersecurity in the AI era, built from 412,863 CVE records and 15+ public datasets (snapshot: 22 October 2026).
 
+**Live:** https://gabrielemonni.me/arewecooked/
+
 **What it covers**
 
 1. **The flood**: CVE disclosures roughly doubled in 2026, and who is filing them.
