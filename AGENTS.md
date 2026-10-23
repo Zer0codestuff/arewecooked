@@ -27,7 +27,7 @@ cd site && npm install && npm run dev      # npm run build for production
 ```
 
 ## Deploy
-GitHub Pages via `.github/workflows/pages.yml` (manual `workflow_dispatch`). Pages is not enabled yet: waiting for the user's approval after reviewing the local result.
+Live at https://gabrielemonni.me/arewecooked/ (GitHub Pages, published 23 Oct 2026 with the user's approval). The custom domain comes from the user site repo `Zer0codestuff.github.io`; this repo has no CNAME of its own. `.github/workflows/pages.yml` deploys on every push to `main` that touches `site/**`, or by manual `workflow_dispatch`. Vite `base` is `./`, so the build works under the `/arewecooked/` subpath.
 
 ## Preferences and constraints
 - All project text in English. No em dashes anywhere.
@@ -38,7 +38,7 @@ GitHub Pages via `.github/workflows/pages.yml` (manual `workflow_dispatch`). Pag
 - User likes radar charts and ASCII art.
 
 ## Status
-Data pipeline complete; full site with 10 chapters and 30+ charts renders locally (desktop and mobile checked).
+Data pipeline complete; full site with 10 chapters and 30+ charts is live on GitHub Pages (desktop and mobile checked).
 
 ## Known issues / next steps
 - NVD backlog is shown in chapter 02 (only 45% of 2026 CVEs analyzed by NVD). NVD CVSS could still extend the severity chart before 2022.
@@ -48,4 +48,4 @@ Data pipeline complete; full site with 10 chapters and 30+ charts renders locall
 ## Do not
 - Do not add agent signatures to commits or PRs.
 - Do not use dual-axis charts or rainbow palettes.
-- Do not enable GitHub Pages or publish without the user's go-ahead.
+- Do not add a CNAME file to this repo or change the custom domain (it is managed in `Zer0codestuff.github.io`).
