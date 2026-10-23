@@ -1,5 +1,4 @@
 cve_id,date_published,assigner,vendor,product,severity,cvss_score,ai_finder,ai_source,credits
-CVE-2023-28709,2023-05-22 10:08:49.541,apache,Apache Software Foundation,Apache Tomcat,Not scored,,Nebula Security,cve-record,"Chenwei Jiang, Chenfeng Nie and Yue Yang from the Huawei Nebula Security Lab [finder]"
 CVE-2025-27888,2025-03-20 11:29:00.730,apache,Apache Software Foundation,Apache Druid,MEDIUM,5.8,XBOW,cve-record,XBOW [reporter]
 CVE-2025-0133,2025-05-14 18:07:36.381,palo_alto,Palo Alto Networks,Cloud NGFW,LOW,1.2,XBOW,cve-record,XBOW [finder]
 CVE-2025-5086,2025-06-02 17:42:42.620,3DS,Dassault Systèmes,DELMIA Apriso,CRITICAL,9.0,Hacktron AI,cve-record,Hacktron AI [finder]

@@ -21,7 +21,7 @@ A data story about cybersecurity in the AI era, built from 412,863 CVE records a
 **Highlights (as of 22 Oct 2026)**
 
 - 85,356 CVEs published in 2026, 2.2x the same period of 2025. Microsoft, Oracle and Google Chrome each file several times more CVEs than in 2025, with the jump starting around April 2026.
-- At least 1,251 CVEs are publicly credited to AI vulnerability finders (1,105 in 2026), about 1.8% of all CVEs in October 2026. Anthropic's own ledger shows 29,439 AI findings but only 516 confirmed fixes.
+- At least 1,250 CVEs are publicly credited to AI vulnerability finders (1,105 in 2026), about 1.8% of all CVEs in October 2026. Anthropic's own ledger shows 29,439 AI findings but only 516 confirmed fixes.
 - Only about 0.23% of 2026 CVEs are known to be exploited, but the median time from publication to confirmed exploitation fell from 24 days (2022 CVEs) to 4 days (2026 CVEs).
 
 ## Repository layout

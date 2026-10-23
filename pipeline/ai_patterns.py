@@ -23,7 +23,7 @@ AI_FINDERS: list[tuple[str, re.Pattern]] = [
     ("Google (Big Sleep / Gemini)", re.compile(r"big sleep|codemender|sec-gemini|naptime|\bgemini (cli|agent|2|3)", re.I)),
     ("AISLE", re.compile(r"\bAISLE\b|aisle research|found by aisle")),
     ("XBOW", re.compile(r"\bxbow\b", re.I)),
-    ("Nebula Security", re.compile(r"nebula security|nebusec", re.I)),
+    ("Nebula Security", re.compile(r"(?<!huawei )nebula security(?! lab)|nebusec", re.I)),
     ("BugBunny.ai", re.compile(r"bugbunny", re.I)),
     ("Tencent (Xuanwu Atuin / Zhuque)", re.compile(r"\batuin\b|xlabai|zhuque|ai-infra-guard", re.I)),
     ("Hacktron AI", re.compile(r"hacktron", re.I)),
