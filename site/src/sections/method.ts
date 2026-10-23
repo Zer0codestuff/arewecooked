@@ -19,6 +19,7 @@ const SOURCES: [string, string, string][] = [
   ["OSV.dev", "https://osv.dev/", "Malicious packages and advisories for npm, PyPI and six other registries."],
   ["Have I Been Pwned", "https://haveibeenpwned.com/api/v3/breaches", "Catalog of 1,000+ verified data breaches (in the clean data files)."],
   ["Yahoo Finance", "https://finance.yahoo.com/quote/CIBR/", "Monthly prices for security ETFs, vendors and benchmarks."],
+  ["AI model releases", "#", "Release dates of 16 major models (OpenAI, Anthropic, Google, DeepSeek) marked on time charts, from each lab's announcement page; listed in data/manual/story/ai_releases.csv. A marker shows timing only, not cause."],
   ["Reports", "#", "FBI IC3, Gartner, Chainalysis, IBM, ISC2, Verizon DBIR, Crunchbase, GitGuardian, Google GTIG, VulnCheck, HackerOne, CyberSN: transcribed in data/manual/story/series.csv with a source link on every row."],
 ];
 

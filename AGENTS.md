@@ -12,9 +12,9 @@ Audience: curious non-specialists. Tone: clear, not dumbed down, not chatty. Sna
   - `pipeline/build.py` + `pipeline/sources/` + `pipeline/export.py` + `pipeline/indicators.py` (source processors, clean CSVs, `site/public/data/story.json`, a "cooked index"), covered by `tests/`. The site does not read `story.json` yet.
   - Consolidating the two is an open decision for the user.
 - `pipeline/ai_patterns.py`: regex rules for "AI-attributed" CVEs (credits and explicit description statements, org list based on Berkeley's tracker, plus the Anthropic-Credited-CVEs list) and for "CVEs in AI software". This is a documented lower bound.
-- `data/manual/story/series.csv` (report figures, one source URL per row) and `data/manual/story/timeline.csv` (incidents and AI milestones). Other `data/manual/*.csv` belong to the `pipeline/build.py` path and are validated by its tests.
+- `data/manual/story/series.csv` (report figures, one source URL per row), `data/manual/story/timeline.csv` (incidents and AI milestones) and `data/manual/story/ai_releases.csv` (16 major model releases with date, short label, label `priority` 1 to 3 and the lab's announcement URL). `context.py` exports the releases to `context.json`. Other `data/manual/*.csv` belong to the `pipeline/build.py` path and are validated by its tests.
 - Outputs: `data/clean/*.csv` (committed, reusable) and `site/public/data/*.json` (committed, read by the site).
-- `site/`: Vite + TypeScript + D3, no framework. `src/lib/figure.ts` (figure shell, legend, table view, tooltip), `src/lib/charts.ts` (columns, lines, hbars/dumbbell, radar), `src/lib/page.ts` (palette and layout helpers), `src/sections/*.ts` one per chapter.
+- `site/`: Vite + TypeScript + D3, no framework. `src/lib/figure.ts` (figure shell, legend, table view, tooltip), `src/lib/charts.ts` (columns, lines, hbars/dumbbell, radar; `releases: true` draws the AI model release rail above monthly/time charts, labels placed by priority, the rest stay as hover-only markers), `src/lib/page.ts` (palette and layout helpers), `src/sections/*.ts` one per chapter.
 
 ## Run
 ```sh
@@ -40,6 +40,9 @@ Live at https://gabrielemonni.me/arewecooked/ (GitHub Pages, published 23 Oct 20
 ## Status
 Data pipeline complete; full site with 10 chapters and 30+ charts is live on GitHub Pages (desktop and mobile checked).
 
+## Recent changes
+- 23 Oct 2026: AI model release markers on 8 time charts (replace the old "Glasswing" annotations); light UI polish (scroll progress line, card corner accents, chapter rules, figure reveal on scroll, tooltip accent, EOF footer). Data spot check against raw files passed; fixed one AI-attribution false positive (Huawei Nebula Security Lab, 2023), AI-credited total is now 1,250.
+
 ## Known issues / next steps
 - NVD backlog is shown in chapter 02 (only 45% of 2026 CVEs analyzed by NVD). NVD CVSS could still extend the severity chart before 2022.
 - SEC 8-K Item 1.05 incident filings not included (EDGAR requires a contact email in the User-Agent).
@@ -48,4 +51,5 @@ Data pipeline complete; full site with 10 chapters and 30+ charts is live on Git
 ## Do not
 - Do not add agent signatures to commits or PRs.
 - Do not use dual-axis charts or rainbow palettes.
+- Do not add more subtitles or explanatory copy as "UI detail"; the user wants visual polish only.
 - Do not add a CNAME file to this repo or change the custom domain (it is managed in `Zer0codestuff.github.io`).

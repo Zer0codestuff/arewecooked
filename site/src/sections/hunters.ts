@@ -43,7 +43,7 @@ export function renderHunters(main: HTMLElement, d: Data) {
     stacked: true,
     height: 320,
     tipHead: (r) => monthLabel(r.month),
-    annotations: [{ x: "2026-04-01T00:00:00.000", text: "Glasswing", dy: 0, align: "end" }],
+    releases: true,
   });
 
   const share = (v.ai_share as any[]).filter((r) => r.month >= "2025-01");
@@ -151,6 +151,7 @@ export function renderHunters(main: HTMLElement, d: Data) {
     yFormat: (x) => pct(x, 1),
     valueFormat: (x) => pct(x, 2),
     xFormat: (m) => monthLabel(m),
+    releases: true,
   });
 
   const note = el("div", "prose");

@@ -80,6 +80,7 @@ export function renderMoney(main: HTMLElement, d: Data) {
     valueFormat: (x) => x.toFixed(0),
     yFormat: (x) => x.toFixed(0),
     xFormat: (m) => monthLabel(m),
+    releases: true,
   });
 
   const vc = s.cyber_vc.points as any[];

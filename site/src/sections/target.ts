@@ -125,6 +125,7 @@ export function renderTarget(main: HTMLElement, d: Data) {
     height: 300,
     yFormat: compact,
     xFormat: (m) => monthLabel(m),
+    releases: true,
     annotations: [
       { x: "2025-09-01", text: "Shai-Hulud", dy: 30, align: "end" },
       { x: "2025-11-01", text: "IndonesianFoods", dy: 0, align: "start" },

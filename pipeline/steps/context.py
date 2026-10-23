@@ -1,6 +1,6 @@
 """Hand-curated report figures, the incident timeline and Anthropic's disclosure dashboard.
 
-Inputs : data/manual/story/series.csv, data/manual/story/timeline.csv, data/raw/anthropic_cvd/payload.json
+Inputs : data/manual/story/series.csv, data/manual/story/timeline.csv, data/manual/story/ai_releases.csv, data/raw/anthropic_cvd/payload.json
 Outputs: site/public/data/context.json, site/public/data/glasswing.json
 """
 
@@ -27,7 +27,8 @@ def context():
                         "source": r.source_name, "url": r.source_url} for r in sub.itertuples()],
         }
     t = pd.read_csv(MANUAL / "story" / "timeline.csv").sort_values("date")
-    write_site_json("context", {"series": series, "timeline": records(t)})
+    rel = pd.read_csv(MANUAL / "story" / "ai_releases.csv").fillna("").sort_values("date")
+    write_site_json("context", {"series": series, "timeline": records(t), "releases": records(rel)})
 
 
 def glasswing():

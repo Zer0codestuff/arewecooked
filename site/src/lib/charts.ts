@@ -17,6 +17,106 @@ export interface Annotation {
 
 const SURFACE = "#101312";
 
+// ---------------------------------------------------------------------------
+// AI model release markers ("release rail"), shared by time-based charts
+// ---------------------------------------------------------------------------
+export interface Release {
+  date: string; // YYYY-MM-DD
+  label: string;
+  model: string;
+  lab: string;
+  note?: string;
+  priority?: number;
+}
+
+let RELEASES: Release[] = [];
+export function setReleases(r: Release[]) {
+  RELEASES = [...r].sort((a, b) => a.date.localeCompare(b.date));
+}
+
+const RAIL_ROWS = 3;
+const RAIL_ROW_H = 13;
+export const RAIL_H = RAIL_ROWS * RAIL_ROW_H + 8;
+const CHAR_W = 6.2; // approx width of one 10.5px mono glyph
+
+function addRailLegend(fig: Figure) {
+  const card = fig.root.querySelector(".card")!;
+  if (card.querySelector(".legend .rel")) return;
+  let lg = card.querySelector<HTMLDivElement>(".legend");
+  if (!lg) {
+    lg = document.createElement("div");
+    lg.className = "legend";
+    card.insertBefore(lg, fig.chart);
+  }
+  const sp = document.createElement("span");
+  sp.className = "rel";
+  const i = document.createElement("i");
+  i.className = "rel-mark";
+  sp.append(i, document.createTextNode("AI model release"));
+  lg.appendChild(sp);
+}
+
+/** Draw release markers. `pos` maps a release date to an x pixel, or null when out of range.
+ *  Labels are placed by priority (1 first) in up to RAIL_ROWS rows; markers that do not fit stay unlabeled but keep a tooltip. */
+function drawRail(g: d3.Selection<SVGGElement, unknown, null, undefined>, pos: (d: Date) => number | null, iw: number, ih: number) {
+  const items = RELEASES.map((r) => ({ r, x: pos(new Date(r.date + "T12:00:00Z")) })).filter((d): d is { r: Release; x: number } => d.x != null && d.x >= 0 && d.x <= iw);
+  const rows: [number, number][][] = Array.from({ length: RAIL_ROWS }, () => []);
+  const free = (k: number, a: number, b: number) => rows[k].every(([c, d]) => b + 6 < c || a > d + 6);
+  // also keep other markers' diamonds clear of a label's text
+  const placed = new Map<Release, { row: number; right: boolean }>();
+  for (const it of [...items].sort((a, b) => (a.r.priority ?? 3) - (b.r.priority ?? 3) || a.r.date.localeCompare(b.r.date))) {
+    const w = it.r.label.length * CHAR_W;
+    const opts = [
+      { right: true, a: it.x - 3, b: it.x + w + 4 },
+      { right: false, a: it.x - w - 4, b: it.x + 3 },
+    ].filter((o) => o.a >= -40 && o.b <= iw + 8);
+    let done = false;
+    for (let k = 0; k < RAIL_ROWS && !done; k++) {
+      for (const o of opts) {
+        if (free(k, o.a, o.b)) {
+          rows[k].push([o.a, o.b]);
+          placed.set(it.r, { row: k, right: o.right });
+          done = true;
+          break;
+        }
+      }
+    }
+  }
+  const layer = g.append("g").attr("class", "rail");
+  for (const it of items) {
+    const p = placed.get(it.r);
+    const ty = -RAIL_H + 4 + (p ? p.row : RAIL_ROWS - 1) * RAIL_ROW_H;
+    const w = it.r.label.length * CHAR_W;
+    const mk = layer.append("g").attr("class", "rel-item");
+    mk.append("line").attr("class", "rel-line").attr("x1", it.x).attr("x2", it.x).attr("y1", p ? ty + 2 : -6).attr("y2", ih);
+    mk.append("path").attr("class", "rel-dot").attr("d", `M${it.x},-7l3.5,3.5l-3.5,3.5l-3.5,-3.5Z`);
+    if (p) mk.append("text").attr("class", "rel-lbl").attr("x", p.right ? it.x + 4 : it.x - 4).attr("y", ty + 7).attr("text-anchor", p.right ? "start" : "end").text(it.r.label);
+    const hx = p ? (p.right ? it.x - 6 : it.x - w - 6) : it.x - 6;
+    const hw = p ? w + 12 : 12;
+    mk.append("rect").attr("x", hx).attr("y", p ? ty - 4 : -12).attr("width", hw).attr("height", p ? -ty + 4 : 12).attr("fill", "transparent").attr("tabindex", 0)
+      .on("pointermove focus", (ev: any) => {
+        mk.classed("on", true);
+        const rect = (ev.target as Element).getBoundingClientRect();
+        const d = new Date(it.r.date + "T12:00:00Z").toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
+        const rows2 = [{ label: it.r.lab, value: d, color: "transparent" }];
+        if (it.r.note) rows2.push({ label: it.r.note, value: "", color: "transparent" });
+        showTip(ev.clientX ? ev : { clientX: rect.left + rect.width / 2, clientY: rect.bottom }, it.r.model, rows2);
+      })
+      .on("pointerleave blur", () => {
+        mk.classed("on", false);
+        hideTip();
+      });
+  }
+  return items.length > 0;
+}
+
+function hasReleasesIn(lo: Date, hi: Date) {
+  return RELEASES.some((r) => {
+    const d = new Date(r.date + "T12:00:00Z");
+    return d >= lo && d <= hi;
+  });
+}
+
 function svgFor(fig: Figure, height: number) {
   d3.select(fig.chart).selectAll("svg").remove();
   const w = fig.width();
@@ -71,13 +171,16 @@ export interface ColumnsOpts {
   tipExtra?: (r: Row) => { label: string; value: string }[];
   marginLeft?: number;
   yMax?: number;
+  releases?: boolean; // x values are month-start dates
 }
 
 export function columns(fig: Figure, o: ColumnsOpts) {
   const render = () => {
-    const height = o.height ?? 300;
+    const months = o.releases ? o.data.map((r) => new Date(r[o.x])) : [];
+    const rail = !!o.releases && months.length > 0 && hasReleasesIn(months[0], new Date(Date.UTC(months[months.length - 1].getUTCFullYear(), months[months.length - 1].getUTCMonth() + 1, 0)));
+    const height = (o.height ?? 300) + (rail ? RAIL_H : 0);
     const { svg, w } = svgFor(fig, height);
-    const m = { t: 22, r: 8, b: 26, l: o.marginLeft ?? 44 };
+    const m = { t: 22 + (rail ? RAIL_H : 0), r: 8, b: 26, l: o.marginLeft ?? 44 };
     const iw = w - m.l - m.r;
     const ih = height - m.t - m.b;
     const g = svg.append("g").attr("transform", `translate(${m.l},${m.t})`);
@@ -186,7 +289,17 @@ export function columns(fig: Figure, o: ColumnsOpts) {
       const anchor = a.align ?? (cx > iw * 0.7 ? "end" : "start");
       g.append("text").attr("class", "annot").attr("x", cx + (anchor === "end" ? -6 : anchor === "start" ? 6 : 0)).attr("y", ty + 4).attr("text-anchor", anchor).text(a.text);
     }
+    if (rail) {
+      const byMonth = new Map(o.data.map((r) => [String(new Date(r[o.x]).toISOString().slice(0, 7)), r[o.x]]));
+      drawRail(g, (d) => {
+        const key = byMonth.get(d.toISOString().slice(0, 7));
+        if (key == null) return null;
+        const days = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + 1, 0)).getUTCDate();
+        return x(key)! + off + (bw * (d.getUTCDate() - 0.5)) / days;
+      }, iw, ih);
+    }
   };
+  if (o.releases) addRailLegend(fig);
   fig.onResize(render);
 }
 
@@ -212,13 +325,16 @@ export interface LinesOpts {
   marginLeft?: number;
   marginRight?: number;
   dots?: boolean;
+  releases?: boolean; // requires time: true
 }
 
 export function lines(fig: Figure, o: LinesOpts) {
   const render = () => {
-    const height = o.height ?? 300;
+    const ext = o.time ? (d3.extent(o.data, (r) => new Date(r[o.x])) as [Date, Date]) : null;
+    const rail = !!o.releases && !!ext && hasReleasesIn(ext[0], ext[1]);
+    const height = (o.height ?? 300) + (rail ? RAIL_H : 0);
     const { svg, w } = svgFor(fig, height);
-    const m = { t: 16, r: o.marginRight ?? (o.endLabels ? 96 : 12), b: 26, l: o.marginLeft ?? 44 };
+    const m = { t: 16 + (rail ? RAIL_H : 0), r: o.marginRight ?? (o.endLabels ? 96 : 12), b: 26, l: o.marginLeft ?? 44 };
     const iw = w - m.l - m.r;
     const ih = height - m.t - m.b;
     const g = svg.append("g").attr("transform", `translate(${m.l},${m.t})`);
@@ -274,6 +390,8 @@ export function lines(fig: Figure, o: LinesOpts) {
       g.append("text").attr("class", "annot").attr("x", cx + (anchor === "end" ? -6 : 6)).attr("y", ty + 4).attr("text-anchor", anchor).text(a.text);
     }
 
+    if (rail) drawRail(g, (d) => (d >= ext![0] && d <= ext![1] ? x(d) : null), iw, ih);
+
     // crosshair
     const cross = g.append("line").attr("y1", 0).attr("y2", ih).attr("stroke", "var(--text-2)").attr("stroke-opacity", 0.4).style("display", "none");
     const marks = g.append("g");
@@ -296,6 +414,7 @@ export function lines(fig: Figure, o: LinesOpts) {
         hideTip();
       });
   };
+  if (o.releases) addRailLegend(fig);
   fig.onResize(render);
 }
 
