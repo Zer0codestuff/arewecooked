@@ -68,7 +68,7 @@ export function figure(parent: HTMLElement, o: FigureOpts): Figure {
   if (o.table) {
     const btn = el("button");
     btn.type = "button";
-    btn.textContent = "[ table ]";
+    btn.textContent = "table";
     btn.setAttribute("aria-expanded", "false");
     foot.appendChild(btn);
     const wrap = el("div", "table-wrap");
@@ -99,7 +99,7 @@ export function figure(parent: HTMLElement, o: FigureOpts): Figure {
     btn.addEventListener("click", () => {
       const open = wrap.classList.toggle("open");
       btn.setAttribute("aria-expanded", String(open));
-      btn.textContent = open ? "[ hide table ]" : "[ table ]";
+      btn.textContent = open ? "hide table" : "table";
     });
   }
   parent.appendChild(root);

@@ -3,7 +3,7 @@ import * as d3 from "d3";
 import { Figure, Row, hideTip, showTip } from "./figure";
 import { compact, fmtInt } from "./format";
 
-const SURFACE = "#101312";
+const SURFACE = "#0b0c0c";
 const MONO = "var(--mono)";
 
 function svgFor(fig: Figure, height: number) {
@@ -220,7 +220,6 @@ export function choropleth(fig: Figure, o: ChoroOpts) {
     const { svg } = svgFor(fig, height);
     const proj = d3.geoNaturalEarth1().fitExtent([[0, 4], [w, height - 4]], { type: "FeatureCollection", features: feats } as any);
     const path = d3.geoPath(proj);
-    svg.append("path").datum(d3.geoGraticule10()).attr("d", path as any).attr("fill", "none").attr("stroke", "var(--grid)").attr("stroke-width", 0.5);
     svg.append("g").selectAll("path").data(feats).join("path")
       .attr("d", path as any)
       .attr("fill", (f: any) => {

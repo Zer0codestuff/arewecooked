@@ -31,8 +31,8 @@ Live at https://gabrielemonni.me/arewecooked/ (GitHub Pages, published 23 Oct 20
 
 ## Preferences and constraints
 - All project text in English. No em dashes anywhere.
-- Visual direction: dark terminal / ASCII aesthetic, sober. Mono for chrome and labels, IBM Plex Sans for prose.
-- Charts follow the dataviz skill rules: one y-axis, thin marks, validated palette (green #34a870 first slot, validated on #101312), hover tooltips, table view for every chart, legends for 2+ series.
+- Visual direction: dark terminal / ASCII aesthetic, sober and clean (reference the user liked: cve.0xosprey.com). Charts sit directly on the near-black page (#0b0c0c, also the chart `SURFACE` constant) with hairline separators; no card boxes, glow, scanlines or corner accents. Small bordered mono toggle buttons. Mono for chrome and labels, IBM Plex Sans for prose. Color only where it encodes data.
+- Charts follow the dataviz skill rules: one y-axis, thin marks, validated palette (green #34a870 first slot, validated on #0b0c0c), hover tooltips, table view for every chart, legends for 2+ series.
 - Every number must trace to a source; partial-year values must be labeled.
 - Git: branches, PRs, frequent merges. Commits authored by Zer0codestuff only, no agent signatures or Co-authored-by trailers.
 - User likes radar charts and ASCII art.
@@ -46,6 +46,7 @@ Data pipeline complete; site with 14 chapters and about 60 charts is live on Git
 - 23 Oct 2026 (later): big expansion. New chapters Anatomy (03), From bug to weapon (06), The triage game (07); calendar heatmap (flood), severity from 2016 with NVD fallback (noise), Sashiko kernel AI review and research boom (hunters), MCP and prompt-injection CVEs (target), ransomware world map, brand bump chart, churn and sectors (damage), two new radar axes (verdict), tl;dr findings list under the hero. AI classifier now reads Sashiko/LLM-review mentions in fix descriptions (AI-credited total 1,433). Fixed a timezone bug that shifted monthly labels by one month east of UTC.
 
 - 23 Oct 2026 (third pass): social preview image `site/public/og.png` (1200x630 screenshot of the hero) with og/twitter meta tags; people vs AI in CVE credits (People chapter), Claude vs vendor/maintainer severity matrices (hunters), interactive vendor explorer with compare radar (new chapter before Data), `matrix` chart, findings list now has 8 lines.
+- 23 Oct 2026 (clean pass): restyled after cve.0xosprey.com, removed card boxes, scanlines, title glow, corner accents and KPI accent bars; hairline separators, more spacing, unified toggle buttons, no map graticule, edge axis ticks anchored inside the plot. Cross-checked our monthly CVE counts against that site's public data.json (total 394,234 vs 394,368, 0.03% apart); we do not depend on it (no license, same cvelistV5 source).
 
 ## Known issues / next steps
 - Triage backtest uses current CVSS scores (historical CVSS snapshots are not available); EPSS uses historical snapshots.
@@ -57,4 +58,5 @@ Data pipeline complete; site with 14 chapters and about 60 charts is live on Git
 - Do not add agent signatures to commits or PRs.
 - Do not use dual-axis charts or rainbow palettes.
 - Do not add more subtitles or explanatory copy as "UI detail"; the user wants visual polish only.
+- Do not reintroduce card boxes, glow, scanlines or decorative accents (clean pass requested by the user).
 - Do not add a CNAME file to this repo or change the custom domain (it is managed in `Zer0codestuff.github.io`).
