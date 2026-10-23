@@ -105,7 +105,7 @@ export function renderFlood(main: HTMLElement, d: Data) {
     stacked: true,
     height: 340,
     tipHead: (r) => monthLabel(r.month),
-    annotations: [{ x: "2026-04-01T00:00:00.000", text: "Apr 2026: Project Glasswing", dy: 0, align: "end" }],
+    releases: true,
   });
 
   const vm = v.vendor_monthly as any[];
@@ -135,7 +135,7 @@ export function renderFlood(main: HTMLElement, d: Data) {
     height: 320,
     endLabels: true,
     xFormat: (m) => monthLabel(m),
-    annotations: [{ x: "2026-04-07", text: "Glasswing launch", dy: 0, align: "end" }],
+    releases: true,
   });
 
   const ytd = (v.ytd_assigners as any[]).slice(0, 16).map((r) => ({ ...r, name: CNA_NAMES[r.assigner] ?? r.assigner }));

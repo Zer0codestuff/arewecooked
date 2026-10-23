@@ -1,0 +1,17 @@
+date,label,priority,model,lab,note,url
+2022-11-30,ChatGPT,1,ChatGPT (GPT-3.5),OpenAI,Public chatbot launch,https://openai.com/index/chatgpt/
+2023-03-14,GPT-4,1,GPT-4,OpenAI,,https://openai.com/index/gpt-4-research/
+2024-05-13,GPT-4o,3,GPT-4o,OpenAI,,https://openai.com/index/hello-gpt-4o/
+2024-09-12,o1,3,OpenAI o1-preview,OpenAI,First reasoning model,https://openai.com/index/introducing-openai-o1-preview/
+2025-01-20,DeepSeek R1,1,DeepSeek-R1,DeepSeek,Open-weight reasoning model,https://api-docs.deepseek.com/news/news250120
+2025-05-22,Claude 4,2,Claude Opus 4 and Sonnet 4,Anthropic,,https://www.anthropic.com/news/claude-4
+2025-08-07,GPT-5,1,GPT-5,OpenAI,,https://openai.com/index/introducing-gpt-5/
+2025-11-18,Gemini 3,2,Gemini 3 Pro,Google,,https://blog.google/products/gemini/gemini-3/
+2025-11-24,Opus 4.5,3,Claude Opus 4.5,Anthropic,,https://www.anthropic.com/news/claude-opus-4-5
+2026-04-07,Mythos,1,Claude Mythos Preview,Anthropic,Project Glasswing launch; restricted to partners,https://red.anthropic.com/2026/mythos-preview/
+2026-04-23,GPT-5.5,2,GPT-5.5,OpenAI,,https://openai.com/index/introducing-gpt-5-5/
+2026-04-24,DeepSeek V4,2,DeepSeek-V4 Pro and Flash (preview),DeepSeek,Open weights,https://api-docs.deepseek.com/news/news260424
+2026-05-19,Gemini 3.5,3,Gemini 3.5 Flash,Google,,https://deepmind.google/models/model-cards/gemini-3-5-flash/
+2026-06-09,Fable 5,1,Claude Fable 5,Anthropic,Mythos-class model for general use,https://www.anthropic.com/claude/fable
+2026-09-22,Opus 5.5,1,Claude Opus 5.5,Anthropic,,https://www.anthropic.com/claude-opus-5-5
+2026-10-13,Gemini 4,2,Gemini 4 Argon,Google,,https://deepmind.google/models/model-cards/gemini-4-argon/

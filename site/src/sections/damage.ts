@@ -38,6 +38,7 @@ export function renderDamage(main: HTMLElement, d: Data) {
     height: 280,
     tipHead: (r) => monthLabel(r.month),
     tipExtra: (r) => [{ label: "active groups", value: fmtInt(r.groups) }],
+    releases: true,
   });
 
   const pay = d.context.series.ransom_payments.points as any[];

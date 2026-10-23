@@ -124,6 +124,7 @@ export function renderNoise(main: HTMLElement, d: Data) {
     height: 300,
     tipHead: (r) => monthLabel(r.month),
     annotations: [{ x: "2026-04-01T00:00:00.000", text: "NIST triage policy", dy: 0, align: "end" }],
+    releases: true,
   });
 
   callout(
