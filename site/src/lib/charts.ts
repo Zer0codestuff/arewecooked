@@ -326,6 +326,9 @@ export interface LinesOpts {
   marginRight?: number;
   dots?: boolean;
   releases?: boolean; // requires time: true
+  xDomain?: [number, number];
+  points?: { x: number; y: number; label: string; color?: string; dx?: number; dy?: number; anchor?: "start" | "end" | "middle" }[];
+  xTicks?: number[];
 }
 
 export function lines(fig: Figure, o: LinesOpts) {
@@ -339,7 +342,7 @@ export function lines(fig: Figure, o: LinesOpts) {
     const ih = height - m.t - m.b;
     const g = svg.append("g").attr("transform", `translate(${m.l},${m.t})`);
     const xv = (r: Row) => (o.time ? new Date(r[o.x]) : +r[o.x]);
-    const x: any = o.time ? d3.scaleUtc().domain(d3.extent(o.data, xv) as [Date, Date]).range([0, iw]) : d3.scaleLinear().domain(d3.extent(o.data, (r) => +xv(r)) as [number, number]).range([0, iw]);
+    const x: any = o.time ? d3.scaleUtc().domain(d3.extent(o.data, xv) as [Date, Date]).range([0, iw]) : d3.scaleLinear().domain(o.xDomain ?? (d3.extent(o.data, (r) => +xv(r)) as [number, number])).range([0, iw]);
     const vals = o.data.flatMap((r) => o.series.map((s) => r[s.key]).filter((v) => v != null)) as number[];
     const lo = o.yMin ?? (o.log ? d3.min(vals)! * 0.8 : Math.min(0, d3.min(vals)!));
     const y = (o.log ? d3.scaleLog().domain([lo, d3.max(vals)! * 1.1]) : d3.scaleLinear().domain([lo, d3.max(vals)! * 1.06]).nice()).range([ih, 0]) as d3.ScaleLinear<number, number>;
@@ -350,6 +353,7 @@ export function lines(fig: Figure, o: LinesOpts) {
       g.selectAll("text.ytick").data(t).join("text").attr("class", "tick").attr("x", -8).attr("y", (d: any) => y(d)).attr("dy", "0.32em").attr("text-anchor", "end").style("font-family", "var(--mono)").style("font-size", "11px").style("fill", "var(--muted)").text((d: any) => yf(d));
     } else yGrid(g, y, iw, yf);
     const xa = d3.axisBottom(x).ticks(Math.max(3, Math.floor(iw / 90))).tickSizeOuter(0);
+    if (o.xTicks) xa.tickValues(o.xTicks as any);
     if (o.tickFormat) xa.tickFormat(o.tickFormat as any);
     const ax = g.append("g").attr("class", "axis").attr("transform", `translate(0,${ih})`).call(xa);
     ax.select(".domain").attr("stroke", "var(--axis)");
@@ -391,6 +395,13 @@ export function lines(fig: Figure, o: LinesOpts) {
     }
 
     if (rail) drawRail(g, (d) => (d >= ext![0] && d <= ext![1] ? x(d) : null), iw, ih);
+    for (const p of o.points ?? []) {
+      const px = x(p.x);
+      const py = y(p.y);
+      g.append("circle").attr("cx", px).attr("cy", py).attr("r", 5).attr("fill", p.color ?? "var(--text)").attr("stroke", SURFACE).attr("stroke-width", 2);
+      const anchor = p.anchor ?? (px > iw * 0.6 ? "end" : "start");
+      g.append("text").attr("class", "annot").attr("x", px + (p.dx ?? (anchor === "end" ? -9 : 9))).attr("y", py + (p.dy ?? 4)).attr("text-anchor", anchor).text(p.label);
+    }
 
     // crosshair
     const cross = g.append("line").attr("y1", 0).attr("y2", ih).attr("stroke", "var(--text-2)").attr("stroke-opacity", 0.4).style("display", "none");

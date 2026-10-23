@@ -13,24 +13,30 @@ export function renderNoise(main: HTMLElement, d: Data) {
     kicker: "More bugs is not the same as more danger. Two questions: are they serious, and does anyone use them?",
   });
 
-  const sev = (v.severity as any[]).filter((r) => r.year >= 2022);
+  const cov = d.anatomy.severity_cov as any[];
+  const sev = (d.anatomy.severity_all as any[]).filter((r) => r.year >= 2016).map((r) => {
+    const c = cov.find((x) => x.year === r.year);
+    return { ...r, nvd_share: c ? c.from_nvd / c.n : null };
+  });
   const s26 = sev.find((r) => r.year === 2026);
-  const scored26 = s26.CRITICAL + s26.HIGH + s26.MEDIUM + s26.LOW;
+  const s25 = sev.find((r) => r.year === 2025);
+  const s22 = sev.find((r) => r.year === 2022);
+  const hiShare = (r: any) => (r.CRITICAL + r.HIGH) / (r.CRITICAL + r.HIGH + r.MEDIUM + r.LOW);
   prose(
     sec,
     `<p>A common objection to scary CVE charts is that most of the growth is trivia: tiny plugin bugs, theoretical crashes, duplicate filings. Severity scores (CVSS, from 0 to 10) let us test that. If the flood were mostly noise, the share of serious flaws would shrink. It did not.</p>
-     <p>In 2026, <strong>${pct((s26.CRITICAL + s26.HIGH) / scored26)}</strong> of scored CVEs are rated high or critical, the highest share since 2022, when most CVE records started to carry a score. The count of critical flaws alone (${fmtInt(s26.CRITICAL)}) is more than double 2025.</p>`,
+     <p>In 2026, <strong>${pct(hiShare(s26))}</strong> of scored CVEs are rated high or critical, up from ${pct(hiShare(s25))} in 2025 and back to the level of 2022 (${pct(hiShare(s22))}). The count of critical flaws alone (${fmtInt(s26.CRITICAL)}) is more than double 2025. Where a CVE record has no score we use the one from the US National Vulnerability Database, which fills almost every gap before 2022.</p>`,
   );
 
   const keys = ["LOW", "MEDIUM", "HIGH", "CRITICAL"];
   const names: Record<string, string> = { LOW: "Low", MEDIUM: "Medium", HIGH: "High", CRITICAL: "Critical" };
   const f1 = figure(sec, {
     title: "Severity mix of scored CVEs, by year published",
-    sub: "Share of CVEs with a CVSS score (over 59% of records from 2022 on; earlier years are too sparsely scored to compare).",
-    source: `CVE Program cvelistV5 (CNA score, or CISA's ${link("https://github.com/cisagov/vulnrichment", "Vulnrichment")} score when the CNA gave none)`,
+    sub: "Share of scored CVEs. Until 2021 most scores come from NIST's NVD; from 2023 almost all come from the vendor or CISA, which partly explains the 2023 to 2025 dip.",
+    source: `CVE Program cvelistV5 (CNA score, else CISA ${link("https://github.com/cisagov/vulnrichment", "Vulnrichment")}), NIST NVD as fallback via the ${link("https://github.com/fkie-cad/nvd-json-data-feeds", "fkie-cad mirror")}`,
     legend: [...keys].reverse().map((k) => ({ label: names[k], color: C.sev[k] })),
     table: {
-      columns: [{ key: "year", label: "Year" }, ...[...keys].reverse().map((k) => ({ key: k, label: names[k], fmt: fmtInt })), { key: "Not scored", label: "Not scored", fmt: fmtInt }],
+      columns: [{ key: "year", label: "Year" }, ...[...keys].reverse().map((k) => ({ key: k, label: names[k], fmt: fmtInt })), { key: "nvd_share", label: "Scored by NVD", fmt: (x: number) => pct(x) }],
       rows: sev,
     },
   });
@@ -41,6 +47,8 @@ export function renderNoise(main: HTMLElement, d: Data) {
     stacked: true,
     percent: true,
     height: 300,
+    partial: (r) => r.year === 2026,
+    tipExtra: (r) => [{ label: "scored by NVD", value: pct(r.nvd_share) }],
   });
 
   const kr = (v.kev_rate as any[]).filter((r) => r.year >= 2018);
@@ -123,7 +131,7 @@ export function renderNoise(main: HTMLElement, d: Data) {
     stacked: true,
     height: 300,
     tipHead: (r) => monthLabel(r.month),
-    annotations: [{ x: "2026-04-01T00:00:00.000", text: "NIST triage policy", dy: 0, align: "end" }],
+    annotations: [{ x: "2026-04-01T00:00:00.000Z", text: "NIST triage policy", dy: 0, align: "end" }],
     releases: true,
   });
 

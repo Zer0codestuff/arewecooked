@@ -10,6 +10,9 @@ import { renderMoney } from "./sections/money";
 import { renderPeople } from "./sections/people";
 import { renderVerdict } from "./sections/verdict";
 import { renderMethod } from "./sections/method";
+import { renderAnatomy } from "./sections/anatomy";
+import { renderWeapon } from "./sections/weapon";
+import { renderTriage } from "./sections/triage";
 import { setReleases } from "./lib/charts";
 
 export interface Data {
@@ -21,16 +24,32 @@ export interface Data {
   context: any;
   glasswing: any;
   nvd: any;
+  anatomy: any;
+  weapon: any;
+  triage: any;
+  ransom: any;
 }
 
-const FILES = ["vulns", "threats", "supplychain", "breaches", "markets", "context", "glasswing", "nvd"] as const;
+const FILES = ["vulns", "threats", "supplychain", "breaches", "markets", "context", "glasswing", "nvd", "anatomy", "weapon", "triage", "ransom"] as const;
+
+// Pipeline timestamps are UTC but carry no zone suffix; without it browsers parse them as local time,
+// which shifts every month back by one for readers east of UTC. Tag them as UTC once, at load.
+const NAIVE_TS = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2}(\.\d+)?)?$/;
+function utcify(x: any): any {
+  if (typeof x === "string") return NAIVE_TS.test(x) ? x + "Z" : x;
+  if (Array.isArray(x)) return x.map(utcify);
+  if (x && typeof x === "object") {
+    for (const k of Object.keys(x)) x[k] = utcify(x[k]);
+  }
+  return x;
+}
 
 async function load(): Promise<Data> {
   const out: any = {};
   await Promise.all(
     FILES.map(async (f) => {
       const r = await fetch(`./data/${f}.json`);
-      out[f] = await r.json();
+      out[f] = utcify(await r.json());
     }),
   );
   return out as Data;
@@ -97,8 +116,11 @@ load().then((d) => {
   renderHero(main, d);
   renderFlood(main, d);
   renderNoise(main, d);
+  renderAnatomy(main, d);
   renderHunters(main, d);
   renderSpeed(main, d);
+  renderWeapon(main, d);
+  renderTriage(main, d);
   renderTarget(main, d);
   renderDamage(main, d);
   renderMoney(main, d);

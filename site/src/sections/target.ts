@@ -1,7 +1,7 @@
 import type { Data } from "../main";
 import { columns, hbars, lines } from "../lib/charts";
 import { figure } from "../lib/figure";
-import { compact, fmtInt, monthLabel, times } from "../lib/format";
+import { compact, fmtInt, monthLabel, pct, times } from "../lib/format";
 import { C, callout, chapter, grid2, link, prose } from "../lib/page";
 
 const PRODUCT_NAMES: Record<string, string> = {
@@ -67,6 +67,40 @@ export function renderTarget(main: HTMLElement, d: Data) {
     table: { columns: [{ key: "name", label: "Product" }, { key: "cves", label: "CVEs" }], rows: prods },
   });
   hbars(f2, { data: prods, label: "name", value: "cves", color: C.s4, labelWidth: 150, rowHeight: 24 });
+
+  // MCP and prompt injection: weaknesses that did not exist three years ago
+  const an = d.anatomy;
+  const et = an.era_totals;
+  const ms = an.mcp_severity_cur ?? {};
+  const era = (an.era_monthly as any[]).filter((r) => r.month >= "2024-01");
+  prose(
+    sec,
+    `<h3>Bugs with no history</h3>
+     <p>Some of these flaws belong to categories that did not exist three years ago. The Model Context Protocol (MCP), released by Anthropic in late 2024 and adopted across the industry in 2025, lets AI agents plug into files, databases and other apps. Each connector is a new piece of server software, often a weekend project published to npm. CVEs mentioning MCP went from ${fmtInt(et.mcp_prev)} in 2025 to <strong>${fmtInt(et.mcp_cur)}</strong> in 2026 so far; ${pct((ms.HIGH ?? 0) + (ms.CRITICAL ?? 0))} of them are rated high or critical. <strong>Prompt injection</strong>, tricking a model with hidden instructions, got its own weakness ID (CWE-1427) in 2024 and appears in ${fmtInt(et.pi_cur)} CVEs this year.</p>`,
+  );
+  const fe = figure(sec, {
+    title: "CVEs about MCP connectors, prompt injection and other LLM features, per month",
+    source: `cvelistV5 descriptions and CWE-1427 (author's keyword rules; the "other" line excludes the first two)`,
+    legend: [
+      { label: "MCP servers and clients", color: C.s4, shape: "line" },
+      { label: "Other LLM or agent features", color: C.s6, shape: "line" },
+      { label: "Prompt injection", color: C.s5, shape: "line" },
+    ],
+    table: { columns: [{ key: "month", label: "Month", fmt: (x) => monthLabel(x) }, { key: "mcp", label: "MCP", fmt: fmtInt }, { key: "llm_agents", label: "Other LLM/agent", fmt: fmtInt }, { key: "prompt_injection", label: "Prompt injection", fmt: fmtInt }], rows: era },
+  });
+  lines(fe, {
+    data: era,
+    x: "month",
+    time: true,
+    series: [
+      { key: "mcp", label: "MCP", color: C.s4 },
+      { key: "llm_agents", label: "Other LLM/agent", color: C.s6 },
+      { key: "prompt_injection", label: "Prompt injection", color: C.s5 },
+    ],
+    height: 280,
+    xFormat: (m) => monthLabel(m),
+    releases: true,
+  });
 
   // Secrets
   const sl = d.context.series.secrets_leaked.points as any[];
