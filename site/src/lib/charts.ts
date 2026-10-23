@@ -15,7 +15,7 @@ export interface Annotation {
   align?: "start" | "end" | "middle";
 }
 
-const SURFACE = "#101312";
+const SURFACE = "#0b0c0c";
 
 // ---------------------------------------------------------------------------
 // AI model release markers ("release rail"), shared by time-based charts
@@ -367,6 +367,13 @@ export function lines(fig: Figure, o: LinesOpts) {
     const ax = g.append("g").attr("class", "axis").attr("transform", `translate(0,${ih})`).call(xa);
     ax.select(".domain").attr("stroke", "var(--axis)");
     ax.selectAll(".tick line").attr("stroke", "var(--axis)");
+    // keep edge tick labels inside the plot now that figures have no side padding
+    ax.selectAll<SVGGElement, any>(".tick").each(function (t: any) {
+      const px = x(t);
+      const txt = d3.select(this).select("text");
+      if (px > iw - 28) txt.attr("text-anchor", "end");
+      else if (px < 14) txt.attr("text-anchor", "start");
+    });
     if (o.baseline != null) g.append("line").attr("x1", 0).attr("x2", iw).attr("y1", y(o.baseline)).attr("y2", y(o.baseline)).attr("stroke", "var(--muted)").attr("stroke-opacity", 0.6);
 
     for (const s of o.series) {
