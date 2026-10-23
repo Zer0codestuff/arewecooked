@@ -49,6 +49,8 @@ const CLEAN = [
   "triage_curves.csv",
   "ransomware_countries_2026.csv",
   "ransomware_group_ranks.csv",
+  "credits_yearly.csv",
+  "vendor_profiles.csv",
 ];
 
 export function renderMethod(main: HTMLElement, _d: Data) {
@@ -71,6 +73,8 @@ export function renderMethod(main: HTMLElement, _d: Data) {
        <li><strong>Weakness families and product types are our own groupings</strong> of CWE IDs and KEV products (rules in the pipeline code). Borderline cases could reasonably go elsewhere.</li>
        <li><strong>The triage backtest</strong> uses EPSS as published on each date, but today's CVSS scores (they rarely change after publication). "Exploited" means added to KEV within 90 days, which misses attacks CISA never confirmed.</li>
        <li><strong>Exploit repositories on GitHub</strong> are counted as indexed by PoC-in-GitHub. Some are fakes or malware, and deleted repositories drop out of the index.</li>
+       <li><strong>Counting people in credits</strong> relies on name strings: the same person can appear under two spellings, and handles or teams can look like people. Only counts are published, never names.</li>
+       <li><strong>Vendors in the explorer</strong> come from NVD's product identifiers (CPE) when available, otherwise from the CVE record, merged by name. Subsidiaries and rebrands are not always joined.</li>
        <li><strong>Exploitation is measured by CISA KEV</strong>, which focuses on vulnerabilities relevant to US government networks and requires solid evidence. It misses many attacks.</li>
        <li>Some 2026 report figures (IBM 2026, Gartner 3Q26, Verizon 2026) come from press coverage of the report rather than the report itself; they are labeled as such in the data file.</li>
      </ul>`,
