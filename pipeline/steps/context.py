@@ -70,6 +70,7 @@ def glasswing():
         "bug_classes": [{"cls": k, "n": v} for k, v in classes],
         "ecosystems": eco,
         "ledger_entries": int(len(led)),
+        "severity_matrix": {k: v for k, v in p["severity_matrix"].items() if isinstance(v, dict)},
     })
 
 
