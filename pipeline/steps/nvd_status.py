@@ -63,6 +63,18 @@ def cwe(weak: list) -> str | None:
     return ";".join(out) or None
 
 
+def cpe_vendor_product(configs: list) -> tuple[str | None, str | None]:
+    """Vendor and product of the first vulnerable CPE match (cpe:2.3:part:vendor:product:...)."""
+    for c in configs or []:
+        for node in c.get("nodes", []):
+            for m in node.get("cpeMatch", []):
+                if m.get("vulnerable", True):
+                    parts = m.get("criteria", "").split(":")
+                    if len(parts) > 4:
+                        return parts[3], parts[4]
+    return None, None
+
+
 def main():
     rows = []
     for f in sorted(glob.glob(str(RAW / "nvd" / "CVE-*.json.xz"))):
@@ -76,10 +88,13 @@ def main():
                 "nvd_score": score(it.get("metrics") or {}),
                 "nvd_cwe": cwe(it.get("weaknesses")),
                 "has_cpe": bool(it.get("configurations")),
+                "cpe": cpe_vendor_product(it.get("configurations")),
             })
     df = pd.DataFrame(rows)
+    df["nvd_vendor"] = df.cpe.str[0]
+    df["nvd_product"] = df.cpe.str[1]
     INTERIM.mkdir(parents=True, exist_ok=True)
-    df[["id", "status", "nvd_sev", "nvd_score", "nvd_cwe", "has_cpe"]].rename(columns={"id": "cve_id"}).to_parquet(INTERIM / "nvd.parquet", index=False)
+    df[["id", "status", "nvd_sev", "nvd_score", "nvd_cwe", "has_cpe", "nvd_vendor", "nvd_product"]].rename(columns={"id": "cve_id"}).to_parquet(INTERIM / "nvd.parquet", index=False)
     df["published"] = pd.to_datetime(df.published, errors="coerce")
     df = df[df.published.notna() & (df.published <= pd.Timestamp(AS_OF) + pd.Timedelta(days=1)) & (df.status != "Rejected")]
     df["year"] = df.published.dt.year
