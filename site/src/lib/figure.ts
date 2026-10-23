@@ -23,6 +23,8 @@ export interface Figure {
   chart: HTMLDivElement;
   width: () => number;
   onResize: (fn: () => void) => void;
+  /** Drop registered renderers before drawing a different chart into the same figure. */
+  reset: () => void;
 }
 
 export function el<K extends keyof HTMLElementTagNameMap>(tag: K, cls?: string, html?: string): HTMLElementTagNameMap[K] {
@@ -120,6 +122,9 @@ export function figure(parent: HTMLElement, o: FigureOpts): Figure {
       handlers.push(fn);
       last = Math.round(chart.clientWidth);
       fn();
+    },
+    reset: () => {
+      handlers.length = 0;
     },
   };
 }

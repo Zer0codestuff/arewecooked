@@ -333,6 +333,24 @@ svg :focus-visible { outline: none; }
 .stat .v { font-family: var(--sans); font-size: 26px; font-weight: 600; line-height: 1.1; }
 .stat .k { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-top: 4px; line-height: 1.4; }
 
+/* vendor compare */
+.compare { max-width: var(--wide); margin: 24px auto 0; padding: 0 24px; }
+.compare-ctl { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-family: var(--mono); }
+.compare-ctl .vs { color: var(--muted); font-size: 13px; }
+.compare-ctl label.cmp { display: inline-flex; align-items: center; gap: 8px; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 6px 10px; }
+.compare-ctl label.cmp.bad { border-color: var(--hot); }
+.compare-ctl label.cmp i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+.compare-ctl input { background: transparent; border: 0; color: var(--text); font: inherit; font-size: 14px; width: 190px; outline: none; }
+.compare .quick { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.compare .quick button { background: transparent; border: 1px dashed var(--border); color: var(--text-2); border-radius: 999px; font-family: var(--mono); font-size: 11.5px; padding: 3px 10px; cursor: pointer; }
+.compare .quick button:hover { color: var(--accent-ink); border-color: rgba(52, 168, 112, 0.5); }
+.cmp-table { max-width: var(--wide); margin: 0 auto 34px; padding: 0 24px; overflow-x: auto; }
+.cmp-table table { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.cmp-table th, .cmp-table td { text-align: right; padding: 6px 10px; border-bottom: 1px solid var(--grid); }
+.cmp-table tr > *:first-child { text-align: left; color: var(--muted); font-weight: 400; }
+.cmp-table tr:first-child th { color: var(--text); font-weight: 600; }
+.cmp-table td { color: var(--text-2); }
+
 /* tooltip */
 .tooltip {
   position: fixed;

@@ -1,7 +1,7 @@
 import type { Data } from "../main";
-import { hbars, lines } from "../lib/charts";
+import { columns, hbars, lines } from "../lib/charts";
 import { figure } from "../lib/figure";
-import { fmtInt } from "../lib/format";
+import { fmtInt, pct } from "../lib/format";
 import { C, callout, chapter, grid2, link, prose } from "../lib/page";
 
 export function renderPeople(main: HTMLElement, d: Data) {
@@ -55,6 +55,60 @@ export function renderPeople(main: HTMLElement, d: Data) {
      <p>That is the shape of the change: <strong>AI is absorbing the repetitive first tier of work</strong> (sorting alerts, first-pass triage, routine scanning) and companies are hiring fewer juniors to do it, while demand grows for people who can secure and supervise AI systems. CrowdStrike cut ${link("https://www.csoonline.com/article/3981182/crowdstrike-cuts-500-jobs-in-ai-pivot-but-flags-risks.html", "about 500 jobs (5%) in May 2025")} calling AI a "force multiplier", and security leaders describe plans to replace outsourced entry-level analysts with AI agents overseen by fewer senior staff.</p>
      <p>Layoffs, though, are not accelerating. In ISC2's 2025 survey, 24% of professionals reported layoffs on their team, down from 25%, and 72% said that cutting security staff significantly raises breach risk. Only 28% of organizations had fully integrated AI security tools.</p>`,
   );
+  // Bug hunters: people vs AI in CVE credits
+  const cr = d.credits.yearly as any[];
+  const c23 = cr.find((r) => r.year === 2023);
+  const c25 = cr.find((r) => r.year === 2025);
+  const c26 = cr.find((r) => r.year === 2026);
+  prose(
+    sec,
+    `<h3>The bug hunters are multiplying, not disappearing</h3>
+     <p>One job AI was supposed to take first is finding vulnerabilities. The CVE credits say otherwise, at least so far. Since 2023, when most numbering authorities began recording who found each bug, the number of different people credited as finders has grown every year: ${fmtInt(c23.distinct_people)} in 2023, ${fmtInt(c25.distinct_people)} in 2025 and <strong>${fmtInt(c26.distinct_people)}</strong> in 2026 so far, ${fmtInt(c26.new_people)} of them credited for the first time.</p>
+     <p>AI systems were credited on ${fmtInt(c26.ai_credited)} CVEs this year against ${fmtInt(c26.person_credited)} credited to people. Many of those people now use AI tools without saying so, and bug-bounty platforms make it easier than ever to start. The data fits a world where <strong>AI is lowering the bar to entry for human hunters</strong> as much as it competes with them.</p>`,
+  );
+  const gc = grid2(sec);
+  const fc1 = figure(gc, {
+    title: "Different people credited as vulnerability finders",
+    source: "cvelistV5 credit entries (finder, reporter, tool types); names normalized, organizations and AI systems excluded; counts only",
+    legend: [
+      { label: "Credited before", color: C.s3 },
+      { label: "First time", color: C.s1 },
+    ],
+    table: { columns: [{ key: "year", label: "Year" }, { key: "distinct_people", label: "People", fmt: fmtInt }, { key: "new_people", label: "First time", fmt: fmtInt }], rows: cr },
+  });
+  columns(fc1, {
+    data: cr.map((r) => ({ ...r, returning: r.distinct_people - r.new_people })),
+    x: "year",
+    series: [
+      { key: "returning", label: "Credited before", color: C.s3 },
+      { key: "new_people", label: "First time", color: C.s1 },
+    ],
+    stacked: true,
+    labelBars: () => true,
+    partial: (r) => r.year === 2026,
+    height: 250,
+  });
+  const fc2 = figure(gc, {
+    title: "CVEs credited to people vs to AI systems",
+    source: "cvelistV5 credits; AI attribution by the author's classifier (chapter 04)",
+    legend: [
+      { label: "Credited to a person", color: C.s3 },
+      { label: "Attributed to AI", color: C.s1 },
+    ],
+    table: { columns: [{ key: "year", label: "Year" }, { key: "person_credited", label: "Person", fmt: fmtInt }, { key: "ai_credited", label: "AI", fmt: fmtInt }, { key: "credited_share", label: "CVEs with any credit", fmt: (x: number) => pct(x) }], rows: cr },
+  });
+  columns(fc2, {
+    data: cr,
+    x: "year",
+    series: [
+      { key: "person_credited", label: "Person", color: C.s3 },
+      { key: "ai_credited", label: "AI", color: C.s1 },
+    ],
+    labelBars: () => true,
+    partial: (r) => r.year === 2026,
+    height: 250,
+  });
+
   const lay = s.isc2_layoffs.points as any[];
   const bud = s.isc2_budget_cuts.points as any[];
   const hir = s.isc2_hiring_freeze.points as any[];

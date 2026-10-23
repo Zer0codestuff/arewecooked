@@ -286,7 +286,10 @@ export function columns(fig: Figure, o: ColumnsOpts) {
       const cx = ax + x.bandwidth() / 2;
       const ty = a.dy ?? 4;
       g.append("line").attr("class", "annot-line").attr("x1", cx).attr("x2", cx).attr("y1", ty + 6).attr("y2", ih).attr("stroke-opacity", 0.35);
-      const anchor = a.align ?? (cx > iw * 0.7 ? "end" : "start");
+      let anchor = a.align ?? (cx > iw * 0.7 ? "end" : "start");
+      const tw = a.text.length * 6.6;
+      if (anchor === "start" && cx + 6 + tw > iw + 8) anchor = "end";
+      if (anchor === "end" && cx - 6 - tw < -40) anchor = "start";
       g.append("text").attr("class", "annot").attr("x", cx + (anchor === "end" ? -6 : anchor === "start" ? 6 : 0)).attr("y", ty + 4).attr("text-anchor", anchor).text(a.text);
     }
     if (rail) {
@@ -337,7 +340,13 @@ export function lines(fig: Figure, o: LinesOpts) {
     const rail = !!o.releases && !!ext && hasReleasesIn(ext[0], ext[1]);
     const height = (o.height ?? 300) + (rail ? RAIL_H : 0);
     const { svg, w } = svgFor(fig, height);
-    const m = { t: 16 + (rail ? RAIL_H : 0), r: o.marginRight ?? (o.endLabels ? 96 : 12), b: 26, l: o.marginLeft ?? 44 };
+    const narrowEnd = !!o.endLabels && w < 480 && o.series.length > 1;
+    // end labels: reserve room for the longest "label value" string unless a margin is given
+    const endW = o.endLabels ? Math.min(w * 0.32, 18 + 6.8 * d3.max(o.series, (sr) => {
+      const pts = o.data.filter((r) => r[sr.key] != null);
+      return `${sr.label} ${(o.valueFormat ?? fmtInt)(pts.length ? pts[pts.length - 1][sr.key] : 0)}`.length;
+    })!) : 12;
+    const m = { t: 16 + (rail ? RAIL_H : 0), r: narrowEnd ? 52 : o.marginRight ?? endW, b: 26, l: o.marginLeft ?? 44 };
     const iw = w - m.l - m.r;
     const ih = height - m.t - m.b;
     const g = svg.append("g").attr("transform", `translate(${m.l},${m.t})`);
@@ -383,14 +392,17 @@ export function lines(fig: Figure, o: LinesOpts) {
       }).sort((a, b) => a.y - b.y);
       for (let i = 1; i < items.length; i++) if (items[i].y - items[i - 1].y < 14) items[i].y = items[i - 1].y + 14;
       for (const it of items) {
-        g.append("text").attr("class", "lbl").attr("x", iw + 10).attr("y", it.y).attr("dy", "0.32em").text(`${it.s.label} ${(o.valueFormat ?? fmtInt)(it.v)}`);
+        g.append("text").attr("class", "lbl").attr("x", iw + 10).attr("y", it.y).attr("dy", "0.32em").text(narrowEnd ? (o.valueFormat ?? compact)(it.v) : `${it.s.label} ${(o.valueFormat ?? fmtInt)(it.v)}`);
       }
     }
     for (const a of o.annotations ?? []) {
       const cx = x(o.time ? new Date(a.x) : +a.x);
       const ty = a.dy ?? 4;
       g.append("line").attr("class", "annot-line").attr("x1", cx).attr("x2", cx).attr("y1", ty + 6).attr("y2", ih).attr("stroke-opacity", 0.35);
-      const anchor = a.align ?? (cx > iw * 0.65 ? "end" : "start");
+      let anchor = a.align ?? (cx > iw * 0.65 ? "end" : "start");
+      const tw = a.text.length * 6.6;
+      if (anchor === "start" && cx + 6 + tw > iw + 8) anchor = "end";
+      if (anchor === "end" && cx - 6 - tw < -40) anchor = "start";
       g.append("text").attr("class", "annot").attr("x", cx + (anchor === "end" ? -6 : 6)).attr("y", ty + 4).attr("text-anchor", anchor).text(a.text);
     }
 
@@ -513,9 +525,10 @@ export interface RadarOpts {
 export function radar(fig: Figure, o: RadarOpts) {
   const render = () => {
     const w = fig.width();
-    const height = o.height ?? Math.min(520, Math.max(360, w * 0.8));
+    const narrow = w < 480;
+    const height = narrow ? Math.round(w * 0.95) : o.height ?? Math.min(520, Math.max(360, w * 0.8));
     const { svg } = svgFor(fig, height);
-    const r = Math.min(w, height) / 2 - (w < 480 ? 64 : 92);
+    const r = Math.min(w, height) / 2 - (narrow ? 82 : 92);
     const g = svg.append("g").attr("transform", `translate(${w / 2},${height / 2 + 6})`);
     const n = o.axes.length;
     const ang = (i: number) => (Math.PI * 2 * i) / n - Math.PI / 2;
@@ -533,7 +546,7 @@ export function radar(fig: Figure, o: RadarOpts) {
       const words = a.label.split(" ");
       const lines: string[] = [];
       for (const wd of words) {
-        if (lines.length && (lines[lines.length - 1] + " " + wd).length <= 14) lines[lines.length - 1] += " " + wd;
+        if (lines.length && (lines[lines.length - 1] + " " + wd).length <= (narrow ? 9 : 14)) lines[lines.length - 1] += " " + wd;
         else lines.push(wd);
       }
       const t = g.append("text").attr("class", "lbl").attr("x", lx).attr("y", ly + (ly < -4 ? -(lines.length - 1) * 13 : ly > 4 ? 6 : 0)).attr("text-anchor", anchor);

@@ -82,6 +82,7 @@ export function renderHero(main: HTMLElement, d: Data) {
     ["weapon", `${fmtInt(v26.gh_repos)} exploit repositories on GitHub this year vs ${fmtInt(v26.edb_all)} Exploit-DB entries; ${fmtInt(sp26.within_1d)} CVEs had exploit code within a day`],
     ["triage", `patching the top 5% by EPSS catches ${pct0(at5("EPSS that day"))} of the next exploits; by CVSS, ${pct0(at5("CVSS score"))}`],
     ["target", `CVEs about MCP connectors for AI agents: ${fmtInt(a.era_totals.mcp_prev)} in 2025, ${fmtInt(a.era_totals.mcp_cur)} in 2026`],
+    ["people", `${fmtInt(d.credits.yearly.find((r: any) => r.year === 2026).distinct_people)} different people credited for finding 2026 CVEs, up from ${fmtInt(d.credits.yearly.find((r: any) => r.year === 2023).distinct_people)} in 2023: AI is not replacing the hunters`],
     ["damage", `${fmtInt(rwCur)} ransomware victims named in 2026${it ? `; Italy is #${d.ransom.italy_rank} with ${fmtInt(it.victims)}` : ""}`],
   ];
   const tl = el("div", "tldr");

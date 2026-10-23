@@ -2,7 +2,8 @@ import type { Data } from "../main";
 import { columns, hbars, lines, radar } from "../lib/charts";
 import { el, figure } from "../lib/figure";
 import { fmtInt, monthLabel, pct, shortMonth } from "../lib/format";
-import { C, callout, chapter, link, prose } from "../lib/page";
+import { C, callout, chapter, grid2, link, prose } from "../lib/page";
+import { matrix } from "../lib/charts2";
 
 const ORG_COLORS = [C.s1, C.s2, C.s3, C.s4, C.s5, C.s6, C.s7];
 
@@ -82,6 +83,52 @@ export function renderHunters(main: HTMLElement, d: Data) {
     `Finding bugs is no longer the slow step. <b>Fixing them is.</b> An open-source library is often maintained by one or two volunteers. Anthropic says human triage is now its "rate limiting step"; by mid-2026 VulnCheck counted ${link("https://www.vulncheck.com/blog/state-of-exploitation-1h-2026", "more than 150 Glasswing findings")} already past their disclosure deadline. Meanwhile the curl project ${link("https://www.bleepingcomputer.com/news/security/curl-ending-bug-bounty-program-after-flood-of-ai-slop-reports/", "shut down its bug bounty")} in January because of a flood of fake, AI-generated reports. AI has made bug reports both far better and far worse.`,
   );
 
+  // Does the AI overrate severity? Claude's rating vs the vendor's and the maintainer's
+  const sm = gw.severity_matrix;
+  const SEV = ["critical", "high", "medium", "low"];
+  const cap = (x: string) => x[0].toUpperCase() + x.slice(1);
+  const agree = (m: any) => {
+    let same = 0, higher = 0, lower = 0;
+    SEV.forEach((a, i) => SEV.forEach((b, j) => {
+      const v = m[a]?.[b] ?? 0;
+      if (i === j) same += v;
+      else if (i < j) higher += v;
+      else lower += v;
+    }));
+    const t = same + higher + lower;
+    return { t, same: same / t, higher: higher / t, lower: lower / t };
+  };
+  const av = agree(sm.claude_vs_vendor);
+  const amt = agree(sm.claude_vs_maintainer);
+  prose(
+    sec,
+    `<h3>Does the AI overrate its finds?</h3>
+     <p>A common complaint about AI bug reports is inflated severity. Anthropic's ledger lets us check: for ${fmtInt(av.t)} findings it records both Claude's rating and the one the vendor assigned. They match in <strong>${pct(av.same)}</strong> of cases; Claude rated higher in ${pct(av.higher)} and lower in ${pct(av.lower)}. Independent open-source maintainers are harsher judges: in ${fmtInt(amt.t)} rated findings they agreed with Claude only ${pct(amt.same)} of the time and rated lower in ${pct(amt.higher)}.</p>`,
+  );
+  const gm = grid2(sec);
+  const RAMP = ["#17301f", "#1f4a30", "#2a6b44", "#3d9461", "#62c995"];
+  for (const [key, title, who] of [["claude_vs_vendor", "Claude's severity vs the vendor's", "Vendor"], ["claude_vs_maintainer", "Claude's severity vs the maintainer's", "Maintainer"]] as const) {
+    const m = sm[key];
+    const fm = figure(gm, {
+      title,
+      source: `${link("https://red.anthropic.com/2026/cvd/", "Anthropic CVD dashboard")} severity matrix; dashed cells = same rating`,
+      table: {
+        columns: [{ key: "r", label: `Claude \\ ${who}` }, ...SEV.map((c) => ({ key: c, label: cap(c), fmt: fmtInt }))],
+        rows: SEV.map((r) => ({ r: cap(r), ...Object.fromEntries(SEV.map((c) => [c, m[r]?.[c] ?? 0])) })),
+      },
+    });
+    matrix(fm, {
+      rows: SEV.map(cap),
+      cols: SEV.map(cap),
+      value: (r, c) => m[r.toLowerCase()]?.[c.toLowerCase()] ?? 0,
+      rowTitle: "Claude",
+      colTitle: who,
+      colors: RAMP,
+      thresholds: [0.1, 0.25, 0.5, 0.75],
+      diagonal: true,
+    });
+  }
+
   // AI vs other severity
   const sv = v.ai_severity as any[];
   const ai = sv[0];
@@ -90,7 +137,7 @@ export function renderHunters(main: HTMLElement, d: Data) {
     sec,
     `<h3>Are AI-found bugs worse?</h3>
      <p>By the standard severity score, no: in 2026, ${pct(ai.critical + ai.high)} of AI-credited CVEs are high or critical, against ${pct(oth.critical + oth.high)} for everything else, with the same median score (${ai.median_cvss} vs ${oth.median_cvss}). Exploitation forecasts (${link("https://www.first.org/epss/", "EPSS")}) are also about the same. VulnCheck found that only 1.3% of AI-attributed CVEs have been exploited, roughly the base rate.</p>
-     <p>Google sees it differently: grading by its own risk model, ${link("https://cloud.google.com/blog/topics/threat-intelligence/vulnerability-discovery-and-exploitation-trends-in-the-ai-era", "half of likely AI-discovered vulnerabilities allow remote code execution, against 26% of all CVEs")}. AI hunters go after deep memory bugs in C code, exactly the kind attackers prize. The fair summary: AI is not finding a different kind of bug yet, but it is finding a lot of the expensive kind.</p>`,
+     <p>Google sees it differently: grading by its own risk model, ${link("https://cloud.google.com/blog/topics/threat-intelligence/vulnerability-discovery-and-exploitation-trends-in-the-ai-era", "half of likely AI-discovered vulnerabilities allow remote code execution, against 26% of all CVEs")}. AI hunters go after deep memory bugs in C code, exactly the kind attackers prize. Our own count agrees on the mix: AI-credited CVEs are memory-safety bugs more often than the rest (chapter 03). The fair summary: AI bugs are not rated worse on paper, but they lean toward the expensive kind.</p>`,
   );
 
   // Radar: profile of three AI finders (Berkeley)

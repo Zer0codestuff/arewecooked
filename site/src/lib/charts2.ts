@@ -180,7 +180,9 @@ export function bump(fig: Figure, o: BumpOpts) {
       const last = inR[inR.length - 1];
       const firstP = inR[0];
       const lblCls = hi ? "lbl strong" : "lbl muted";
-      if (last.year === o.years[o.years.length - 1]) g.append("text").attr("class", lblCls).attr("x", iw + 10).attr("y", y(last.rank)).attr("dy", "0.32em").text(`${last.rank}. ${grp}`);
+      const maxC = Math.floor((m.r - 12) / 6.8);
+      const endTxt = `${last.rank}. ${grp}`;
+      if (last.year === o.years[o.years.length - 1]) g.append("text").attr("class", lblCls).attr("x", iw + 10).attr("y", y(last.rank)).attr("dy", "0.32em").text(endTxt.length > maxC ? endTxt.slice(0, maxC - 1) + "…" : endTxt);
       if (firstP.year === o.years[0] && !narrow) g.append("text").attr("class", lblCls).attr("x", -10).attr("y", y(firstP.rank)).attr("dy", "0.32em").attr("text-anchor", "end").text(grp);
       else if (hi && last.year !== o.years[o.years.length - 1]) {
         // brand that enters and exits mid-chart: label it at its exit point
@@ -320,6 +322,54 @@ export function multiples(fig: Figure, o: MultiplesOpts) {
           hideTip();
         });
     });
+  };
+  fig.onResize(render);
+}
+
+// ---------------------------------------------------------------------------
+// Matrix heatmap (e.g. confusion matrix): cells shaded by share of the row
+// ---------------------------------------------------------------------------
+export interface MatrixOpts {
+  rows: string[];
+  cols: string[];
+  value: (r: string, c: string) => number;
+  rowTitle: string;
+  colTitle: string;
+  colors: string[]; // binned sequential ramp
+  thresholds: number[]; // on row share, 0..1
+  diagonal?: boolean; // outline the agreement cells
+}
+
+export function matrix(fig: Figure, o: MatrixOpts) {
+  const scale = d3.scaleThreshold<number, string>().domain(o.thresholds).range(o.colors);
+  const render = () => {
+    const w = fig.width();
+    const lw = 78;
+    const cell = Math.min(64, Math.floor((w - lw - 8) / o.cols.length));
+    const height = cell * o.rows.length + 44;
+    const { svg } = svgFor(fig, height);
+    const g = svg.append("g").attr("transform", `translate(${lw},34)`);
+    svg.append("text").attr("class", "lbl muted").attr("x", lw).attr("y", 11).text(o.colTitle + " ->");
+    o.cols.forEach((c, j) => g.append("text").attr("class", "lbl").attr("x", j * cell + cell / 2).attr("y", -8).attr("text-anchor", "middle").text(c));
+    o.rows.forEach((r, i) => {
+      const tot = d3.sum(o.cols, (c) => o.value(r, c)) || 1;
+      g.append("text").attr("class", "lbl").attr("x", -10).attr("y", i * cell + cell / 2).attr("dy", "0.32em").attr("text-anchor", "end").text(r);
+      o.cols.forEach((c, j) => {
+        const v = o.value(r, c);
+        const share = v / tot;
+        const rect = g.append("rect").attr("x", j * cell).attr("y", i * cell).attr("width", cell - 2).attr("height", cell - 2).attr("rx", 3)
+          .attr("fill", v ? scale(share) : "#151917").attr("tabindex", 0);
+        if (o.diagonal && i === j) g.append("rect").attr("x", j * cell + 0.5).attr("y", i * cell + 0.5).attr("width", cell - 3).attr("height", cell - 3).attr("rx", 3).attr("fill", "none").attr("stroke", "var(--text-2)").attr("stroke-width", 1).attr("stroke-dasharray", "2 2").style("pointer-events", "none");
+        g.append("text").attr("class", share >= o.thresholds[o.thresholds.length - 2] ? "lbl strong" : "lbl").attr("x", j * cell + cell / 2 - 1).attr("y", i * cell + cell / 2).attr("dy", "0.32em").attr("text-anchor", "middle").style("pointer-events", "none")
+          .style("fill", share >= o.thresholds[o.thresholds.length - 2] ? "#0b0d0c" : "var(--text-2)").text(v ? fmtInt(v) : "");
+        rect.on("pointermove focus", (ev: any) => showTip(tipAt(ev), `${o.rowTitle}: ${r}`, [
+          { label: o.colTitle, value: c, color: "transparent" },
+          { label: "findings", value: fmtInt(v), color: v ? scale(share) : "transparent" },
+          { label: `share of "${r}" row`, value: `${(share * 100).toFixed(0)}%`, color: "transparent" },
+        ])).on("pointerleave blur", hideTip);
+      });
+    });
+    svg.append("text").attr("class", "lbl muted").attr("x", 0).attr("y", 11).text(o.rowTitle);
   };
   fig.onResize(render);
 }

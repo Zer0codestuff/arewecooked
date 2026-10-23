@@ -215,6 +215,7 @@ function renderRansomGeo(sec: HTMLElement, d: Data) {
     const draw = (i: number) => {
       toggle.querySelectorAll("button").forEach((b, j) => b.classList.toggle("on", j === i));
       const m = modes[i];
+      fig.reset();
       choropleth(fig, {
         features,
         data: r.countries,

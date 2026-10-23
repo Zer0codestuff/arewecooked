@@ -13,6 +13,7 @@ import { renderMethod } from "./sections/method";
 import { renderAnatomy } from "./sections/anatomy";
 import { renderWeapon } from "./sections/weapon";
 import { renderTriage } from "./sections/triage";
+import { renderExplore } from "./sections/explore";
 import { setReleases } from "./lib/charts";
 
 export interface Data {
@@ -28,9 +29,11 @@ export interface Data {
   weapon: any;
   triage: any;
   ransom: any;
+  credits: any;
+  explore: any;
 }
 
-const FILES = ["vulns", "threats", "supplychain", "breaches", "markets", "context", "glasswing", "nvd", "anatomy", "weapon", "triage", "ransom"] as const;
+const FILES = ["vulns", "threats", "supplychain", "breaches", "markets", "context", "glasswing", "nvd", "anatomy", "weapon", "triage", "ransom", "credits", "explore"] as const;
 
 // Pipeline timestamps are UTC but carry no zone suffix; without it browsers parse them as local time,
 // which shifts every month back by one for readers east of UTC. Tag them as UTC once, at load.
@@ -126,6 +129,7 @@ load().then((d) => {
   renderMoney(main, d);
   renderPeople(main, d);
   renderVerdict(main, d);
+  renderExplore(main, d);
   renderMethod(main, d);
   navSpy();
   progress();

@@ -18,8 +18,9 @@ A data story about cybersecurity in the AI era, built from 412,863 CVE records a
 8. **AI is also the target**: vulnerabilities in AI software, MCP connectors and prompt injection, leaked secrets (Railway breach), poisoned packages, AI-run attacks.
 9. **The damage**: ransomware victims (world map, per capita), brand churn, sectors, ransom payments, FBI losses, breach costs, incident timeline.
 10. **Follow the money**: security spending, cyber stocks, venture funding, bug bounties.
-11. **People**: workforce, the skills gap, job postings and what AI is doing to security jobs.
+11. **People**: distinct human bug finders vs AI in CVE credits, workforce, the skills gap, job postings.
 12. **Verdict**: two radar charts (threat pressure vs defensive capacity) and a "doneness" meter.
+13. **Explore**: compare any two of the 250 vendors with the most CVEs on a radar, a yearly chart and a table.
 
 **Highlights (as of 22 Oct 2026)**
 
@@ -28,6 +29,7 @@ A data story about cybersecurity in the AI era, built from 412,863 CVE records a
 - Memory-safety bugs fell from 77% to 25% of Android CVEs (2019 to 2026); AI-credited CVEs are memory bugs more often than others (27% vs 18%).
 - GitHub hosted 8,406 new exploit repositories in 2026 so far, Exploit-DB 233. 1,070 CVEs of 2026 had exploit code within a day.
 - Patching the top 5% of open CVEs by EPSS caught 41% of the next 90 days' exploits; by CVSS, 25% (543 exploits, Jan 2023 to Jul 2026).
+- 9,045 different people were credited as finders of 2026 CVEs, up from 1,710 in 2023; AI systems were credited on 1,288.
 - CVEs about MCP connectors for AI agents: 99 in 2025, 842 in 2026. Italy ranks 5th for ransomware victims in 2026 (238).
 - Only about 0.23% of 2026 CVEs are known to be exploited, but the median time from publication to confirmed exploitation fell from 24 days (2022 CVEs) to 4 days (2026 CVEs).
 
