@@ -45,7 +45,7 @@ Data pipeline complete; site with 14 chapters and about 60 charts is live on Git
 
 - 23 Oct 2026 (later): big expansion. New chapters Anatomy (03), From bug to weapon (06), The triage game (07); calendar heatmap (flood), severity from 2016 with NVD fallback (noise), Sashiko kernel AI review and research boom (hunters), MCP and prompt-injection CVEs (target), ransomware world map, brand bump chart, churn and sectors (damage), two new radar axes (verdict), tl;dr findings list under the hero. AI classifier now reads Sashiko/LLM-review mentions in fix descriptions (AI-credited total 1,433). Fixed a timezone bug that shifted monthly labels by one month east of UTC.
 
-- 23 Oct 2026 (third pass): people vs AI in CVE credits (People chapter), Claude vs vendor/maintainer severity matrices (hunters), interactive vendor explorer with compare radar (new chapter before Data), `matrix` chart, findings list now has 8 lines.
+- 23 Oct 2026 (third pass): social preview image `site/public/og.png` (1200x630 screenshot of the hero) with og/twitter meta tags; people vs AI in CVE credits (People chapter), Claude vs vendor/maintainer severity matrices (hunters), interactive vendor explorer with compare radar (new chapter before Data), `matrix` chart, findings list now has 8 lines.
 
 ## Known issues / next steps
 - Triage backtest uses current CVSS scores (historical CVSS snapshots are not available); EPSS uses historical snapshots.
