@@ -41,6 +41,7 @@ Live at https://gabrielemonni.me/arewecooked/ (GitHub Pages, published 23 Oct 20
 Data pipeline complete; site with 14 chapters and about 60 charts is live on GitHub Pages (desktop and mobile checked).
 
 ## Recent changes
+- 26 Oct 2026: replaced the red initial favicon with a pixel question mark matching the ASCII title, using the site's near-black background and mint green. `site/public/favicon.svg` and the README's `assets/icon.svg` share the same font-independent vector mark; the favicon URL is versioned to refresh browser caches.
 - 23 Oct 2026: AI model release markers on 8 time charts (replace the old "Glasswing" annotations); light UI polish (scroll progress line, card corner accents, chapter rules, figure reveal on scroll, tooltip accent, EOF footer). Data spot check against raw files passed; fixed one AI-attribution false positive (Huawei Nebula Security Lab, 2023), AI-credited total is now 1,250.
 
 - 23 Oct 2026 (later): big expansion. New chapters Anatomy (03), From bug to weapon (06), The triage game (07); calendar heatmap (flood), severity from 2016 with NVD fallback (noise), Sashiko kernel AI review and research boom (hunters), MCP and prompt-injection CVEs (target), ransomware world map, brand bump chart, churn and sectors (damage), two new radar axes (verdict), tl;dr findings list under the hero. AI classifier now reads Sashiko/LLM-review mentions in fix descriptions (AI-credited total 1,433). Fixed a timezone bug that shifted monthly labels by one month east of UTC.
